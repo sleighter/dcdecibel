@@ -31,7 +31,7 @@ H1{
 /* Title Components */
 .title {
   margin-bottom: -70px;
-  margin-top: -65px;
+  margin-top: -70px;
 }
 .title_1{
   font-size: 200px;
