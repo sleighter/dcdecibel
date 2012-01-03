@@ -1,0 +1,45 @@
+<%= form_for(@band) do |f| %>
+  <% if @band.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@band.errors.count, "error") %> prohibited this band from being saved:</h2>
+
+      <ul>
+      <% @band.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_fm_id %><br />
+    <%= f.text_field :last_fm_id %>
+  </div>
+  <div class="field">
+    <%= f.label :wikipedia_id %><br />
+    <%= f.text_field :wikipedia_id %>
+  </div>
+  <div class="field">
+    <%= f.label :homepage_url %><br />
+    <%= f.text_field :homepage_url %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %><br />
+    <%= f.text_area :bio %>
+  </div>
+  <div class="field">
+    <%= f.label :is_editors_choice %><br />
+    <%= f.check_box :is_editors_choice %>
+  </div>
+  <div class="field">
+    <%= f.label :editors_choice_note %><br />
+    <%= f.text_area :editors_choice_note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

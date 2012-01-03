@@ -1,4 +1,13 @@
 Dcdecibel::Application.routes.draw do
+
+  resources :cities
+
+  resources :events
+
+  resources :venues
+
+  resources :bands
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

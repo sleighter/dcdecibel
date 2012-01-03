@@ -1,0 +1,18 @@
+class CreateEvents < ActiveRecord::Migration
+  def change
+    create_table :events do |t|
+      t.string :name
+      t.datetime :event_datetime
+      t.string :ticket_status
+      t.integer :venue_id
+      t.boolean :is_editors_choice
+      t.text :editors_choice_note
+
+      t.timestamps
+    end
+    create_table :bands_events do |t|
+      t.integer :band_id
+      t.integer :event_id
+    end
+  end
+end

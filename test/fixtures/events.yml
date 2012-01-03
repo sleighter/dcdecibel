@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  event_datetime: 2012-01-02 18:20:11
+  ticket_status: MyString
+  venue_id: 
+  is_editors_choice: 
+  editors_choice_note: MyText
+
+two:
+  name: MyString
+  event_datetime: 2012-01-02 18:20:11
+  ticket_status: MyString
+  venue_id: 
+  is_editors_choice: 
+  editors_choice_note: MyText

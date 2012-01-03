@@ -1,0 +1,33 @@
+<h1>Listing events</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Event datetime</th>
+    <th>Ticket status</th>
+    <th>Venue</th>
+    <th>Is editors choice</th>
+    <th>Editors choice note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%= event.name %></td>
+    <td><%= event.event_datetime %></td>
+    <td><%= event.ticket_status %></td>
+    <td><%= event.venue_id %></td>
+    <td><%= event.is_editors_choice %></td>
+    <td><%= event.editors_choice_note %></td>
+    <td><%= link_to 'Show', event %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Event', new_event_path %>

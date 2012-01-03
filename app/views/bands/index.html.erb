@@ -1,0 +1,35 @@
+<h1>Listing bands</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Live fm</th>
+    <th>Wikipedia</th>
+    <th>Homepage url</th>
+    <th>Bio</th>
+    <th>Is editors choice</th>
+    <th>Editors choice note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bands.each do |band| %>
+  <tr>
+    <td><%= band.name %></td>
+    <td><%= band.live_fm_id %></td>
+    <td><%= band.wikipedia_id %></td>
+    <td><%= band.homepage_url %></td>
+    <td><%= band.bio %></td>
+    <td><%= band.is_editors_choice %></td>
+    <td><%= band.editors_choice_note %></td>
+    <td><%= link_to 'Show', band %></td>
+    <td><%= link_to 'Edit', edit_band_path(band) %></td>
+    <td><%= link_to 'Destroy', band, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Band', new_band_path %>

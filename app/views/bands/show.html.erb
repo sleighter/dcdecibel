@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @band.name %>
+</p>
+
+<p>
+  <b>Live fm:</b>
+  <%= @band.last_fm_id %>
+</p>
+
+<p>
+  <b>Wikipedia:</b>
+  <%= @band.wikipedia_id %>
+</p>
+
+<p>
+  <b>Homepage url:</b>
+  <%= @band.homepage_url %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @band.bio %>
+</p>
+
+<p>
+  <b>Is editors choice:</b>
+  <%= @band.is_editors_choice %>
+</p>
+
+<p>
+  <b>Editors choice note:</b>
+  <%= @band.editors_choice_note %>
+</p>
+
+
+<%= link_to 'Edit', edit_band_path(@band) %> |
+<%= link_to 'Back', bands_path %>

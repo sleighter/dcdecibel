@@ -1,0 +1,5 @@
+class Venue < ActiveRecord::Base
+  has_many :events, :dependent => :destroy
+  has_many :bands, :through => :events, :uniq => true
+  has_many :upcoming_events, :class_name => "Event", :conditions => proc {[events.event_date >= ?, Time.now]}
+end

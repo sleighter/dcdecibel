@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  live_fm_id: MyString
+  wikipedia_id: MyString
+  homepage_url: MyString
+  bio: MyText
+  is_editors_choice: 
+  editors_choice_note: MyText
+
+two:
+  name: MyString
+  live_fm_id: MyString
+  wikipedia_id: MyString
+  homepage_url: MyString
+  bio: MyText
+  is_editors_choice: 
+  editors_choice_note: MyText
