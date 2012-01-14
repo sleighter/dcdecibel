@@ -7,7 +7,7 @@ class AdminUser < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
-  after_create { |admin| admin.send_reset_password_instructions }
+  after_create { |admin| admin.send_reset_password_instructions :host => 'dcdecibel.heroku.com' }
  
   def password_required?
     new_record? ? false : super
