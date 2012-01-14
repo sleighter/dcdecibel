@@ -5,9 +5,11 @@ ActiveAdmin.register Event do
     column :name
     column :venue
     column 'Event Date', :event_datetime
-    column :bands do |band|
-      span do
-        band
+    column :bands do |event|
+      event.bands.take(3).each do |band|
+        span do
+          band.name
+        end
       end
     end
     default_actions
