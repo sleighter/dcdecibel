@@ -5,7 +5,7 @@ class CreateVenues < ActiveRecord::Migration
       t.string :homepage_url
       t.string :wikipedia_id
       t.string :address
-      t.string :city
+      t.string :city_address
       t.string :state
       t.integer :zip
       t.text :description

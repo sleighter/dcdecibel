@@ -7,7 +7,7 @@ gem 'rails', '3.1.3'
 
 gem 'sqlite3'
 
-#gem 'activeadmin'
+gem 'activeadmin'
 gem 'sass-rails'
 gem "meta_search",    '>= 1.1.0.pre'
 #gem 'devise'

@@ -1,5 +1,11 @@
 Dcdecibel::Application.routes.draw do
 
+  resources :tickets
+
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   resources :cities
 
   resources :events
