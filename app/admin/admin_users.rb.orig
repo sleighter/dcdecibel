@@ -1,4 +1,5 @@
 ActiveAdmin.register AdminUser do
+<<<<<<< HEAD
    index do
     column :email
     column :current_sign_in_at
@@ -13,4 +14,7 @@ ActiveAdmin.register AdminUser do
     end
     f.buttons
   end
+=======
+>>>>>>> 3961a38b1ac316c425a7968ee3f28d86fcfd50bd
+  
 end
