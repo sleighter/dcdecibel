@@ -13,7 +13,7 @@
   <tbody>
   <% @events.each do |event| %>
     <tr>
-      <td><%= link_to(event.bands.first ? event.bands.first.name.upcase : event.name.upcase, event.bands.first ? band_url(event.bands.first).upcase : event_url(event).upcase) %></td>
+      <td><%= link_to(event.bands.first ? event.bands.first.name.upcase : event.name.upcase, event.bands.first ? band_url(event.bands.first) : event_url(event)) %></td>
       <td><%= event.venue ? event.venue.name.upcase : "" %></td>
       <td><%= event.event_datetime.to_s(:long_date).upcase %></td>
       <td><%= event.tickets.first ? link_to(number_to_currency(event.tickets.first.price) + "HERE", event_url(event.tickets.first)) : "NONE" %></td>
