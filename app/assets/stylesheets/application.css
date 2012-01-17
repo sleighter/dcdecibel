@@ -11,7 +11,7 @@
   src: url('/assets/GeosansLight.ttf');
 }
 
-BODY{
+BODY, TABLE, TD, TH, H1, H2, H3, H4, H5, P, SPAN{
   font-family: geosans;
 }
 

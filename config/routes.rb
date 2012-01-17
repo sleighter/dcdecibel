@@ -1,5 +1,7 @@
 Dcdecibel::Application.routes.draw do
 
+  resources :neighborhoods
+
   resources :tickets
 
   ActiveAdmin.routes(self)

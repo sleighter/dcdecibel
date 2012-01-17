@@ -19,7 +19,7 @@ ActiveAdmin.register Event do
       f.inputs "Details" do
         f.input :name
         f.input :venue
-        f.input :event_datetime
+        f.input :event_datetime, :as => :datepicker
         f.input :bands, :as => :check_boxes
       end
       f.buttons
