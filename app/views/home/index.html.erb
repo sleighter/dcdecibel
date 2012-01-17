@@ -1,19 +1,22 @@
 <table class="container_16" border="0" cellpadding="0" cellspacing="0">
   <thead>
   <tr>
-    <th><h2>Artist</h2></th>
-    <th><h2>Venue</h2></th>
-    <th><h2>Date</h2></th>
-    <th><h2>Tickets</h2></th>
+    <th><h2>ARTIST</h2></th>
+    <th><h2>VENUE</h2></th>
+    <th><h2>DATE</h2></th>
+    <th><h2>TICKETS</h2></th>
   </tr>
   </thead>
+</table>
+
+<table class="container_16" border="0" cellpadding="0" cellspacing="0">
   <tbody>
   <% @events.each do |event| %>
     <tr>
-      <td><%= link_to(event.bands.first ? event.bands.first.name : event.name, event.bands.first ? band_url(event.bands.first) : event_url(event)) %></td>
-      <td><%= event.venue ? event.venue.name : "" %></td>
-      <td><%= event.event_datetime.to_s(:long_date) %></td>
-      <td>None</td>
+      <td><%= link_to(event.bands.first ? event.bands.first.name.upcase : event.name.upcase, event.bands.first ? band_url(event.bands.first).upcase : event_url(event).upcase) %></td>
+      <td><%= event.venue ? event.venue.name.upcase : "" %></td>
+      <td><%= event.event_datetime.to_s(:long_date).upcase %></td>
+      <td><%= event.tickets.first ? link_to(number_to_currency(event.tickets.first.price) + "HERE", event_url(event.tickets.first)) : "NONE" %></td>
     </tr>
   <% end %>
   </tbody>

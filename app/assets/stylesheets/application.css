@@ -3,7 +3,17 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require_tree . 
+ *= require reset
+ *= require 960
+ *= require 960_16_col
+ *= require scaffolds
+ *= require bands
+ *= require cities
+ *= require events
+ *= require neighborhoods
+ *= require tickets
+ *= require venues
+ *= require home   
 */
 @font-face 
 {
@@ -16,22 +26,30 @@ BODY, TABLE, TD, TH, H1, H2, H3, H4, H5, P, SPAN{
 }
 
 H1,H2,H3{
-  text-align: center;
-  font-weight: bold;
 }
 H1{
   font-size: 36px;
+  text-align: center;
 }
 
 /* Basic Components */
 .centered {
   text-align: center;
 }
+.right-align {
+  text-align: right;
+}
+.horizontal-divider {
+  height: 1px;
+  background-color: #AAA;
+  clear: both;
+  margin-bottom: 5px;
+}
 
 /* Title Components */
 .title {
-  margin-bottom: -70px;
-  margin-top: -65px;
+  margin-bottom: 0;
+  margin-top: 80px;
 }
 .title_1{
   font-size: 200px;
@@ -44,16 +62,27 @@ H1{
   color: gray;
 }
 
+/* Footer Components */
+.footer {
+  text-align: right;
+}
+.footer UL {
+  list-style: none;
+}
+.footer LI {
+  float:left;
+  margin-right: -30px;
+}
 /* Main Menu Components */
 .main_menu{
   border-bottom: 2px solid black;
-  color: gray;
+  color: black;
   margin-bottom: 25px;
 }
 .main_menu H1{
   margin-bottom: 10px;
+  font-size: 3em;
 }
 .main_menu_selected{
   font-weight: bold;
-  color: black
 }

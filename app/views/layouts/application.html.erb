@@ -4,8 +4,6 @@
   <title>Dcdecibel</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" ></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -16,13 +14,13 @@
 </div>
 <div class="container_16 main_menu">
   <div class="grid_4">
-    <h1 class="main_menu_selected">TONIGHT</h1>
+    <h1>TONIGHT</h1>
   </div>
   <div class="grid_4">
     <h1>JUST ANNOUNCED</h1>
   </div>
   <div class="grid_4">
-    <h1>UPCOMING</h1>
+    <h1 class="main_menu_selected">UPCOMING</h1>
   </div>
   <div class="grid_4">
     <h1>FILTER</h1>
@@ -30,6 +28,17 @@
 </div>
 <div class="clear"></div>
 <%= yield %>
-
+<div class="clear"></div>
+<div class="footer container_16">
+  <div class="horizontal-divider grid_16"></div>
+  <div class="prefix_10 grid_6 right-align">
+    <ul>
+      <li><span>ABOUT/</span></li>
+      <li><span>CONTACT/</span></li>
+      <li><span>ALL RIGHTS RESERVED/</span></li>
+      <li><span>CITYDECIBEL 2012</span></li>
+    </ul>
+  </div>
+</div>
 </body>
 </html>

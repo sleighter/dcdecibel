@@ -4,11 +4,20 @@
 
 THEAD TH{
   background-color: white;
+  font-weight: bold;
+  color: #BBB;
+  text-align: left;
 }
 
 TD {
-  text-align: center;
+  text-align: left;
   font-size: 1.2em;
+  margin-bottom: 20px;
+}
+  
+h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
 }
 
 A {

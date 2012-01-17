@@ -1,4 +1,4 @@
 $(document).ready(function(){
-  $('TABLE .container_16 td').addClass('grid_4');
-  $('TABLE .container_16 td').addClass('grid_4');
+  $('th').addClass('grid_4');
+  $('td').addClass('grid_4');
 });

@@ -6,4 +6,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require bands
+//= require cities
+//= require events
+//= require home
+//= require neighborhoods
+//= require tickets
+//= require venues
