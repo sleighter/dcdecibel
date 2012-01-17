@@ -10,8 +10,8 @@
   <tbody>
   <% @events.each do |event| %>
     <tr>
-      <td><%= link_to event.bands.first.name, band_url(event.bands.first) %></td>
-      <td><%= event.venue.name %></td>
+      <td><%= link_to(event.bands.first ? event.bands.first.name : event.name, event.bands.first ? band_url(event.bands.first) : event_url(event)) %></td>
+      <td><%= event.venue ? event.venue.name : "" %></td>
       <td><%= event.event_datetime.to_s(:long_date) %></td>
       <td>None</td>
     </tr>
