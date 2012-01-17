@@ -8,7 +8,7 @@ ActiveAdmin.register Event do
     column :bands do |event|
       event.bands.take(3).each do |band|
         span do
-          band.name
+          band.name + ", "
         end
       end
     end

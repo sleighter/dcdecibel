@@ -13,11 +13,5 @@ ActiveAdmin.register Ticket do
       end
     end
   end
-  
-  form do |f|
-    f.inputs "Ticket Details" do
-      f.input :email
-    end
-    f.buttons
-  end
+
 end
