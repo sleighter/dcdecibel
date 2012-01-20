@@ -13,3 +13,5 @@
 //= require neighborhoods
 //= require tickets
 //= require venues
+
+var last_fm_api_key = '7d032ba61568e866f8f9cd751a51e69d';
