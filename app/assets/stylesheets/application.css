@@ -31,8 +31,13 @@
   src: url('/assets/SWISSCB-dtype.ttf');
 }
 
+TD {
+  font-size: 14pt;
+}
+
 BODY,H1{
   font-family: swis721LtCnBTDtype;
+  background: transparent;
 }
 
 H2,H3{
@@ -53,7 +58,6 @@ H1{
   height: 1px;
   background-color: black;
   clear: both;
-  margin-bottom: 5px;
 }
 
 /* Title Components */
@@ -61,9 +65,9 @@ H1{
   margin-bottom: 24px;
 }
 .title {
-  background: url("/assets/dcdecibel-logo.png") -15px 0;
+  background: url("/assets/dcdecibel-logo.png") -15px -10px;
   width: 960px;
-  height: 176px;
+  height: 166px;
   font-family: swis721LtCnBTDtype;
 }
 
@@ -90,7 +94,7 @@ H1{
 #main_menu_tonight{ letter-spacing: 0.7em; }
 #main_menu_upcoming{ letter-spacing: 0.7em; }
 #main_menu_announced{ letter-spacing: -0.1em; }
-#main_menu_filter{ letter-spacing: 0.3em; }
+#main_menu_filter{ letter-spacing: 0.5em; text-align: right;}
 .main_menu_selected{
   font-family: swisscbdtype;
 }

@@ -1,10 +1,10 @@
 <table class="container_16" border="0" cellpadding="0" cellspacing="0">
   <thead>
   <tr>
-    <th><h2>ARTIST</h2></th>
-    <th><h2>VENUE</h2></th>
-    <th><h2>DATE</h2></th>
-    <th><h2>TICKETS</h2></th>
+    <th class="grid_5"><h2>ARTIST</h2></th>
+    <th class="grid_5"><h2>VENUE</h2></th>
+    <th class="grid_4"><h2>DATE</h2></th>
+    <th class="grid_2"><h2>PRICE</h2></th>
   </tr>
   </thead>
 </table>
@@ -12,10 +12,10 @@
   <tbody>
   <% @events.each do |event| %>
     <tr>
-      <td class="band-link" data-bandid="<%= event.bands.first ? event.bands.first.id : ''  %>" ><%= event.bands.first ? event.bands.first.name.upcase : event.name.upcase %></td>
-      <td class="venue-link" data-venueid="<%= event.venue.id %>"><%= event.venue ? event.venue.name.upcase : "" %></td>
-      <td><%= event.event_datetime.to_s(:long_date).upcase %></td>
-      <td><%= event.tickets.first ? link_to(number_to_currency(event.tickets.first.price) + "HERE", event_url(event.tickets.first)) : "NONE" %></td>
+      <td class="band-link grid_5" data-bandid="<%= event.bands.first ? event.bands.first.id : ''  %>" ><%= event.bands.first ? event.bands.first.name.upcase : event.name.upcase %></td>
+      <td class="venue-link grid_5" data-venueid="<%= event.venue.id %>"><%= event.venue ? event.venue.name.upcase : "" %></td>
+      <td class="grid_4"><%= event.event_datetime.to_s(:long_date).upcase %></td>
+      <td class="grid_2"><%= event.tickets.first ? link_to(number_to_currency(event.tickets.first.price) + "HERE", event_url(event.tickets.first)) : "NONE" %></td>
     </tr>
   <% end %>
   <tr id="details-row" style="display:none;" ><td colspan='4'><span>These are details</span><td></tr>

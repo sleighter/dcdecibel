@@ -1,8 +1,8 @@
 var openRow;
 var loadingHolder = '<td colspan="4" class="grid_16 centered"><image src="/assets/loading.gif" alt="loading" /></td>';
 $(document).ready(function(){
-  $('th').addClass('grid_4');
-  $('td').addClass('grid_4');
+  //$('th').addClass('grid_4');
+  //$('td').addClass('grid_4');
   
   $('.band-link').live('click',function(){
     if ($(this)[0] == openRow)
