@@ -16,7 +16,8 @@ $(document).ready(function(){
     var bandid = $(this).attr('data-bandid');
     $('#details-row').slideUp('fast','swing',function() {
       $('#details-row').html(loadingHolder);
-      $.get("/bands/" + bandid.toString() + ".json", function(data){ 
+      $.get("/bands/" + bandid.toString() + ".json", function(data){
+        $.get("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&api_key=" + last_fm_api_key + "&artist=" + data.last_fm_id , function(data2){});
         $('#details-row').html('<td colspan="4" class="grid_16 centered">' + data.name + '  <a href="' + data.homepage_url + '">Homepage</a>' + '</td>'); });
       $('#details-row').insertAfter(thisRow);
       $('#details-row').slideDown('fast','swing');
