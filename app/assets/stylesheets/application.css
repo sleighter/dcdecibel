@@ -20,16 +20,26 @@
   font-family: geosans;
   src: url('/assets/GeosansLight.ttf');
 }
-
-BODY, TABLE, TD, TH, H1, H2, H3, H4, H5, P, SPAN{
-  font-family: geosans;
+@font-face
+{
+  font-family: swis721LtCnBTDtype;
+  src: url('/assets/Swis721LtCnBTDtype.ttf');
+}
+@font-face
+{
+  font-family: swisscbdtype;
+  src: url('/assets/SWISSCB-dtype.ttf');
 }
 
-H1,H2,H3{
+BODY,H1{
+  font-family: swis721LtCnBTDtype;
+}
+
+H2,H3{
+  font-family: swisscbdtype;
 }
 H1{
-  font-size: 36px;
-  text-align: center;
+  font-size: 33pt;
 }
 
 /* Basic Components */
@@ -41,25 +51,20 @@ H1{
 }
 .horizontal-divider {
   height: 1px;
-  background-color: #AAA;
+  background-color: black;
   clear: both;
   margin-bottom: 5px;
 }
 
 /* Title Components */
+#title_container{
+  margin-bottom: 24px;
+}
 .title {
-  margin-bottom: 0;
-  margin-top: 80px;
-}
-.title_1{
-  font-size: 200px;
-  color: black;
-}
-
-.title_2{
-  font-weight: bold;
-  font-size: 200px;
-  color: gray;
+  background: url("/assets/dcdecibel-logo.png") -15px 0;
+  width: 960px;
+  height: 176px;
+  font-family: swis721LtCnBTDtype;
 }
 
 /* Footer Components */
@@ -71,11 +76,10 @@ H1{
 }
 .footer LI {
   float:left;
-  margin-right: -30px;
+  margin-right: 0;
 }
 /* Main Menu Components */
 .main_menu{
-  border-bottom: 2px solid black;
   color: black;
   margin-bottom: 25px;
 }
@@ -83,6 +87,10 @@ H1{
   margin-bottom: 10px;
   font-size: 3em;
 }
+#main_menu_tonight{ letter-spacing: 0.7em; }
+#main_menu_upcoming{ letter-spacing: 0.7em; }
+#main_menu_announced{ letter-spacing: -0.1em; }
+#main_menu_filter{ letter-spacing: 0.3em; }
 .main_menu_selected{
-  font-weight: bold;
+  font-family: swisscbdtype;
 }

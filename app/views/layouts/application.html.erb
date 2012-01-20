@@ -7,26 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container_16">
+<div class="container_16" id="title_container">
   <div class="grid_16 title centered" >
-    <span class="title_1">DC</span><span class="title_2">DECIBEL</span>
   </div>
 </div>
 <div class="container_16 main_menu">
-  <div class="grid_4">
-    <h1>TONIGHT</h1>
+  <div class="grid_4" id="main_menu_tonight">
+    <h1>TONIGHT</h1> 
   </div>
-  <div class="grid_4">
-    <h1>JUST ANNOUNCED</h1>
+  <div class="grid_5" id="main_menu_announced">
+    <h1 class="main_menu_selected">JUST ANNOUNCED</h1>
   </div>
-  <div class="grid_4">
-    <h1 class="main_menu_selected">UPCOMING</h1>
+  <div class="grid_4" id="main_menu_upcoming">
+    <h1>UPCOMING</h1>
   </div>
-  <div class="grid_4">
+  <div class="grid_3" id="main_menu_filter">
     <h1>FILTER</h1>
   </div>
+  <div class="clear"></div>
+  <div class="horizontal-divider grid_16"></div>
 </div>
-<div class="clear"></div>
+<div clear="clear"></div>
 <%= yield %>
 <div class="clear"></div>
 <div class="footer container_16">

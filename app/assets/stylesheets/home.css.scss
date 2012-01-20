@@ -29,3 +29,11 @@ A:hover {
   text-decoration: underline;
   background-color: white;
 }
+
+.details-row {
+  min-height: 150px;
+}
+
+.band-link:hover, .venue-link:hover {
+  cursor: pointer;
+}
