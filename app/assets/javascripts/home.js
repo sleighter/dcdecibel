@@ -17,10 +17,9 @@ $(document).ready(function(){
     $('#details-row').slideUp('fast','swing',function() {
       $('#details-row').html(loadingHolder);
       $.get("/bands/" + bandid.toString() + ".json", function(data){ 
-        $('#details-row').html('<td colspan="4" class="grid_16 centered">' + data.name + '  <a href="' + data.homepage_url + '">Homepage</a>' + '</td>'); } 
+        $('#details-row').html('<td colspan="4" class="grid_16 centered">' + data.name + '  <a href="' + data.homepage_url + '">Homepage</a>' + '</td>'); });
       $('#details-row').insertAfter(thisRow);
       $('#details-row').slideDown('fast','swing');
-    );
     });
   });
   
@@ -37,10 +36,10 @@ $(document).ready(function(){
     $('#details-row').slideUp('fast','swing',function() {
       $('#details-row').html(loadingHolder);
       $.get("/venues/" + venueid.toString() + ".json",function(data){ 
-        $('#details-row').html('<td colspan="4" class="grid_16 centered">' + data.name + '  <a href="' + data.homepage_url + '">Homepage</a>' + '</td>'); } 
+        $('#details-row').html('<td colspan="4" class="grid_16 centered">' + data.name + '  <a href="' + data.homepage_url + '">Homepage</a>' + '</td>'); });
       $('#details-row').insertAfter(thisRow);
       $('#details-row').slideDown('fast','swing');
     });
-    );
+
   });
 });
