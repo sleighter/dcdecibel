@@ -16,12 +16,12 @@ $(document).ready(function(){
     var bandid = $(this).attr('data-bandid');
     $('#details-row').slideUp('fast','swing',function() {
       $('#details-row').html(loadingHolder);
+      $.get("/bands/" + bandid.toString() + ".json", function(data){ 
+        $('#details-row').html('<td colspan="4" class="grid_16 centered">' + data.name + '  <a href="' + data.homepage_url + '">Homepage</a>' + '</td>'); } 
       $('#details-row').insertAfter(thisRow);
       $('#details-row').slideDown('fast','swing');
-    });
-    $.get("/bands/" + bandid.toString() + ".json", function(data){ 
-      $('#details-row').html('<td colspan="4" class="grid_16 centered">' + data.name + '  <a href="' + data.homepage_url + '">Homepage</a>' + '</td>'); } 
     );
+    });
   });
   
   $('.venue-link').live('click',function(){
@@ -36,11 +36,11 @@ $(document).ready(function(){
     var venueid = $(this).attr('data-venueid');
     $('#details-row').slideUp('fast','swing',function() {
       $('#details-row').html(loadingHolder);
+      $.get("/venues/" + venueid.toString() + ".json",function(data){ 
+        $('#details-row').html('<td colspan="4" class="grid_16 centered">' + data.name + '  <a href="' + data.homepage_url + '">Homepage</a>' + '</td>'); } 
       $('#details-row').insertAfter(thisRow);
       $('#details-row').slideDown('fast','swing');
     });
-    $.get("/venues/" + venueid.toString() + ".json",function(data){ 
-      $('#details-row').html('<td colspan="4" class="grid_16 centered">' + data.name + '  <a href="' + data.homepage_url + '">Homepage</a>' + '</td>'); } 
     );
   });
 });
