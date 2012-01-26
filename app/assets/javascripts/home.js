@@ -1,46 +1,73 @@
-var openRow;
+var openItem;
 var loadingHolder = '<td colspan="4" class="grid_16 centered"><image src="/assets/loading.gif" alt="loading" /></td>';
+function lastFmUrl(api_key){
+  return "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&api_key=" + last_fm_api_key + "&artist=" + api_key;
+}
+function templateDetails(template,detailsDiv,data){
+  detailsDiv.hide();
+  detailsDiv.html(template.tmpl(data));
+  detailsDiv.slideDown('slow');  
+}
+
 $(document).ready(function(){
   //$('th').addClass('grid_4');
   //$('td').addClass('grid_4');
   
   $('.band-link').live('click',function(){
-    if ($(this)[0] == openRow)
+    var detailsRow = $('#details-row');
+    var detailsDiv = $('#details-div');
+    if ($(this)[0] == openItem)
     {
-      $('#details-row').slideUp('fast','swing');
-      openRow = null;
+      detailsDiv.slideUp('fast','swing');
+      $(openItem).removeClass('selected');
+      openItem = null;
       return;
     }
-    openRow = $(this)[0];
+    if (openItem != null){
+      $(openItem).removeClass('selected');
+    }
+    openItem = $(this)[0];
+    $(openItem).addClass('selected');
     var thisRow = $(this).parent('tr');
-    var bandid = $(this).attr('data-bandid');
-    $('#details-row').slideUp('fast','swing',function() {
-      $('#details-row').html(loadingHolder);
-      $.get("/bands/" + bandid.toString() + ".json", function(data){
-        $.get("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&api_key=" + last_fm_api_key + "&artist=" + data.last_fm_id , function(data2){});
-        $('#details-row').html('<td colspan="4" class="grid_16 centered">' + data.name + '  <a href="' + data.homepage_url + '">Homepage</a>' + '</td>'); });
-      $('#details-row').insertAfter(thisRow);
-      $('#details-row').slideDown('fast','swing');
+    var itemId = $(this).attr('data-bandid');
+    detailsDiv.slideUp('fast','swing',function() {
+      detailsRow.insertAfter(thisRow);
+      $.get("/bands/" + itemId.toString() + ".json", function(data){
+        if(data.last_fm_id){
+          $.get(lastFmUrl(data.last_fm_id),
+          function(data2){
+              data.image_url = data2.artist.image[3]['#text'];
+              templateDetails($("#band-details-row-template"),detailsDiv,data);
+          });
+        }else{
+          templateDetails($("#band-details-row-template"),detailsDiv,data);
+        }
+      });
     });
   });
   
   $('.venue-link').live('click',function(){
-    if ($(this)[0] == openRow)
+    var detailsRow = $('#details-row');
+    var detailsDiv = $('#details-div');
+    if ($(this)[0] == openItem)
     {
-      $("#details-row").slideUp('fast','swing');
-      openRow = null;
+      detailsDiv.slideUp('fast','swing');
+      $(openItem).removeClass('selected');
+      openItem = null;
       return;
     }
-    openRow = $(this)[0];
+    if (openItem != null){
+      $(openItem).removeClass('selected');
+    }
+    openItem = $(this)[0];
+    $(openItem).addClass('selected');
     var thisRow = $(this).parent('tr');
-    var venueid = $(this).attr('data-venueid');
-    $('#details-row').slideUp('fast','swing',function() {
-      $('#details-row').html(loadingHolder);
-      $.get("/venues/" + venueid.toString() + ".json",function(data){ 
-        $('#details-row').html('<td colspan="4" class="grid_16 centered">' + data.name + '  <a href="' + data.homepage_url + '">Homepage</a>' + '</td>'); });
-      $('#details-row').insertAfter(thisRow);
-      $('#details-row').slideDown('fast','swing');
+    var itemId = $(this).attr('data-venueid');
+    detailsDiv.slideUp('fast','swing',function() {
+      detailsRow.insertAfter(thisRow);
+      $.get("/venues/" + itemId.toString() + ".json", function(data){
+          templateDetails($("#venue-details-row-template"),detailsDiv,data);
+      });
     });
-
   });
 });

@@ -13,7 +13,8 @@
  *= require neighborhoods
  *= require tickets
  *= require venues
- *= require home   
+ *= require home
+ *= require jquery_ui
 */
 @font-face 
 {
@@ -53,6 +54,9 @@ H1{
 }
 .right-align {
   text-align: right;
+}
+.clear-both {
+  clear: both;
 }
 .horizontal-divider {
   height: 1px;
@@ -95,6 +99,6 @@ H1{
 #main_menu_upcoming{ letter-spacing: 0.7em; }
 #main_menu_announced{ letter-spacing: -0.1em; }
 #main_menu_filter{ letter-spacing: 0.5em; text-align: right;}
-.main_menu_selected{
+.selected{
   font-family: swisscbdtype;
 }
