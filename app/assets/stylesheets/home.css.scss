@@ -9,6 +9,9 @@ THEAD TH{
   text-align: left;
 }
 
+TR{
+}
+
 TD {
   text-align: left;
   font-size: 1.2em;
@@ -28,6 +31,14 @@ A {
 A:hover {
   font-family: swisscbdtype;
   background-color: white;
+}
+
+.header {
+  cursor: pointer;
+}
+
+#details-row {
+  display:none;
 }
 
 #details-div {

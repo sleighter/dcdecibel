@@ -1,4 +1,4 @@
-<table class="container_16" border="0" cellpadding="0" cellspacing="0">
+<table id="events-table" class="container_16" border="0" cellpadding="0" cellspacing="0">
   <thead>
   <tr>
     <th class="grid_5"><h2>ARTIST</h2></th>
@@ -7,8 +7,6 @@
     <th class="grid_2 centered"><h2>PRICE</h2></th>
   </tr>
   </thead>
-</table>
-<table class="container_16" border="0" cellpadding="0" cellspacing="0">
   <tbody>
   <% @events.each do |event| %>
     <tr>
@@ -17,12 +15,12 @@
           <img src="/assets/ec-star.gif" alt="ec-star"/>
         <% end %>
         <%= event.bands.first ? event.bands.first.name.upcase : event.name.upcase %></td>
-      <td class="venue-link grid_5" data-venueid="<%= event.venue.id %>"><%= event.venue ? event.venue.name.upcase : "" %></td>
-      <td class="grid_4"><%= event.event_datetime.strftime("%a, %b %d").upcase %></td>
+      <td class="venue-link grid_5" data-sortvalue="<%=event.venue.name%>" data-venueid="<%= event.venue.id %>"><%= event.venue ? event.venue.name.upcase : "" %></td>
+      <td class="grid_4" data-sortvalue="<%=event.event_datetime.to_i%>"><%= event.event_datetime.strftime("%a, %b %d").upcase %></td>
       <td class="grid_2 centered"><%= event.tickets.first ? link_to(number_to_currency(event.tickets.first.price), event_url(event.tickets.first)) : "NONE" %></td>
     </tr>
   <% end %>
-  <tr id="details-row" ><td colspan='4'><div id="details-div" class="grid_16"></div></td></tr>
+  <tr id="details-row"><td colspan='4'><div id="details-div" class="grid_16"></div></td></tr>
   </tbody>
 </table>
 <div style="display:none;" id="hidden-div"></div>
@@ -44,8 +42,8 @@
     </span>
     {{/if}}
     <span class="band-links">
-      {{if wikipedia_id}}<a href="http://en.wikipedia.org/wiki/${wikipedia_id}">WIKIPEDIA/</a>{{/if}}
-      {{if last_fm_id}}<a href="http://www.last.fm/music/${last_fm_id}">LAST.FM/</a>{{/if}}
+      {{if wikipedia_id}}<a href="http://en.wikipedia.org/wiki/${wikipedia_id}">WIKIPEDIA</a> /{{/if}}
+      {{if last_fm_id}}<a href="http://www.last.fm/music/${last_fm_id}">LAST.FM</a> /{{/if}}
       {{if homepage_url}}<a href="${homepage_url}">HOMEPAGE</a>{{/if}}
   </span>
   </div>

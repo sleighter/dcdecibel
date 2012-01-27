@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery-ui-1.8.17.custom.min
 //= require jquery.tmpl.min
+//= require jquery.tablesorter.min
 //= require bands
 //= require cities
 //= require events

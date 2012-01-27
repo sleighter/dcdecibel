@@ -28,9 +28,12 @@ function templateDetails(template,detailsDiv,data){
 }
 
 $(document).ready(function(){
-  //$('th').addClass('grid_4');
-  //$('td').addClass('grid_4');
-  
+  $("#events-table").tablesorter(); 
+  $(".header").live('click',function(){
+      $("#details-div").slideUp('fast');
+      $(openItem).removeClass('selected');
+      openItem = null;
+  });
   $('.band-link').live('click',function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
@@ -39,7 +42,6 @@ $(document).ready(function(){
       detailsDiv.slideUp('fast');
       $(openItem).removeClass('selected');
       openItem = null;
-      return;
     }
     if (openItem != null){
       $(openItem).removeClass('selected');
