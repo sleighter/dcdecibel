@@ -12,7 +12,11 @@
   <tbody>
   <% @events.each do |event| %>
     <tr>
-      <td class="band-link grid_5" data-bandid="<%= event.bands.first ? event.bands.first.id : ''  %>" ><%= event.bands.first ? event.bands.first.name.upcase : event.name.upcase %></td>
+      <td class="band-link grid_5" data-bandid="<%= event.bands.first ? event.bands.first.id : ''  %>" >
+        <% if event.bands.first and event.bands.first.is_editors_choice %>
+          <img src="/assets/ec-star.gif" alt="ec-star"/>
+        <% end %>
+        <%= event.bands.first ? event.bands.first.name.upcase : event.name.upcase %></td>
       <td class="venue-link grid_5" data-venueid="<%= event.venue.id %>"><%= event.venue ? event.venue.name.upcase : "" %></td>
       <td class="grid_4"><%= event.event_datetime.strftime("%a, %b %d").upcase %></td>
       <td class="grid_2 centered"><%= event.tickets.first ? link_to(number_to_currency(event.tickets.first.price), event_url(event.tickets.first)) : "NONE" %></td>
@@ -21,13 +25,17 @@
   <tr id="details-row" ><td colspan='4'><div id="details-div" class="grid_16"></div></td></tr>
   </tbody>
 </table>
+<div style="display:none;" id="hidden-div"></div>
 
 
 <script type="text/x-jquery-tmpl" id="band-details-row-template">
+<div id="details-content">
   {{if image_url}}<img class="band-image" src="${image_url}" alt="${name}"/>{{/if}}
-  <p>
-    ${bio}
-  </p>
+  <div class="band-bio">
+    <p>
+      ${bio}
+    </p>
+  </div>
   <div class="clear-both">
     {{if is_editors_choice}}
     <span class="editors-choice-details">
@@ -41,6 +49,7 @@
       {{if homepage_url}}<a href="${homepage_url}">HOMEPAGE</a>{{/if}}
   </span>
   </div>
+</div>
 </script>
 
 <script type="text/x-jquery-tmpl" id="venue-details-row-template">

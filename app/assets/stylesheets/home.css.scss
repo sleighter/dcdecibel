@@ -31,10 +31,18 @@ A:hover {
 }
 
 #details-div {
+  height: 215px;
   vertical-align: middle;
   margin-bottom: 15px;
   padding-bottom: 3px;
   border-bottom: 1px solid #AAA;
+}
+
+#details-div > IMG {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  vertical-align: center;
 }
 
 .band-link:hover, .venue-link:hover {
@@ -47,6 +55,11 @@ A:hover {
   max-height: 200px;
   margin-right: 15px;
   float: left;
+}
+.band-bio{
+  height: 200px;
+  overflow-y: auto;
+  margin-right: 15px;
 }
 .band-links, .venue-links{
   float: right;

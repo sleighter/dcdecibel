@@ -1,12 +1,30 @@
 var openItem;
-var loadingHolder = '<td colspan="4" class="grid_16 centered"><image src="/assets/loading.gif" alt="loading" /></td>';
+var loadingHolder = '<img src="/assets/loading.gif" alt="loading" />';
 function lastFmUrl(api_key){
   return "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&api_key=" + last_fm_api_key + "&artist=" + api_key;
 }
 function templateDetails(template,detailsDiv,data){
-  detailsDiv.hide();
-  detailsDiv.html(template.tmpl(data));
-  detailsDiv.slideDown('slow');  
+  var details = $(template.tmpl(data));
+  var bandImage = details.find("IMG");
+  if(bandImage.length > 0){
+  bandImage.load(function() {
+    var hidden = $("#hidden-div");
+    hidden.html(details[0]);
+    var detailsContent = $("#details-content");
+    detailsContent.hide();
+    detailsDiv.prepend(detailsContent);
+    detailsDiv.find("IMG").fadeOut(200);
+    detailsContent.fadeIn(200);
+  });  
+  }else{
+    var hidden = $("#hidden-div");
+    hidden.html(details[0]);
+    var detailsContent = $("#details-content");
+    detailsContent.hide();
+    detailsDiv.prepend(detailsContent);
+    detailsDiv.find("IMG").fadeOut(200);
+    detailsContent.fadeIn(200);
+  }
 }
 
 $(document).ready(function(){
@@ -18,7 +36,7 @@ $(document).ready(function(){
     var detailsDiv = $('#details-div');
     if ($(this)[0] == openItem)
     {
-      detailsDiv.slideUp('fast','swing');
+      detailsDiv.slideUp('fast');
       $(openItem).removeClass('selected');
       openItem = null;
       return;
@@ -30,13 +48,18 @@ $(document).ready(function(){
     $(openItem).addClass('selected');
     var thisRow = $(this).parent('tr');
     var itemId = $(this).attr('data-bandid');
-    detailsDiv.slideUp('fast','swing',function() {
-      detailsRow.insertAfter(thisRow);
+    detailsDiv.slideUp('fast',function() {
+      detailsDiv.hide();
+      detailsRow.insertAfter(thisRow);  
+      detailsDiv.html(loadingHolder);
+      detailsDiv.slideDown('fast');
       $.get("/bands/" + itemId.toString() + ".json", function(data){
         if(data.last_fm_id){
           $.get(lastFmUrl(data.last_fm_id),
           function(data2){
-              data.image_url = data2.artist.image[3]['#text'];
+              if (data2.artist){
+                data.image_url = data2.artist.image[3]['#text'];
+              }
               templateDetails($("#band-details-row-template"),detailsDiv,data);
           });
         }else{
@@ -46,12 +69,12 @@ $(document).ready(function(){
     });
   });
   
-  $('.venue-link').live('click',function(){
+/*  $('.venue-link').live('click',function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
     if ($(this)[0] == openItem)
     {
-      detailsDiv.slideUp('fast','swing');
+      detailsDiv.slideUp('fast');
       $(openItem).removeClass('selected');
       openItem = null;
       return;
@@ -63,11 +86,15 @@ $(document).ready(function(){
     $(openItem).addClass('selected');
     var thisRow = $(this).parent('tr');
     var itemId = $(this).attr('data-venueid');
-    detailsDiv.slideUp('fast','swing',function() {
+    detailsDiv.slideUp('fast',function() {
       detailsRow.insertAfter(thisRow);
+      detailsDiv.hide();
+      detailsRow.insertAfter(thisRow);  
+      detailsDiv.html(loadingHolder);
+      detailsDiv.slideDown('fast');
       $.get("/venues/" + itemId.toString() + ".json", function(data){
           templateDetails($("#venue-details-row-template"),detailsDiv,data);
       });
     });
-  });
+  });*/
 });
