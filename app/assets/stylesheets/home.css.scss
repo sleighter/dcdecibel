@@ -33,7 +33,7 @@ A:hover {
   background-color: white;
 }
 
-.header {
+#events-table TH {
   cursor: pointer;
 }
 
@@ -42,7 +42,7 @@ A:hover {
 }
 
 #details-div {
-  height: 215px;
+  max-height: 215px;
   vertical-align: middle;
   margin-bottom: 15px;
   padding-bottom: 3px;
@@ -60,7 +60,9 @@ A:hover {
   font-family: swisscbdtype;
   cursor: pointer;
 }
-
+.date-sort-column{
+  display: none;
+}
 .band-image{
   max-width: 300px;
   max-height: 200px;
@@ -68,7 +70,7 @@ A:hover {
   float: left;
 }
 .band-bio{
-  height: 200px;
+  max-height: 200px;
   overflow-y: auto;
   margin-right: 15px;
 }

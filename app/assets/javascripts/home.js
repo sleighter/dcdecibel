@@ -13,8 +13,14 @@ function templateDetails(template,detailsDiv,data){
     var detailsContent = $("#details-content");
     detailsContent.hide();
     detailsDiv.prepend(detailsContent);
-    detailsDiv.find("IMG").fadeOut(200);
-    detailsContent.fadeIn(200);
+    $("#details-row").animate({
+      'height': $(detailsDiv).height()
+      },
+      200,
+      function(){
+        detailsDiv.find("IMG").fadeOut(200);
+        detailsContent.fadeIn(200);
+      });
   });  
   }else{
     var hidden = $("#hidden-div");
@@ -27,23 +33,36 @@ function templateDetails(template,detailsDiv,data){
   }
 }
 
-$(document).ready(function(){
-  $("#events-table").tablesorter(); 
-  $(".header").live('click',function(){
-      $("#details-div").slideUp('fast');
+function closeDetails(){
+    $('#details-div').slideUp(100);
+    $('#details-row').slideUp(100);
+    if (openItem != null){
       $(openItem).removeClass('selected');
       openItem = null;
-  });
+    }
+    $("#details-row").insertAfter("#holder-row")
+}
+
+$(document).ready(function(){
+  $('#events-table').dataTable({
+    bPaginate: false, 
+    bFilter: false, 
+    bInfo: false, 
+    aaSorting: [[4,'asc']], 
+    fnPreDrawCallback: function(oSettings){
+      closeDetails();
+    },
+    "aoColumnDefs": [{ "iDataSort": 4, "aTargets": [ 2 ] }]
+  }); 
   $('.band-link').live('click',function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
     if ($(this)[0] == openItem)
     {
-      detailsDiv.slideUp('fast');
-      $(openItem).removeClass('selected');
-      openItem = null;
+      closeDetails();
+      return;
     }
-    if (openItem != null){
+    else if (openItem != null){
       $(openItem).removeClass('selected');
     }
     openItem = $(this)[0];
@@ -51,10 +70,12 @@ $(document).ready(function(){
     var thisRow = $(this).parent('tr');
     var itemId = $(this).attr('data-bandid');
     detailsDiv.slideUp('fast',function() {
+      detailsRow.slideUp('fast');
       detailsDiv.hide();
       detailsRow.insertAfter(thisRow);  
       detailsDiv.html(loadingHolder);
       detailsDiv.slideDown('fast');
+      detailsRow.slideDown('fast');
       $.get("/bands/" + itemId.toString() + ".json", function(data){
         if(data.last_fm_id){
           $.get(lastFmUrl(data.last_fm_id),

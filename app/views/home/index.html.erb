@@ -1,30 +1,34 @@
 <table id="events-table" class="container_16" border="0" cellpadding="0" cellspacing="0">
   <thead>
   <tr>
-    <th class="grid_5"><h2>ARTIST</h2></th>
+    <th class="grid_6"><h2>ARTIST</h2></th>
     <th class="grid_5"><h2>VENUE</h2></th>
-    <th class="grid_4"><h2>DATE</h2></th>
+    <th class="grid_3"><h2>DATE</h2></th>
     <th class="grid_2 centered"><h2>PRICE</h2></th>
+    <th class="date-sort-column"><h2>DATE_SORT</h2></th>
   </tr>
   </thead>
   <tbody>
   <% @events.each do |event| %>
     <tr>
-      <td class="band-link grid_5" data-bandid="<%= event.bands.first ? event.bands.first.id : ''  %>" >
+      <td class="band-link grid_6" data-bandid="<%= event.bands.first ? event.bands.first.id : ''  %>" >
         <% if event.bands.first and event.bands.first.is_editors_choice %>
           <img src="/assets/ec-star.gif" alt="ec-star"/>
         <% end %>
         <%= event.bands.first ? event.bands.first.name.upcase : event.name.upcase %></td>
       <td class="venue-link grid_5" data-sortvalue="<%=event.venue.name%>" data-venueid="<%= event.venue.id %>"><%= event.venue ? event.venue.name.upcase : "" %></td>
-      <td class="grid_4" data-sortvalue="<%=event.event_datetime.to_i%>"><%= event.event_datetime.strftime("%a, %b %d").upcase %></td>
+      <td class="grid_3" data-sortvalue=""><%= event.event_datetime.strftime("%a, %b %d").upcase %></td>
       <td class="grid_2 centered"><%= event.tickets.first ? link_to(number_to_currency(event.tickets.first.price), event_url(event.tickets.first)) : "NONE" %></td>
+      <td class="date-sort-column"><%=event.event_datetime.to_i%></td>
     </tr>
   <% end %>
-  <tr id="details-row"><td colspan='4'><div id="details-div" class="grid_16"></div></td></tr>
   </tbody>
 </table>
 <div style="display:none;" id="hidden-div"></div>
-
+<table style="display:none;"><tbody>
+  <tr id="holder-row"><td>XXX</td></tr>
+  <tr id="details-row"><td colspan='4'><div id="details-div" class="grid_16"></div></td></tr>
+</tbody></table>
 
 <script type="text/x-jquery-tmpl" id="band-details-row-template">
 <div id="details-content">
