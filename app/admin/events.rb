@@ -14,7 +14,7 @@ ActiveAdmin.register Event do
     end
     default_actions
   end
-
+  
   form do |f|
       f.inputs "Details" do
         f.input :name
@@ -24,4 +24,5 @@ ActiveAdmin.register Event do
       end
       f.buttons
   end
+# form :partial => "admin/events/form"
 end

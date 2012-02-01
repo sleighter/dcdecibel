@@ -1,7 +1,6 @@
 // Active Admin CSS Styles
 @import "active_admin/mixins";
 @import "active_admin/base";
-
 // To customize the Active Admin interfaces, add your
 // styles here:
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
@@ -10,3 +9,5 @@
 .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+@import "token-input";
+@import "token-input-facebook";

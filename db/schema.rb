@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120117001512) do
+ActiveRecord::Schema.define(:version => 20120131020250) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer   "resource_id",   :null => false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20120117001512) do
     t.text      "editors_choice_note"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.boolean   "is_local"
   end
 
   create_table "bands_events", :id => false, :force => true do |t|
@@ -79,6 +80,8 @@ ActiveRecord::Schema.define(:version => 20120117001512) do
     t.text      "editors_choice_note"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.float     "ticket_min_price"
+    t.float     "ticket_max_price"
   end
 
   create_table "neighborhoods", :force => true do |t|
@@ -114,6 +117,8 @@ ActiveRecord::Schema.define(:version => 20120117001512) do
     t.timestamp "created_at"
     t.timestamp "updated_at"
     t.integer   "neighborhood_id"
+    t.float     "ticket_min_price"
+    t.float     "ticket_max_price"
   end
 
 end

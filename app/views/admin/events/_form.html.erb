@@ -1,0 +1,6 @@
+<%= semantic_form_for [:admin, @event] do |f| %>
+  <%= f.inputs :name, :venue, :event_datetime %>
+  <%= f.inputs :bands, :as => :check_boxes %>
+  <%= f.inputs :is_editors_choice, :editors_choice_note %>
+  <%= f.buttons :commit %>
+<% end %>
