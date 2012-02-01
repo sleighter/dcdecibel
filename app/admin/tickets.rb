@@ -12,6 +12,19 @@ ActiveAdmin.register Ticket do
         number_to_currency(ticket.price)
       end
     end
+    default_actions
+  end
+  
+  form do |f|
+    f.inputs "Basic Information" do
+      f.input :event
+      f.input :seller_url
+      f.input :quantity
+      f.input :min_price
+      f.input :max_price
+      f.input :description
+    end
+    f.buttons
   end
 
 end

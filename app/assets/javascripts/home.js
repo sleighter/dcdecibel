@@ -1,11 +1,11 @@
 var openItem;
-var loadingHolder = '<img src="/assets/loading.gif" alt="loading" />';
+var loadingHolder = '<img class="loading-image" src="/assets/loading.gif" alt="loading" />';
 function lastFmUrl(api_key){
   return "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&api_key=" + last_fm_api_key + "&artist=" + api_key;
 }
 function templateDetails(template,detailsDiv,data){
   var details = $(template.tmpl(data));
-  var bandImage = details.find("IMG");
+  var bandImage = details.find(".details-image");
   if(bandImage.length > 0){
   bandImage.load(function() {
     var hidden = $("#hidden-div");
@@ -18,7 +18,7 @@ function templateDetails(template,detailsDiv,data){
       },
       200,
       function(){
-        detailsDiv.find("IMG").fadeOut(200);
+        detailsDiv.find(".loading-image").fadeOut(200);
         detailsContent.fadeIn(200);
       });
   });  

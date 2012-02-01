@@ -12,10 +12,11 @@
   <% @events.each do |event| %>
     <tr>
       <td class="band-link grid_6" data-bandid="<%= event.bands.first ? event.bands.first.id : ''  %>" >
+        <%= event.bands.first ? event.bands.first.name.upcase : event.name.upcase %>
         <% if event.bands.first and event.bands.first.is_editors_choice %>
-          <img src="/assets/ec-star.jpg" alt="ec-star"/>
+          <img class="details-image" src="/assets/ec-star.jpg" alt="ec-star"/>
         <% end %>
-        <%= event.bands.first ? event.bands.first.name.upcase : event.name.upcase %></td>
+      </td>
       <td class="venue-link grid_5" data-sortvalue="<%=event.venue.name%>" data-venueid="<%= event.venue.id %>">
         <%= event.venue ? event.venue.name.upcase : "" %>
       </td>
@@ -23,7 +24,7 @@
         <%= event.event_datetime.strftime("%a, %b %d").upcase %>
       </td>
       <td class="grid_2 centered">
-        <%= event.tickets.first ? link_to(number_to_currency(event.tickets.first.price), event_url(event.tickets.first)) : "NONE" %>
+        <%= event.tickets.first ? link_to(number_to_currency(event.tickets.first.price), event_url(event.tickets.first)) : "HERE" %>
       </td>
       <td class="date-sort-column">
         <%=event.event_datetime.to_i%>
@@ -49,7 +50,7 @@
   <div class="clear-both">
     {{if is_editors_choice}}
     <span class="editors-choice-details">
-      <img src="/assets/ec-star.jpg" alt="editors choice star"/>
+      <img class="details-image" src="/assets/ec-star.jpg" alt="editors choice star"/>
       EDITOR'S PICK
     </span>
     {{/if}}
