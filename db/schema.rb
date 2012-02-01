@@ -47,16 +47,16 @@ ActiveRecord::Schema.define(:version => 20120131020250) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "bands", :force => true do |t|
-    t.string    "name"
-    t.string    "last_fm_id"
-    t.string    "wikipedia_id"
-    t.string    "homepage_url"
-    t.text      "bio"
-    t.boolean   "is_editors_choice"
-    t.text      "editors_choice_note"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.boolean   "is_local"
+    t.string   "name"
+    t.string   "last_fm_id"
+    t.string   "wikipedia_id"
+    t.string   "homepage_url"
+    t.text     "bio"
+    t.boolean  "is_editors_choice"
+    t.text     "editors_choice_note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "is_local"
   end
 
   create_table "bands_events", :id => false, :force => true do |t|
@@ -72,23 +72,21 @@ ActiveRecord::Schema.define(:version => 20120131020250) do
   end
 
   create_table "events", :force => true do |t|
-    t.string    "name"
-    t.timestamp "event_datetime"
-    t.string    "ticket_status"
-    t.integer   "venue_id"
-    t.boolean   "is_editors_choice"
-    t.text      "editors_choice_note"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.float     "ticket_min_price"
-    t.float     "ticket_max_price"
+    t.string   "name"
+    t.datetime "event_datetime"
+    t.string   "ticket_status"
+    t.integer  "venue_id"
+    t.boolean  "is_editors_choice"
+    t.text     "editors_choice_note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "neighborhoods", :force => true do |t|
-    t.integer  "city_id"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "city_id"
+    t.string    "name"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "tickets", :force => true do |t|
@@ -99,6 +97,8 @@ ActiveRecord::Schema.define(:version => 20120131020250) do
     t.string    "description"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.float     "min_price"
+    t.float     "max_price"
   end
 
   create_table "venues", :force => true do |t|
