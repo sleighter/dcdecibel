@@ -48,7 +48,9 @@ A:hover {
   padding-bottom: 3px;
   border-bottom: 1px solid #AAA;
 }
-
+.details-content{
+  max-height: 215px;
+}
 #details-div > IMG {
   margin-left: auto;
   margin-right: auto;
@@ -56,7 +58,7 @@ A:hover {
   vertical-align: center;
 }
 
-.band-link:hover, .venue-link:hover {
+.band-link:hover, .venue-link:hover, .ticket-link:hover {
   font-family: swisscbdtype;
   cursor: pointer;
 }

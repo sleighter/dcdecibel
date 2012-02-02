@@ -5,7 +5,7 @@ function lastFmUrl(api_key){
 }
 function templateDetails(template,detailsDiv,data){
   var details = $(template.tmpl(data));
-  var bandImage = details.find(".details-image");
+  var bandImage = details.find(".band-image");
   if(bandImage.length > 0){
   bandImage.load(function() {
     var hidden = $("#hidden-div");
@@ -13,12 +13,13 @@ function templateDetails(template,detailsDiv,data){
     var detailsContent = $("#details-content");
     detailsContent.hide();
     detailsDiv.prepend(detailsContent);
+    detailsDiv.height($(detailsContent).height());
     $("#details-row").animate({
-      'height': $(detailsDiv).height()
+      'height': $(detailsContent).height()
       },
-      200,
+      'fast',
       function(){
-        detailsDiv.find(".loading-image").fadeOut(200);
+        detailsDiv.find(".loading-image").hide();
         detailsContent.fadeIn(200);
       });
   });  
@@ -28,19 +29,23 @@ function templateDetails(template,detailsDiv,data){
     var detailsContent = $("#details-content");
     detailsContent.hide();
     detailsDiv.prepend(detailsContent);
-    detailsDiv.find("IMG").fadeOut(200);
-    detailsContent.fadeIn(200);
+    detailsDiv.height($(detailsContent).height());
+    $("#details-row").animate({'height': $(detailsContent).height()},'fast',function(){
+      detailsDiv.find("IMG").fadeOut(200);
+      detailsContent.fadeIn(200);
+    });
   }
 }
 
 function closeDetails(){
-    $('#details-div').slideUp(100);
-    $('#details-row').slideUp(100);
+    $('#details-div').slideUp(100,function(){$(this).height(0);});
+    $('#details-row').slideUp(100,function(){$(this).height(0);});
+    $('.details-content').html('').height(0);
     if (openItem != null){
       $(openItem).removeClass('selected');
       openItem = null;
     }
-    $("#details-row").insertAfter("#holder-row")
+    $("#details-row").insertAfter("#holder-row");
 }
 
 $(document).ready(function(){
@@ -120,4 +125,33 @@ $(document).ready(function(){
       });
     });
   });*/
+  
+  $('.ticket-link').live('click', function(){
+    var detailsRow = $('#details-row');
+    var detailsDiv = $('#details-div');
+    if ($(this)[0] == openItem){
+      detailsDiv.slideUp('fast');
+      $(openItem).removeClass('selected');
+      openItem = null;
+      return;
+    }
+    if (openItem != null){
+      $(openItem).removeClass('selected');
+    }
+    openItem = $(this)[0];
+    $(openItem).addClass('selected');
+    var thisRow = $(this).parent('tr');
+    var itemId = $(this).attr('data-eventid');
+    detailsDiv.slideUp('fast',function(){
+      detailsRow.slideUp('fast');
+      detailsDiv.hide();
+      detailsRow.insertAfter(thisRow);  
+      detailsDiv.html(loadingHolder);
+      detailsDiv.slideDown('fast');
+      detailsRow.slideDown('fast');
+      $.get("/events/" + itemId.toString() + ".json", function(data){
+        templateDetails($("#ticket-details-row-template"),detailsDiv,data);
+      });
+    });
+  });
 });

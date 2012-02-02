@@ -23,7 +23,7 @@
       <td class="grid_3" data-sortvalue="">
         <%= event.event_datetime.strftime("%a, %b %d").upcase %>
       </td>
-      <td class="grid_2 centered">
+      <td class="grid_2 centered ticket-link" data-eventid="<%=event.id %>">
         <%= event.tickets.first ? link_to(number_to_currency(event.tickets.first.price), event_url(event.tickets.first)) : "HERE" %>
       </td>
       <td class="date-sort-column">
@@ -78,4 +78,14 @@
   <span class="venue-links">
     {{if homepage_url}}<a href="${homepage_url}">HOMEPAGE</a>{{/if}}
   </span>
+</script>
+
+<script type="text/x-jquery-tmpl" id="ticket-details-row-template">
+<div id="details-content" style="text-align:right;">
+  <span>
+    <a href="http://washingtondc.craigslist.org/search/eee?query=${encodeURI(name)}&catAbb=sss&srchType=A" alt="Craigslist" target="_blank">Craigslist</a>
+    <span> / </span>
+    <a href="http://www.stubhub.com/search/doSearch?searchStr=${encodeURI(name)}&location=525;Washington%20D.C.,%20Dist.%20of%20Columbia" alt="StubHub" target="_blank">StubHub</a>
+  </span>
+</div>
 </script>
