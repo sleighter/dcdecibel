@@ -11,8 +11,8 @@
   <tbody>
   <% @events.each do |event| %>
     <tr>
-      <td class="band-link grid_6" data-bandid="<%= event.bands.first ? event.bands.first.id : ''  %>" >
-        <%= event.bands.first ? event.bands.first.name.upcase : event.name.upcase %>
+      <td class="band-link grid_6" data-bandid="<%= event.bands.select{ |n| n.name == event.name }.first ? event.bands.select{|n| n.name == event.name}.first.id : (event.bands.first ? event.bands.first.id : '') %>" >
+        <%= event.bands.select{|n| n.name == event.name}.first ? event.bands.select{|n| n.name == event.name}.first.name.upcase : event.name.upcase %>
         <% if event.bands.first and event.bands.first.is_editors_choice %>
           <img class="details-image" src="/assets/ec-star.jpg" alt="ec-star"/>
         <% end %>
@@ -24,7 +24,13 @@
         <%= event.event_datetime.strftime("%a, %b %d").upcase %>
       </td>
       <td class="grid_2 centered ticket-link" data-eventid="<%=event.id %>">
-        <%= event.tickets.first ? link_to(number_to_currency(event.tickets.first.price), event_url(event.tickets.first)) : "HERE" %>
+        <% if event.price_min and event.price_max %>
+          <%= number_to_currency(event.price_min) + " - " + event.price_max %> 
+        <% elsif event.venue.ticket_min_price and event.venue.ticket_max_price%>
+          <%= number_to_currency(event.venue.ticket_min_price) + " - " + event.venue.ticket_max_price %>
+        <% else %>
+          HERE
+        <% end %>
       </td>
       <td class="date-sort-column">
         <%=event.event_datetime.to_i%>
@@ -83,6 +89,10 @@
 <script type="text/x-jquery-tmpl" id="ticket-details-row-template">
 <div id="details-content" style="text-align:right;">
   <span>
+    {{if tickets_url }}
+    <a href="${tickets_url}" alt="Tickets" target="_blank">OFFICIAL</a>
+    <span> / </span>
+    {{/if}}
     <a href="http://washingtondc.craigslist.org/search/eee?query=${encodeURI(name)}&catAbb=sss&srchType=A" alt="Craigslist" target="_blank">Craigslist</a>
     <span> / </span>
     <a href="http://www.stubhub.com/search/doSearch?searchStr=${encodeURI(name)}&location=525;Washington%20D.C.,%20Dist.%20of%20Columbia" alt="StubHub" target="_blank">StubHub</a>

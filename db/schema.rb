@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131020250) do
+ActiveRecord::Schema.define(:version => 20120202010652) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer   "resource_id",   :null => false
@@ -80,6 +80,9 @@ ActiveRecord::Schema.define(:version => 20120131020250) do
     t.text     "editors_choice_note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tickets_url"
+    t.float    "price_min"
+    t.float    "price_max"
   end
 
   create_table "neighborhoods", :force => true do |t|

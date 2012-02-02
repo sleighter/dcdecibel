@@ -13,12 +13,12 @@ function templateDetails(template,detailsDiv,data){
     var detailsContent = $("#details-content");
     detailsContent.hide();
     detailsDiv.prepend(detailsContent);
-    detailsDiv.height($(detailsContent).height());
     $("#details-row").animate({
       'height': $(detailsContent).height()
       },
       'fast',
       function(){
+        detailsDiv.height($(detailsContent).height());
         detailsDiv.find(".loading-image").hide();
         detailsContent.fadeIn(200);
       });
@@ -29,8 +29,8 @@ function templateDetails(template,detailsDiv,data){
     var detailsContent = $("#details-content");
     detailsContent.hide();
     detailsDiv.prepend(detailsContent);
-    detailsDiv.height($(detailsContent).height());
     $("#details-row").animate({'height': $(detailsContent).height()},'fast',function(){
+      detailsDiv.height($(detailsContent).height());
       detailsDiv.find("IMG").fadeOut(200);
       detailsContent.fadeIn(200);
     });
@@ -97,42 +97,11 @@ $(document).ready(function(){
     });
   });
   
-/*  $('.venue-link').live('click',function(){
-    var detailsRow = $('#details-row');
-    var detailsDiv = $('#details-div');
-    if ($(this)[0] == openItem)
-    {
-      detailsDiv.slideUp('fast');
-      $(openItem).removeClass('selected');
-      openItem = null;
-      return;
-    }
-    if (openItem != null){
-      $(openItem).removeClass('selected');
-    }
-    openItem = $(this)[0];
-    $(openItem).addClass('selected');
-    var thisRow = $(this).parent('tr');
-    var itemId = $(this).attr('data-venueid');
-    detailsDiv.slideUp('fast',function() {
-      detailsRow.insertAfter(thisRow);
-      detailsDiv.hide();
-      detailsRow.insertAfter(thisRow);  
-      detailsDiv.html(loadingHolder);
-      detailsDiv.slideDown('fast');
-      $.get("/venues/" + itemId.toString() + ".json", function(data){
-          templateDetails($("#venue-details-row-template"),detailsDiv,data);
-      });
-    });
-  });*/
-  
   $('.ticket-link').live('click', function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
     if ($(this)[0] == openItem){
-      detailsDiv.slideUp('fast');
-      $(openItem).removeClass('selected');
-      openItem = null;
+      closeDetails();
       return;
     }
     if (openItem != null){
