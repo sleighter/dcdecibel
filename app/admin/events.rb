@@ -20,6 +20,9 @@ ActiveAdmin.register Event do
         f.input :name
         f.input :venue
         f.input :event_datetime, :as => :datepicker
+	f.input :tickets_url
+	f.input :price_min
+	f.input :price_max
         f.input :bands, :as => :check_boxes
       end
       f.buttons
