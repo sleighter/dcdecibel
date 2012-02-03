@@ -2,9 +2,9 @@ ActiveAdmin.register Event do
   scope :upcoming
   
   index do
-    column :name
+    column :name, :sortable => :name
     column :venue
-    column 'Event Date', :event_datetime
+    column :event_datetime
     column :bands do |event|
       event.bands.take(3).each do |band|
         span do
