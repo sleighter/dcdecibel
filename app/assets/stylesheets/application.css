@@ -15,6 +15,7 @@
  *= require venues
  *= require home
  *= require jquery_ui
+ *= require lionbars
 */
 @font-face 
 {

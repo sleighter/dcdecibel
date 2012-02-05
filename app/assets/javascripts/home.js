@@ -21,6 +21,7 @@ function templateDetails(template,detailsDiv,data){
         detailsDiv.height($(detailsContent).height());
         detailsDiv.find(".loading-image").hide();
         detailsContent.fadeIn(200);
+        $(".band-bio").lionbars();
       });
   });  
   }else{
@@ -59,7 +60,7 @@ $(document).ready(function(){
     },
     "aoColumnDefs": [{ "iDataSort": 4, "aTargets": [ 2 ] }]
   }); 
-  $('.band-link').live('click',function(){
+  $('.band-link').on('click',function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
     if ($(this)[0] == openItem)
@@ -97,7 +98,7 @@ $(document).ready(function(){
     });
   });
   
-  $('.ticket-link').live('click', function(){
+  $('.ticket-link').on('click', function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
     if ($(this)[0] == openItem){

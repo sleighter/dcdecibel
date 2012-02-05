@@ -8,6 +8,7 @@
 //= require jquery-ui-1.8.17.custom.min
 //= require jquery.tmpl.min
 //= require jquery.dataTables.min
+//= require jquery.lionbars.0.3.min
 //= require bands
 //= require cities
 //= require events
