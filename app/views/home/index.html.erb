@@ -26,12 +26,12 @@
       <td class="grid_2 centered ticket-link" data-eventid="<%=event.id %>">
         <% if event.price_min and event.price_max %>
           <%= number_to_currency(event.price_min, :precision => 0) + " - " + number_to_currency(event.price_max, :precision => 0) %> 
-        <% elsif event.price_min or event.price_max %>
+        <% elsif ((event.price_min and (event.price_min > 0)) or (event.price_max and (event.price_max > 0))) %>
           <%= number_to_currency event.price_min, :precision => 0 %><%= number_to_currency event.price_max, :precision => 0 %>
         <% elsif event.venue.ticket_min_price and event.venue.ticket_max_price%>
           <%= number_to_currency(event.venue.ticket_min_price, :precision => 0) + " - " + number_to_currency(event.venue.ticket_max_price, :precision => 0) %>
         <% else %>
-          HERE
+          SOLD OUT
         <% end %>
       </td>
       <td class="date-sort-column">
