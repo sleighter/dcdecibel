@@ -72,20 +72,22 @@
 </script>
 
 <script type="text/x-jquery-tmpl" id="venue-details-row-template">
-  <span>
-    {{if is_editors_choice}}
-      <span class="editors-choice-details">
-        <img src="/assets/ec-star.jpg" alt="editors choice star"/>
-        EDITOR'S PICK
-      </span>
-    {{/if}}
-    {{if phone}}
-      <span>PHONE:${phone}</span>
-    {{/if}}
-  </span>
-  <span class="venue-links">
-    {{if homepage_url}}<a href="${homepage_url}">HOMEPAGE</a>{{/if}}
-  </span>
+  <div id="details-content" style="text-align:center;">
+    <span>
+      {{if is_editors_choice}}
+        <span class="editors-choice-details">
+          <img src="/assets/ec-star.jpg" alt="editors choice star"/>
+          EDITOR'S PICK
+        </span>
+      {{/if}}
+      {{if phone}}
+        <span>PHONE:${phone}</span>
+      {{/if}}
+    </span>
+    <span class="venue-links">
+      {{if homepage_url}}<a href="${homepage_url}">HOMEPAGE</a>{{/if}}
+    </span>
+  </div>
 </script>
 
 <script type="text/x-jquery-tmpl" id="ticket-details-row-template">

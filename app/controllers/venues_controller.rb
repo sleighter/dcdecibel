@@ -3,7 +3,9 @@ class VenuesController < ApplicationController
   # GET /venues.json
   def index
     @venues = Venue.all
-
+    @venues.each do |venue|
+      venue.phone = number_to_phone(venue.phone)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @venues }

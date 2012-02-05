@@ -18,7 +18,7 @@ function templateDetails(template,detailsDiv,data){
       },
       'fast',
       function(){
-        detailsDiv.height($(detailsContent).height());
+        detailsDiv.height($(detailsContent).height() + 15);
         detailsDiv.find(".loading-image").hide();
         detailsContent.fadeIn(200);
         $(".band-bio").lionbars();
@@ -31,7 +31,7 @@ function templateDetails(template,detailsDiv,data){
     detailsContent.hide();
     detailsDiv.prepend(detailsContent);
     $("#details-row").animate({'height': $(detailsContent).height()},'fast',function(){
-      detailsDiv.height($(detailsContent).height());
+      detailsDiv.height($(detailsContent).height() + 15);
       detailsDiv.find("IMG").fadeOut(200);
       detailsContent.fadeIn(200);
     });
@@ -97,7 +97,33 @@ $(document).ready(function(){
       });
     });
   });
-  
+  $('.venue-link').on('click',function(){
+    var detailsRow = $('#details-row');
+    var detailsDiv = $('#details-div');
+    if ($(this)[0] == openItem)
+    {
+      closeDetails();
+      return;
+    }
+    else if (openItem != null){
+      $(openItem).removeClass('selected');
+    }
+    openItem = $(this)[0];
+    $(openItem).addClass('selected');
+    var thisRow = $(this).parent('tr');
+    var itemId = $(this).attr('data-venueid');
+    detailsDiv.slideUp('fast',function() {
+      detailsRow.slideUp('fast');
+      detailsDiv.hide();
+      detailsRow.insertAfter(thisRow);  
+      detailsDiv.html(loadingHolder);
+      detailsDiv.slideDown('fast');
+      detailsRow.slideDown('fast');
+      $.get("/venues/" + itemId.toString() + ".json", function(data){
+        templateDetails($("#venue-details-row-template"),detailsDiv,data);
+      });
+    });
+  });  
   $('.ticket-link').on('click', function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
