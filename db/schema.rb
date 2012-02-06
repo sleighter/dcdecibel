@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120202010652) do
+ActiveRecord::Schema.define(:version => 20120206045239) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer   "resource_id",   :null => false
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(:version => 20120202010652) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_local"
+    t.boolean  "is_classical"
+    t.boolean  "is_jazz"
   end
 
   create_table "bands_events", :id => false, :force => true do |t|

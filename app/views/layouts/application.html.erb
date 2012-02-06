@@ -13,11 +13,11 @@
   </div>
 </div>
 <div class="container_16 main_menu">
-  <div class="grid_4" id="main_menu_tonight">
-    <h1>TONIGHT</h1> 
+  <div class="grid_4" id="main_menu_tonight" class="selected">
+    <h1><%= link_to "TONIGHT", "/", :filter => "tonight" %></h1> 
   </div>
   <div class="grid_5" id="main_menu_announced">
-    <h1 class="selected">JUST ANNOUNCED</h1>
+    <h1>JUST ANNOUNCED</h1>
   </div>
   <div class="grid_4" id="main_menu_upcoming">
     <h1>UPCOMING</h1>

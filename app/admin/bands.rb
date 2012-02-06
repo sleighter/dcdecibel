@@ -15,6 +15,9 @@ ActiveAdmin.register Band do
       f.input :name
       f.input :homepage_url
       f.input :bio
+      f.input :is_local
+      f.input :is_jazz
+      f.input :is_classical
     end
     f.inputs "External Identifiers" do
       f.input :last_fm_id
