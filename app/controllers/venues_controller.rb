@@ -1,4 +1,6 @@
 class VenuesController < ApplicationController
+include ActionView::Helpers::NumberHelper
+
   # GET /venues
   # GET /venues.json
   def index
@@ -16,7 +18,7 @@ class VenuesController < ApplicationController
   # GET /venues/1.json
   def show
     @venue = Venue.find(params[:id])
-
+    @venue.phone = number_to_phone(@venue.phone)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @venue }
@@ -83,3 +85,4 @@ class VenuesController < ApplicationController
     end
   end
 end
+
