@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120206045239) do
+ActiveRecord::Schema.define(:version => 20120209012853) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer   "resource_id",   :null => false
@@ -47,18 +47,18 @@ ActiveRecord::Schema.define(:version => 20120206045239) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "bands", :force => true do |t|
-    t.string   "name"
-    t.string   "last_fm_id"
-    t.string   "wikipedia_id"
-    t.string   "homepage_url"
-    t.text     "bio"
-    t.boolean  "is_editors_choice"
-    t.text     "editors_choice_note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "is_local"
-    t.boolean  "is_classical"
-    t.boolean  "is_jazz"
+    t.string    "name"
+    t.string    "last_fm_id"
+    t.string    "wikipedia_id"
+    t.string    "homepage_url"
+    t.text      "bio"
+    t.boolean   "is_editors_choice"
+    t.text      "editors_choice_note"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.boolean   "is_local"
+    t.boolean   "is_classical"
+    t.boolean   "is_jazz"
   end
 
   create_table "bands_events", :id => false, :force => true do |t|
@@ -74,17 +74,21 @@ ActiveRecord::Schema.define(:version => 20120206045239) do
   end
 
   create_table "events", :force => true do |t|
-    t.string   "name"
-    t.datetime "event_datetime"
-    t.string   "ticket_status"
-    t.integer  "venue_id"
-    t.boolean  "is_editors_choice"
-    t.text     "editors_choice_note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "tickets_url"
-    t.float    "price_min"
-    t.float    "price_max"
+    t.string    "name"
+    t.timestamp "event_datetime"
+    t.string    "ticket_status"
+    t.integer   "venue_id"
+    t.boolean   "is_editors_choice"
+    t.text      "editors_choice_note"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "tickets_url"
+    t.float     "price_min"
+    t.float     "price_max"
+    t.datetime  "presale_start_datetime"
+    t.datetime  "presale_end_datetime"
+    t.string    "presale_url"
+    t.integer   "headline_band_id"
   end
 
   create_table "neighborhoods", :force => true do |t|

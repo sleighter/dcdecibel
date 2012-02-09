@@ -14,7 +14,7 @@
       <td class="band-link grid_6" data-bandid="<%= event.bands.select{ |n| n.name == event.name }.first ? event.bands.select{|n| n.name == event.name}.first.id : (event.bands.first ? event.bands.first.id : '') %>" >
         <%= event.bands.select{|n| n.name == event.name}.first ? event.bands.select{|n| n.name == event.name}.first.name.upcase : event.name.upcase %>
         <% if event.bands.first and event.bands.first.is_editors_choice %>
-          <img class="details-image" src="/assets/ec-star.jpg" alt="ec-star"/>
+          <img class="ec-star" src="/assets/ec-star.jpg" alt="ec-star"/>
         <% end %>
       </td>
       <td class="venue-link grid_5" data-sortvalue="<%=event.venue.name%>" data-venueid="<%= event.venue.id %>">
@@ -25,7 +25,7 @@
       </td>
       <td class="grid_2 centered ticket-link" data-eventid="<%=event.id %>">
         <% if event.price_min and event.price_max %>
-          <%= number_to_currency(event.price_min, :precision => 0) + " - " + number_to_currency(event.price_max, :precision => 0) %> 
+          <%= number_to_currency(event.price_min, :precision => 0) + " - " + number_to_currency(event.price_max, :precision => 0) %>
         <% elsif ((event.price_min and (event.price_min > 0)) or (event.price_max and (event.price_max > 0))) %>
           <%= number_to_currency event.price_min, :precision => 0 %><%= number_to_currency event.price_max, :precision => 0 %>
         <% elsif event.venue.ticket_min_price and event.venue.ticket_max_price%>
@@ -76,7 +76,7 @@
     <span>
       {{if is_editors_choice}}
         <span class="editors-choice-details">
-          <img src="/assets/ec-star.jpg" alt="editors choice star"/>
+          <img class="ec-star" src="/assets/ec-star.jpg" alt="editors choice star"/>
           EDITOR'S PICK
         </span>
       {{/if}}
@@ -93,13 +93,14 @@
 <script type="text/x-jquery-tmpl" id="ticket-details-row-template">
 <div id="details-content" style="text-align:right;">
   <span>
-    {{if tickets_url }}
-    <a href="${tickets_url}" alt="Tickets" target="_blank">OFFICIAL</a>
-    <span> / </span>
-    {{/if}}
     <a href="http://washingtondc.craigslist.org/search/eee?query=${encodeURI(name)}&catAbb=sss&srchType=A" alt="Craigslist" target="_blank">Craigslist</a>
     <span> / </span>
     <a href="http://www.stubhub.com/search/doSearch?searchStr=${encodeURI(name)}&location=525;Washington%20D.C.,%20Dist.%20of%20Columbia" alt="StubHub" target="_blank">StubHub</a>
+    {{if tickets_url }}
+      <span> / </span>
+      <a href="${tickets_url}" alt="Tickets" target="_blank">OFFICIAL</a>
+    {{/if}}
   </span>
 </div>
 </script>
+

@@ -6,6 +6,7 @@
  *= require reset
  *= require 960
  *= require 960_16_col
+ *= require 960_12_col
  *= require scaffolds
  *= require bands
  *= require cities
@@ -17,7 +18,7 @@
  *= require jquery_ui
  *= require lionbars
 */
-@font-face 
+@font-face
 {
   font-family: geosans;
   src: url('/assets/GeosansLight.ttf');
@@ -34,22 +35,27 @@
 }
 
 TD {
-  font-size: 14pt;
+  font-size: 11pt;
 }
 
 BODY,H1{
-  font-family: swis721LtCnBTDtype;
+  font-family: Arial;
   background: transparent;
 }
 
 H2,H3{
-  font-family: swisscbdtype;
+  font-family: Arial;
+  font-weight: bold;
 }
 H1{
-  font-size: 33pt;
+  font-weight: normal;
+  font-size: 36px;
 }
 
 /* Basic Components */
+A, A:visited {
+  color: black;
+}
 .centered {
   text-align: center;
 }
@@ -94,12 +100,17 @@ H1{
 }
 .main_menu H1{
   margin-bottom: 10px;
-  font-size: 3em;
+  font-size: 37px;
 }
-#main_menu_tonight{ letter-spacing: 0.7em; }
-#main_menu_upcoming{ letter-spacing: 0.7em; }
-#main_menu_announced{ letter-spacing: -0.1em; }
-#main_menu_filter{ letter-spacing: 0.5em; text-align: right;}
+.main_menu_item{
+  letter-spacing: 0.5em;
+  float: left;
+}
+#main_menu_upcoming{ margin-right: 30px; width: 253px; }
+#main_menu_announced{ margin-right: 30px; width: 435px; }
+#main_menu_search{ float: right; width: 188px;}
 .selected{
-  font-family: swisscbdtype;
+  font-family: Arial;
+  font-weight: bold;
 }
+

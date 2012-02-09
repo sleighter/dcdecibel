@@ -1,10 +1,8 @@
 class HomeController < ApplicationController
   def index
     @filter = params["filter"]
-    if(@filter == "tonight")
-      @events = Event.tonight
-    elsif(@filter == "upcoming")
-      @events = Event.upoming
+    if(@filter == "upcoming")
+      @events = Event.upcoming
     elsif(@filter == "justannounced")
       @events = Event.just_announced
     else
@@ -13,3 +11,4 @@ class HomeController < ApplicationController
     @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
   end
 end
+

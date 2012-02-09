@@ -15,10 +15,10 @@ TR{
 TD {
   letter-spacing: .6px;
   text-align: left;
-  font-size: 1.2em;
-  margin-bottom: 20px;
+  font-size: 11px;
+  margin-bottom: 12px;
 }
-  
+
 h2 {
   font-size: 2em;
   margin-bottom: 10px;
@@ -30,8 +30,7 @@ A {
 }
 
 A:hover {
-  letter-spacing: 7px;
-  font-family: swisscbdtype;
+  font-weight: bold;
   background-color: transparent;
 }
 
@@ -61,7 +60,7 @@ A:hover {
 }
 
 .band-link:hover, .venue-link:hover, .ticket-link:hover {
-  font-family: swisscbdtype;
+  font-weight:bold;
   cursor: pointer;
   letter-spacing: 0px;
 }
@@ -80,9 +79,13 @@ A:hover {
   margin-right: 15px;
 }
 .band-bio p{
-  margin-right: 15px;
+  margin-right: 25px;
+  font-size: 10px;
+  line-height: 13px;
+  text-transform: uppercase;
 }
 
 .band-links, .venue-links{
   float: right;
 }
+

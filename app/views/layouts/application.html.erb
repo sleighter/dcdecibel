@@ -12,35 +12,35 @@
   <div class="grid_16 title centered" >
   </div>
 </div>
-<div class="container_16 main_menu">
-  <div class="grid_4" id="main_menu_tonight" class="selected">
-    <h1><%= link_to "TONIGHT", "/", :filter => "tonight" %></h1> 
+<div class="container_12 main_menu">
+  <div class="grid_12">
+  <div class="centered main_menu_item" id="main_menu_upcoming">
+    <h1><%= link_to "UPCOMING", "/"%></h1>
   </div>
-  <div class="grid_5" id="main_menu_announced">
-    <h1>JUST ANNOUNCED</h1>
+  <div class="centered main_menu_item" id="main_menu_announced">
+    <h1><%= link_to "JUST ANNOUNCED", "/?filter=justannounced" %></h1>
   </div>
-  <div class="grid_4" id="main_menu_upcoming">
-    <h1>UPCOMING</h1>
+  <div class="centered main_menu_item" id="main_menu_search">
+    <h1><%= link_to "SEARCH", "/search" %></h1>
   </div>
-  <div class="grid_3" id="main_menu_filter">
-    <h1>FILTER</h1>
-  </div>
+</div>
   <div class="clear"></div>
-  <div class="horizontal-divider grid_16"></div>
+  <div class="horizontal-divider grid_12"></div>
 </div>
 <div clear="clear"></div>
 <%= yield %>
 <div class="clear"></div>
 <div class="footer container_16">
   <div class="horizontal-divider grid_16"></div>
-  <div class="prefix_10 grid_6 right-align">
+  <div class="prefix_4 grid_8 centered">
     <ul>
-      <li><span>ABOUT/</span></li>
-      <li><span>CONTACT/</span></li>
-      <li><span>ALL RIGHTS RESERVED/</span></li>
+      <li><span><%= link_to "ABOUT", "/about" %></span><span>&nbsp;/&nbsp;</span></li>
+      <li><span><%= link_to "CONTACT", "/contact" %></span><span>&nbsp;/&nbsp;</span></li>
+      <li><span>ALL RIGHTS RESERVED&nbsp;/&nbsp;</span></li>
       <li><span>CITYDECIBEL 2012</span></li>
     </ul>
   </div>
 </div>
 </body>
 </html>
+
