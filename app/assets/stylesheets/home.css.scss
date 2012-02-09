@@ -13,15 +13,20 @@ TR{
 }
 
 TD {
-  letter-spacing: .6px;
+  letter-spacing: .75px;
   text-align: left;
-  font-size: 11px;
-  margin-bottom: 12px;
+  font-size: 13px;
+  margin-bottom: 20px;
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 20px;
   margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+h2:hover {
+  color: #000;
 }
 
 A {
@@ -30,8 +35,9 @@ A {
 }
 
 A:hover {
+   background-color: transparent;
   font-weight: bold;
-  background-color: transparent;
+  letter-spacing: .6px;
 }
 
 #events-table TH {
@@ -60,9 +66,9 @@ A:hover {
 }
 
 .band-link:hover, .venue-link:hover, .ticket-link:hover {
-  font-weight:bold;
+  font-weight: bold;
   cursor: pointer;
-  letter-spacing: 0px;
+  letter-spacing: .6px;
 }
 .date-sort-column{
   display: none;
@@ -80,7 +86,7 @@ A:hover {
 }
 .band-bio p{
   margin-right: 25px;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 13px;
   text-transform: uppercase;
 }
