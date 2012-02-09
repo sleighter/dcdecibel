@@ -51,9 +51,6 @@ H1{
   font-weight: normal;
   font-size: 36px;
 }
-H1:hover{
-  color: #606060;
-}
 
 /* Basic Components */
 A, A:visited {
@@ -103,10 +100,10 @@ A, A:visited {
 }
 .main_menu H1{
   margin-bottom: 10px;
-  font-size: 42px;
+  font-size: 37px;
 }
 .main_menu_item{
-  letter-spacing: 1px;
+  letter-spacing: 0.5em;
   float: left;
 }
 #main_menu_upcoming{ margin-right: 30px; width: 253px; }

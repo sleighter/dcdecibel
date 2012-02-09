@@ -23,7 +23,7 @@ function templateDetails(template,detailsDiv,data){
         detailsContent.fadeIn(200);
         $(".band-bio").lionbars();
       });
-  });  
+  });
   }else{
     var hidden = $("#hidden-div");
     hidden.html(details[0]);
@@ -34,6 +34,7 @@ function templateDetails(template,detailsDiv,data){
       detailsDiv.height($(detailsContent).height() + 15);
       detailsDiv.find("IMG").fadeOut(200);
       detailsContent.fadeIn(200);
+      $(".band-bio").lionbars();
     });
   }
 }
@@ -51,15 +52,18 @@ function closeDetails(){
 
 $(document).ready(function(){
   $('#events-table').dataTable({
-    bPaginate: false, 
-    bFilter: false, 
-    bInfo: false, 
-    aaSorting: [[4,'asc']], 
+    bPaginate: false,
+    bFilter: false,
+    bInfo: false,
+    aaSorting: [[4,'asc']],
     fnPreDrawCallback: function(oSettings){
       closeDetails();
     },
-    "aoColumnDefs": [{ "iDataSort": 4, "aTargets": [ 2 ] }]
-  }); 
+    "aoColumnDefs": [
+      { "iDataSort": 4, "aTargets": [ 2 ] },
+      { "iDataSort": 5, "aTargets": [ 3 ] }
+    ]
+  });
   $('.band-link').on('click',function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
@@ -78,7 +82,7 @@ $(document).ready(function(){
     detailsDiv.slideUp('fast',function() {
       detailsRow.slideUp('fast');
       detailsDiv.hide();
-      detailsRow.insertAfter(thisRow);  
+      detailsRow.insertAfter(thisRow);
       detailsDiv.html(loadingHolder);
       detailsDiv.slideDown('fast');
       detailsRow.slideDown('fast');
@@ -115,7 +119,7 @@ $(document).ready(function(){
     detailsDiv.slideUp('fast',function() {
       detailsRow.slideUp('fast');
       detailsDiv.hide();
-      detailsRow.insertAfter(thisRow);  
+      detailsRow.insertAfter(thisRow);
       detailsDiv.html(loadingHolder);
       detailsDiv.slideDown('fast');
       detailsRow.slideDown('fast');
@@ -123,7 +127,7 @@ $(document).ready(function(){
         templateDetails($("#venue-details-row-template"),detailsDiv,data);
       });
     });
-  });  
+  });
   $('.ticket-link').on('click', function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
@@ -141,7 +145,7 @@ $(document).ready(function(){
     detailsDiv.slideUp('fast',function(){
       detailsRow.slideUp('fast');
       detailsDiv.hide();
-      detailsRow.insertAfter(thisRow);  
+      detailsRow.insertAfter(thisRow);
       detailsDiv.html(loadingHolder);
       detailsDiv.slideDown('fast');
       detailsRow.slideDown('fast');
@@ -151,3 +155,4 @@ $(document).ready(function(){
     });
   });
 });
+

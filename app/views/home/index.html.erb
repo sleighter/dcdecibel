@@ -6,6 +6,7 @@
     <th class="grid_3"><h2>DATE</h2></th>
     <th class="grid_2 centered"><h2>TICKETS</h2></th>
     <th class="date-sort-column"><h2>DATE_SORT</h2></th>
+    <th class="price-sort-column"><h2>PRICE_SORT</h2></th>
   </tr>
   </thead>
   <tbody>
@@ -36,6 +37,19 @@
       </td>
       <td class="date-sort-column">
         <%=event.event_datetime.to_i%>
+      </td>
+      <td class="price-sort-column">
+        <% if event.price_min and event.price_min > 0%>
+          <%= event.price_min %>
+        <% elsif event.price_max and event.price_max > 0 %>
+          <%=event.price_max %>
+        <% elsif event.venue.ticket_min_price and event.venue.ticket_min_price > 0 %>
+          <%= event.venue.ticket_min_price %>
+        <% elsif event.venue.ticket_max_price and event.venue.ticket_max_price > 0 %>
+          <%= event.venue.ticket_max_price %>
+        <% else %>
+          1000000
+        <% end %>
       </td>
     </tr>
   <% end %>
