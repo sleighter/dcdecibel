@@ -9,6 +9,9 @@ class HomeController < ApplicationController
       @events = Event.upcoming
     end
     @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
+    @events.each do |event|
+      event.title_band
+    end
   end
 end
 

@@ -26,7 +26,7 @@ ActiveAdmin.register Event do
 	      f.input :presale_start_datetime
 	      f.input :presale_end_datetime
 	      f.input :presale_url
-	      f.input :headline_band
+	      f.input :band, :label => "Headline Band"
         f.input :bands
       end
       f.buttons

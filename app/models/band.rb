@@ -3,3 +3,4 @@ class Band < ActiveRecord::Base
   has_many :venues, :through => :events, :order => "name ASC"
   default_scope :order => "name ASC"
 end
+

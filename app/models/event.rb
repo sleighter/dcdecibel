@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   has_and_belongs_to_many :bands, :join_table => :bands_events
+  belongs_to :band, :foreign_key => "headline_band_id"
   belongs_to :venue
   has_many :tickets
   scope :upcoming, where("event_datetime > ?",Time.now)
