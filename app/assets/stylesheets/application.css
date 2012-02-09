@@ -99,11 +99,18 @@ A, A:visited {
   margin-bottom: 25px;
 }
 .main_menu H1{
-  margin-bottom: 10px;
-  font-size: 37px;
+    font-size: 43px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-weight: bold;
 }
+
+.main_menu H1:hover{
+  color:#666;
+}
+
 .main_menu_item{
-  letter-spacing: 0.5em;
+  letter-spacing: 1px;
   float: left;
 }
 #main_menu_upcoming{ margin-right: 30px; width: 253px; }
