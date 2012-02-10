@@ -20,6 +20,7 @@ ActiveAdmin.register Event do
         f.input :name
         f.input :venue
         f.input :event_datetime
+        f.input :tickets_sold_at_door
 	      f.input :tickets_url
 	      f.input :price_min
 	      f.input :price_max

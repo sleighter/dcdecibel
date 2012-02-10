@@ -106,6 +106,9 @@
 
 <script type="text/x-jquery-tmpl" id="ticket-details-row-template">
 <div id="details-content" style="text-align:right;">
+  {{if tickets_sold_at_door}}
+    ONLY AVAILABLE AT THE DOOR
+  {{else}}
   <span>
     <a href="http://washingtondc.craigslist.org/search/eee?query=${encodeURI(name)}&catAbb=sss&srchType=A" alt="Craigslist" target="_blank">Craigslist</a>
     <span> / </span>
@@ -115,6 +118,7 @@
       <a href="${tickets_url}" alt="Tickets" target="_blank">OFFICIAL</a>
     {{/if}}
   </span>
+  {{/if}}
 </div>
 </script>
 
