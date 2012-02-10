@@ -1,7 +1,5 @@
 ActiveAdmin.register Event do
   scope :upcoming, :default => true
-  
-  config.paginate = false
 
   index do
     column :name, :sortable => :name
