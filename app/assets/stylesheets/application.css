@@ -121,3 +121,10 @@ A, A:visited {
   font-weight: bold;
 }
 
+
+/* Special Components */
+.ec-star {
+  position: relative;
+  top: -3px;
+}
+
