@@ -99,14 +99,10 @@ A, A:visited {
   margin-bottom: 25px;
 }
 .main_menu H1{
-    font-size: 43px;
+    font-size: 45px;
     margin-bottom: 10px;
     letter-spacing: 1px;
-    font-weight: bold;
 }
-
-
-
 .main_menu_item{
   letter-spacing: 1px;
   float: left;
@@ -114,8 +110,8 @@ A, A:visited {
 #main_menu_upcoming{ margin-right: 30px; width: 253px; }
 #main_menu_announced{ margin-right: 30px; width: 435px; }
 #main_menu_search{ float: right; width: 188px; cursor: pointer;}
-.selected{
-  font-family: Arial;
+
+.selected H1{
   font-weight: bold;
 }
 

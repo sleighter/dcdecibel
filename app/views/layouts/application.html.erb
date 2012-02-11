@@ -14,13 +14,13 @@
 </div>
 <div class="container_12 main_menu">
   <div class="grid_12">
-  <div class="centered main_menu_item" id="main_menu_upcoming">
+  <div class="centered main_menu_item <%= !params[:q] and !params[:filter] ? 'selected':''%>" id="main_menu_upcoming">
     <h1><%= link_to "UPCOMING", "/"%></h1>
   </div>
-  <div class="centered main_menu_item" id="main_menu_announced">
+  <div class="centered main_menu_item <%= params[:filter] == 'justannounced' ? 'selected':'' %> " id="main_menu_announced" >
     <h1><%= link_to "JUST ANNOUNCED", "/?filter=justannounced" %></h1>
   </div>
-  <div class="centered main_menu_item" id="main_menu_search">
+  <div class="centered main_menu_item <%= params[:q] ? 'selected':''%>" id="main_menu_search">
     <h1><span id="menu_search_link">SEARCH</span></h1>
   </div>
 </div>
