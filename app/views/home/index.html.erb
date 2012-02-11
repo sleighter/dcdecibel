@@ -27,7 +27,7 @@
           <%= event.venue ? event.venue.name.upcase : "" %>
         </td>
         <td class="grid_3" data-sortvalue="">
-          <%= event.event_datetime.strftime("%a, %b %d").upcase %>
+          <%= event.event_datetime.to_date == Time.now.to_date ? "TONIGHT" : event.event_datetime.strftime("%a, %b %d").upcase %>
         </td>
         <td class="grid_2 centered ticket-link" data-eventid="<%=event.id %>">
           <% if event.price_min and event.price_max %>
