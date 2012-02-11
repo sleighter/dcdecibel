@@ -34,6 +34,10 @@ A {
   color: black;
 }
 
+P {
+  margin-bottom: 15px;
+}
+
 A:hover {
    background-color: transparent;
   font-weight: bold;
@@ -80,7 +84,7 @@ A:hover {
   float: left;
 }
 .band-bio{
-  max-height: 200px;
+  max-height: 190px;
   overflow-y: auto;
   margin-right: 15px;
 }
@@ -93,5 +97,9 @@ A:hover {
 
 .band-links, .venue-links{
   float: right;
+}
+
+.tonight-event{
+  font-weight:bold;
 }
 

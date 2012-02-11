@@ -31,7 +31,7 @@ function templateDetails(template,detailsDiv,data){
     detailsContent.hide();
     detailsDiv.prepend(detailsContent);
     $("#details-row").animate({'height': $(detailsContent).height()},'fast',function(){
-      detailsDiv.height($(detailsContent).height() + 15);
+      detailsDiv.height($(detailsContent).height() + 20);
       detailsDiv.find("IMG").fadeOut(200);
       detailsContent.fadeIn(200);
       $(".band-bio").lionbars();
@@ -90,6 +90,7 @@ $(document).ready(function(){
         if(data.last_fm_id){
           $.get(lastFmUrl(data.last_fm_id),
           function(data2){
+              data2 = JSON.parse(data2);
               if (data2.artist){
                 data.image_url = data2.artist.image[3]['#text'];
               }

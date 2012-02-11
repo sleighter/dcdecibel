@@ -12,8 +12,8 @@
   <tbody>
   <% @events.each do |event| %>
     <tr>
-      <td class="band-link grid_6" data-bandid="<%= event.bands.select{ |n| n.name == event.name }.first ? event.bands.select{|n| n.name == event.name}.first.id : (event.bands.first ? event.bands.first.id : '') %>" >
-        <%= event.bands.select{|n| n.name == event.name}.first ? event.bands.select{|n| n.name == event.name}.first.name.upcase : event.name.upcase %>
+      <td class="band-link grid_6 <%= (event.event_datetime.to_date == Time.now.to_date) ? 'tonight-event' : ''%>" data-bandid="<%= event.bandid %>" >
+        <%= event.title.upcase %>
         <% if event.bands.first and event.bands.first.is_editors_choice %>
           <img class="ec-star" src="/assets/ec-star.jpg" alt="ec-star"/>
         <% end %>
