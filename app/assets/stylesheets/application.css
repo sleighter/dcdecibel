@@ -103,6 +103,9 @@ A, A:visited {
     margin-bottom: 10px;
     letter-spacing: 1px;
 }
+.main_menu H1:hover {
+  font-weight:bold;
+}
 .main_menu_item{
   letter-spacing: 1px;
   float: left;
