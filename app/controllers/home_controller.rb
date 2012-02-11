@@ -4,18 +4,21 @@ class HomeController < ApplicationController
       @query = params[:q]
       @search = Event.upcoming.search(:name_contains => @query)
       @events = @search.all
+      @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       @show_search = true
     else
       @filter = params["filter"]
       if(@filter == "upcoming")
         @events = Event.upcoming
+        @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       elsif(@filter == "justannounced")
         @events = Event.just_announced
+        @events.sort! { |a,b| a.created_at <=>  b.created_at }
       else
         @events = Event.upcoming
+        @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       end
     end
-    @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
 
     @events.each do |event|
       if (event.headline_band_id)

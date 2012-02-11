@@ -16,11 +16,11 @@
   </thead>
   <tbody>
     <% @events.each do |event| %>
-      <tr>
-        <td class="band-link grid_6 <%= (event.event_datetime.to_date == Time.now.to_date) ? 'tonight-event' : ''%>" data-bandid="<%= event.bandid %>" >
+      <tr class="<%= (event.event_datetime.to_date == Time.now.to_date) ? 'tonight-event' : ''%>">
+        <td class="band-link grid_6 " data-bandid="<%= event.bandid %>" >
           <%= event.title.upcase %>
           <% if event.bands.first and event.bands.first.is_editors_choice %>
-            <img class="ec-star" src="/assets/ec-star.jpg" alt="ec-star"/>
+            <img class="ec-star" src="/assets/ec-star.png" alt="ec-star"/>
           <% end %>
         </td>
         <td class="venue-link grid_5" data-sortvalue="<%=event.venue.name%>" data-venueid="<%= event.venue.id %>">
@@ -78,7 +78,7 @@
   <div class="clear-both">
     {{if is_editors_choice}}
     <span class="editors-choice-details">
-      <img class="details-image" src="/assets/ec-star.jpg" alt="editors choice star"/>
+      <img class="details-image ec-star" src="/assets/ec-star.png" alt="editors choice star"/>
       EDITOR'S PICK
     </span>
     {{/if}}
@@ -96,7 +96,7 @@
     <span>
       {{if is_editors_choice}}
         <span class="editors-choice-details">
-          <img class="ec-star" src="/assets/ec-star.jpg" alt="editors choice star"/>
+          <img class="ec-star" src="/assets/ec-star.png" alt="editors choice star"/>
           EDITOR'S PICK
         </span>
       {{/if}}

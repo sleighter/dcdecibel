@@ -99,7 +99,29 @@ A:hover {
   float: right;
 }
 
-.tonight-event{
+.tonight-event TD{
   font-weight:bold;
+}
+
+.lower-case{
+  text-transform: lowercase;
+}
+.about-container {
+  margin-bottom: 15px;
+}
+
+.about-container p {
+  font-size: 30px;
+  line-height: 30px;
+  font-weight:bold;
+}
+
+.contact-container{
+  margin-bottom: 15px;
+}
+
+.contact-container p{
+  font-size: 25px;
+  line-height: 25px;
 }
 
