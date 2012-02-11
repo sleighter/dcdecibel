@@ -2,8 +2,9 @@ class HomeController < ApplicationController
   def index
     if (params[:q])
       @query = params[:q]
-      @eventsearch = Event.search(@query)
+      @search = Event.upcoming.search(:name_contains => @query)
       @events = @search.all
+      @show_search = true
     else
       @filter = params["filter"]
       if(@filter == "upcoming")

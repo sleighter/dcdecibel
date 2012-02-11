@@ -21,13 +21,22 @@
     <h1><%= link_to "JUST ANNOUNCED", "/?filter=justannounced" %></h1>
   </div>
   <div class="centered main_menu_item" id="main_menu_search">
-    <h1><%= link_to "SEARCH", "/search" %></h1>
+    <h1><span id="menu_search_link">SEARCH</span></h1>
   </div>
 </div>
   <div class="clear"></div>
   <div class="horizontal-divider grid_12"></div>
 </div>
-<div clear="clear"></div>
+<div class="clear"></div>
+<div class="container_12" id="search_container" <%= @show_search ? "" : "style='display:none;'" %> >
+  <div class="grid_6 prefix_3 centered">
+      <input type="text" id="search_box" name="q" value="<%= @query %>" />
+      <input type="submit" id="search_submit" value="SEARCH"/>
+  </div>
+  <div class="clear"></div>
+  <div class="horizontal-divider grid_12" style="margin:25px 0;"></div>
+</div>
+<div class="clear"></div>
 <%= yield %>
 <div class="clear"></div>
 <div class="footer container_16">

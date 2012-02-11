@@ -105,9 +105,7 @@ A, A:visited {
     font-weight: bold;
 }
 
-.main_menu H1:hover{
-  color:#666;
-}
+
 
 .main_menu_item{
   letter-spacing: 1px;
@@ -115,7 +113,7 @@ A, A:visited {
 }
 #main_menu_upcoming{ margin-right: 30px; width: 253px; }
 #main_menu_announced{ margin-right: 30px; width: 435px; }
-#main_menu_search{ float: right; width: 188px;}
+#main_menu_search{ float: right; width: 188px; cursor: pointer;}
 .selected{
   font-family: Arial;
   font-weight: bold;

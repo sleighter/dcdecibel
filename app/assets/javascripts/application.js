@@ -18,3 +18,35 @@
 //= require venues
 
 var last_fm_api_key = '7d032ba61568e866f8f9cd751a51e69d';
+
+$(document).ready(function(){
+  $('#menu_search_link').on('click',function(){
+    if ($('#search_container').is(':visible')){
+      hide_search();
+    }else{
+      show_search();
+    }
+  });
+  $("#search_box").on('keyup',function(event){
+    if(event.keyCode == 13){
+        $("#search_submit").click();
+    }
+  });
+  $('#search_submit').on('click',function(){
+    perform_search($('#search_box').attr('value'));
+  });
+});
+
+function show_search(){
+  $("#search_container").slideDown();
+  $("#search_box").focus();
+}
+
+function hide_search(){
+  $("#search_container").slideUp();
+}
+
+function perform_search(query){
+  window.location.href = "/?q=" + query;
+}
+

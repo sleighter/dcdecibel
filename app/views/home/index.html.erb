@@ -10,48 +10,54 @@
   </tr>
   </thead>
   <tbody>
-  <% @events.each do |event| %>
+  <% if @events.count == 0 %>
     <tr>
-      <td class="band-link grid_6 <%= (event.event_datetime.to_date == Time.now.to_date) ? 'tonight-event' : ''%>" data-bandid="<%= event.bandid %>" >
-        <%= event.title.upcase %>
-        <% if event.bands.first and event.bands.first.is_editors_choice %>
-          <img class="ec-star" src="/assets/ec-star.jpg" alt="ec-star"/>
-        <% end %>
-      </td>
-      <td class="venue-link grid_5" data-sortvalue="<%=event.venue.name%>" data-venueid="<%= event.venue.id %>">
-        <%= event.venue ? event.venue.name.upcase : "" %>
-      </td>
-      <td class="grid_3" data-sortvalue="">
-        <%= event.event_datetime.strftime("%a, %b %d").upcase %>
-      </td>
-      <td class="grid_2 centered ticket-link" data-eventid="<%=event.id %>">
-        <% if event.price_min and event.price_max %>
-          <%= number_to_currency(event.price_min, :precision => 0) + " - " + number_to_currency(event.price_max, :precision => 0) %>
-        <% elsif ((event.price_min and (event.price_min > 0)) or (event.price_max and (event.price_max > 0))) %>
-          <%= number_to_currency event.price_min, :precision => 0 %><%= number_to_currency event.price_max, :precision => 0 %>
-        <% elsif event.venue.ticket_min_price and event.venue.ticket_max_price%>
-          <%= number_to_currency(event.venue.ticket_min_price, :precision => 0) + " - " + number_to_currency(event.venue.ticket_max_price, :precision => 0) %>
-        <% else %>
-          SOLD OUT
-        <% end %>
-      </td>
-      <td class="date-sort-column">
-        <%=event.event_datetime.to_i%>
-      </td>
-      <td class="price-sort-column">
-        <% if event.price_min and event.price_min > 0%>
-          <%= event.price_min %>
-        <% elsif event.price_max and event.price_max > 0 %>
-          <%=event.price_max %>
-        <% elsif event.venue.ticket_min_price and event.venue.ticket_min_price > 0 %>
-          <%= event.venue.ticket_min_price %>
-        <% elsif event.venue.ticket_max_price and event.venue.ticket_max_price > 0 %>
-          <%= event.venue.ticket_max_price %>
-        <% else %>
-          1000000
-        <% end %>
-      </td>
+      <td colspan='4' class="centered">NO EVENTS FOUND</td>
     </tr>
+  <% else %>
+    <% @events.each do |event| %>
+      <tr>
+        <td class="band-link grid_6 <%= (event.event_datetime.to_date == Time.now.to_date) ? 'tonight-event' : ''%>" data-bandid="<%= event.bandid %>" >
+          <%= event.title.upcase %>
+          <% if event.bands.first and event.bands.first.is_editors_choice %>
+            <img class="ec-star" src="/assets/ec-star.jpg" alt="ec-star"/>
+          <% end %>
+        </td>
+        <td class="venue-link grid_5" data-sortvalue="<%=event.venue.name%>" data-venueid="<%= event.venue.id %>">
+          <%= event.venue ? event.venue.name.upcase : "" %>
+        </td>
+        <td class="grid_3" data-sortvalue="">
+          <%= event.event_datetime.strftime("%a, %b %d").upcase %>
+        </td>
+        <td class="grid_2 centered ticket-link" data-eventid="<%=event.id %>">
+          <% if event.price_min and event.price_max %>
+            <%= number_to_currency(event.price_min, :precision => 0) + " - " + number_to_currency(event.price_max, :precision => 0) %>
+          <% elsif ((event.price_min and (event.price_min > 0)) or (event.price_max and (event.price_max > 0))) %>
+            <%= number_to_currency event.price_min, :precision => 0 %><%= number_to_currency event.price_max, :precision => 0 %>
+          <% elsif event.venue.ticket_min_price and event.venue.ticket_max_price%>
+            <%= number_to_currency(event.venue.ticket_min_price, :precision => 0) + " - " + number_to_currency(event.venue.ticket_max_price, :precision => 0) %>
+          <% else %>
+            SOLD OUT
+          <% end %>
+        </td>
+        <td class="date-sort-column">
+          <%=event.event_datetime.to_i%>
+        </td>
+        <td class="price-sort-column">
+          <% if event.price_min and event.price_min > 0%>
+            <%= event.price_min %>
+          <% elsif event.price_max and event.price_max > 0 %>
+            <%=event.price_max %>
+          <% elsif event.venue.ticket_min_price and event.venue.ticket_min_price > 0 %>
+            <%= event.venue.ticket_min_price %>
+          <% elsif event.venue.ticket_max_price and event.venue.ticket_max_price > 0 %>
+            <%= event.venue.ticket_max_price %>
+          <% else %>
+            1000000
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
   <% end %>
   </tbody>
 </table>
