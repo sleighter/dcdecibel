@@ -1,3 +1,8 @@
+<% if @events.count == 0 %>
+<div class="container_16" style="margin-bottom: 25px;">
+  <span class="grid_6 prefix_5 centered">NO EVENTS FOUND</span>
+</div>
+<% else %>
 <table id="events-table" class="container_16" border="0" cellpadding="0" cellspacing="0">
   <thead>
   <tr>
@@ -10,11 +15,6 @@
   </tr>
   </thead>
   <tbody>
-  <% if @events.count == 0 %>
-    <tr>
-      <td colspan='4' class="centered">NO EVENTS FOUND</td>
-    </tr>
-  <% else %>
     <% @events.each do |event| %>
       <tr>
         <td class="band-link grid_6 <%= (event.event_datetime.to_date == Time.now.to_date) ? 'tonight-event' : ''%>" data-bandid="<%= event.bandid %>" >
@@ -58,9 +58,9 @@
         </td>
       </tr>
     <% end %>
-  <% end %>
   </tbody>
 </table>
+<% end %>
 <div style="display:none;" id="hidden-div"></div>
 <table style="display:none;"><tbody>
   <tr id="holder-row"><td>XXX</td></tr>
