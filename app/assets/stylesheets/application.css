@@ -120,7 +120,7 @@ A, A:visited {
 #main_menu_announced{ margin-right: 30px; width: 435px; }
 #main_menu_search{ float: right; width: 188px; cursor: pointer;}
 
-.selected H1{
+.selected, .selected H1{
   font-weight: bold;
 }
 

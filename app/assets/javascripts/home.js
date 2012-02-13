@@ -90,8 +90,9 @@ $(document).ready(function(){
         if(data.last_fm_id){
           $.get(lastFmUrl(data.last_fm_id),
           function(data2){
-              if(!data2.artist)
+              if(!data2.artist){
                 data2 = JSON.parse(data2);
+              }
               if (data2.artist){
                 data.image_url = data2.artist.image[3]['#text'];
               }

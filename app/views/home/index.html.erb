@@ -53,7 +53,7 @@
           <% elsif event.venue.ticket_max_price and event.venue.ticket_max_price > 0 %>
             <%= event.venue.ticket_max_price %>
           <% else %>
-            1000000
+            9999999
           <% end %>
         </td>
       </tr>
@@ -92,21 +92,29 @@
 </script>
 
 <script type="text/x-jquery-tmpl" id="venue-details-row-template">
-  <div id="details-content" style="text-align:center;">
-    <span>
-      {{if is_editors_choice}}
-        <span class="editors-choice-details">
-          <img class="ec-star" src="/assets/ec-star.png" alt="editors choice star"/>
-          EDITOR'S PICK
-        </span>
-      {{/if}}
-      {{if phone}}
-        <span>PHONE:${phone}</span>
-      {{/if}}
-    </span>
-    <span class="venue-links">
-      {{if homepage_url}}<a href="${homepage_url}">HOMEPAGE</a>{{/if}}
-    </span>
+  <div id="details-content" class="centered">
+    {{if address}}
+      <p>
+        <span>${address}</span><br/>
+        <span>${city_address}, ${state} ${zip}</span>
+      </p>
+    {{/if}}
+    {{if phone}}
+      <p>${phone}</p>
+    {{/if}}
+    {{if homepage_url}}
+      <p>
+        <a href="${homepage_url}">HOMEPAGE</a>
+      </p>
+    {{/if}}
+    {{if is_editors_choice}}
+    <p>
+      <span class="editors-choice-details" style="text-align: left;">
+        <img class="details-image ec-star" src="/assets/ec-star.png" alt="editors choice star"/>
+        EDITOR'S PICK{{if editors_choice_note}}: ${editors_choice_note}{{/if}}
+      </span>
+    </p>
+    {{/if}}
   </div>
 </script>
 
