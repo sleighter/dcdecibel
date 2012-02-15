@@ -43,6 +43,19 @@ A:hover {
    font-weight: bold;
 }
 
+.drop_down_arrow{
+  display: none;
+  margin-top: -4px;
+}
+
+.drop_link:hover .drop_down_arrow{
+  display: inline;
+}
+
+.drop_link.selected .drop_down_arrow{
+  display: none;
+}
+
 #events-table TH {
   cursor: pointer;
 }
