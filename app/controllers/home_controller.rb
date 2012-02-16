@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
     if (params[:q])
       @query = params[:q]
-      @search = Event.upcoming.search(:name_contains => @query)
+      @search = Event.upcoming(true).search(:name_contains => @query)
       @events = @search.all
       @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       @show_search = true
