@@ -40,7 +40,6 @@ P {
 
 A:hover {
    background-color: transparent;
-   font-weight: bold;
 }
 
 .drop_down_arrow{
@@ -83,9 +82,7 @@ A:hover {
 }
 
 .band-link:hover, .venue-link:hover, .ticket-link:hover {
-  font-weight: bold;
   cursor: pointer;
-  letter-spacing: .6px;
 }
 .date-sort-column, .price-sort-column{
   display: none;
