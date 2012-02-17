@@ -98,8 +98,10 @@
   <div id="details-content" class="centered">
     {{if address}}
       <p>
-        <span>${address}</span><br/>
-        <span>${city_address}, ${state} ${zip}</span>
+        <a href="http://maps.google.com/?q=${address} ${city_address} ${state} ${zip}" target="_blank">
+          <span>${address}</span><br/>
+          <span>${city_address}, ${state} ${zip}</span>
+        </a>
       </p>
     {{/if}}
     {{if phone}}

@@ -55,7 +55,7 @@ $(document).ready(function(){
     bPaginate: false,
     bFilter: false,
     bInfo: false,
-    aaSorting: [[4,'asc']],
+    aaSorting: [],
     fnPreDrawCallback: function(oSettings){
       closeDetails();
     },

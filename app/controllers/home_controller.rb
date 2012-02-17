@@ -9,14 +9,14 @@ class HomeController < ApplicationController
     else
       @filter = params["filter"]
       if(@filter == "upcoming")
-        @events = Event.upcoming
-        @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
+        @events = Event.upcoming(:order => "event_datetime ASC")
+      @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       elsif(@filter == "justannounced")
-        @events = Event.just_announced
-        @events.sort! { |a,b| a.created_at <=>  b.created_at }
+        @events = Event.just_announced(:order => "created_at DESC")
+        @events.sort! { |a,b| b.created_at <=> a.created_at }
       else
-        @events = Event.upcoming
-        @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
+        @events = Event.upcoming(:order => "event_datetime ASC")
+      @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       end
     end
 
