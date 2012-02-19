@@ -53,7 +53,7 @@ H1{
 }
 
 /* Basic Components */
-A, A:visited {
+A{
   color: black;
 }
 .centered {
@@ -108,9 +108,9 @@ A, A:visited {
   margin-bottom: 25px;
 }
 .main_menu H1{
-    font-size: 44px;
+    font-size: 34px;
     margin-bottom: 10px;
-    letter-spacing: 1px;
+    letter-spacing: 0;
 }
 
 .main_menu H1:hover, .main_menu H1 A:hover {
@@ -120,11 +120,35 @@ A, A:visited {
   letter-spacing: 1px;
   float: left;
 }
-#main_menu_upcoming{ margin-right: 30px; width: 253px; }
-#main_menu_announced{ margin-right: 30px; width: 435px; }
-#main_menu_search{ float: right; width: 188px; cursor: pointer;}
+#main_menu_upcoming{ margin-right: 20px; }
+#main_menu_announced{ margin-right: 20px; }
+#main_menu_search{ margin-right: 20px; }
+#main_menu_about{}
+#main_menu_blog{ float: right; }
+.main_menu_light_link{color: #d8d8d8;}
 
 .selected, .selected H1{
+  font-weight:bold;
+}
+/* Info Panel Components */
+.info_title{
+  font-weight:bold;
+  font-size: 34px;
+  margin-bottom: 9px;
+}
+.info_subtitle{
+  font-weight:bold;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.info_line_item{
+  margin-bottom: 0;
+  font-size: 15px;
+}
+.info_close, .close_info_panel_action{
+  margin-top: 15px;
+  margin-bottom: 7px;
+  font-size: 12px;
   font-weight:bold;
 }
 

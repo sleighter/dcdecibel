@@ -40,7 +40,6 @@ P {
 
 A:hover {
    background-color: transparent;
-   text-decoration: underline;
    color: #C3B091;
 }
 
@@ -86,6 +85,9 @@ A:hover {
 .band-link:hover, .venue-link:hover, .ticket-link:hover {
   cursor: pointer;
   color: #C3B091;
+}
+.address_link,.address_link:hover{
+  text-decoration:underline;
 }
 .date-sort-column, .price-sort-column{
   display: none;

@@ -188,7 +188,7 @@ $(document).ready(function(){
     });
   });
 
-  $('.close_info_panel').on('click',function(){
+  $(".close_info_panel_action").on('click',function(){
     close_info_panel();
   });
 
