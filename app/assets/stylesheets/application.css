@@ -105,7 +105,6 @@ A{
 /* Main Menu Components */
 .main_menu{
   color: black;
-  margin-bottom: 25px;
 }
 .main_menu H1{
     font-size: 34px;
@@ -131,6 +130,11 @@ A{
   font-weight:bold;
 }
 /* Info Panel Components */
+#info_content{
+  padding-top: 17px;
+  z-index: 999;
+  background: url("/assets/info_panel_background.png");
+}
 .info_title{
   font-weight:bold;
   font-size: 34px;
@@ -146,8 +150,8 @@ A{
   font-size: 15px;
 }
 .info_close, .close_info_panel_action{
-  margin-top: 15px;
-  margin-bottom: 7px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-size: 12px;
   font-weight:bold;
 }

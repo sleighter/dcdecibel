@@ -189,7 +189,7 @@ $(document).ready(function(){
   });
 
   $(".close_info_panel_action").on('click',function(){
-    close_info_panel();
+    closeInfoPanel();
   });
 
   if(!$.cookie('close_info_panel')){
