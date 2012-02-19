@@ -64,6 +64,9 @@ A, A:visited {
 .bold{
   font-weight: bold;
 }
+.hidden{
+  visibility: hidden;
+}
 .right-align {
   text-align: right;
 }
@@ -110,7 +113,9 @@ A, A:visited {
     letter-spacing: 1px;
 }
 
-.main_menu H1:hover {
+.main_menu H1:hover, .main_menu H1 A:hover {
+  text-decoration: none;
+  font-weight:bold;
 }
 .main_menu_item{
   letter-spacing: 1px;
@@ -121,7 +126,7 @@ A, A:visited {
 #main_menu_search{ float: right; width: 188px; cursor: pointer;}
 
 .selected, .selected H1{
-  font-weight: bold;
+  font-weight:bold;
 }
 
 

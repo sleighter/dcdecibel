@@ -40,6 +40,7 @@ P {
 
 A:hover {
    background-color: transparent;
+   text-decoration: underline;
 }
 
 .drop_down_arrow{
@@ -133,5 +134,11 @@ A:hover {
 .contact-container p{
   font-size: 25px;
   line-height: 25px;
+}
+
+/* Sortable Headers */
+.sorting_img, .sorting_asc_img, .sorting_desc_img{display:none;}
+.sorting .sorting_img, .sorting_asc .sorting_asc_img, .sorting_desc .sorting_desc_img{
+  display: inline;
 }
 

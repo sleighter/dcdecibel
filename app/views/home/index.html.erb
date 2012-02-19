@@ -6,10 +6,38 @@
 <table id="events-table" class="container_16" border="0" cellpadding="0" cellspacing="0">
   <thead>
   <tr>
-    <th class="grid_6"><h2>ARTIST</h2></th>
-    <th class="grid_5"><h2>VENUE</h2></th>
-    <th class="grid_3"><h2>DATE</h2></th>
-    <th class="grid_2 centered"><h2>TICKETS</h2></th>
+    <th class="grid_2">
+      <h2>
+        <span>DATE</span>
+        <span class="sorting_img">⇅</span>
+        <span class="sorting_asc_img">↧</span>
+        <span class="sorting_desc_img">↥</span>
+      </h2>
+    </th>
+    <th class="grid_6">
+      <h2>
+        <span>ARTIST</span>
+        <span class="sorting_img">⇅</span>
+        <span class="sorting_asc_img">↧</span>
+        <span class="sorting_desc_img">↥</span>
+      </h2>
+    </th>
+    <th class="grid_5">
+      <h2>
+        <span>VENUE</span>
+        <span class="sorting_img">⇅</span>
+        <span class="sorting_asc_img">↧</span>
+        <span class="sorting_desc_img">↥</span>
+      </h2>
+    </th>
+    <th class="grid_3 centered">
+      <h2>
+        <span>TICKETS</span>
+        <span class="sorting_img">⇅</span>
+        <span class="sorting_asc_img">↧</span>
+        <span class="sorting_desc_img">↥</span>
+      </h2>
+    </th>
     <th class="date-sort-column"><h2>DATE_SORT</h2></th>
     <th class="price-sort-column"><h2>PRICE_SORT</h2></th>
   </tr>
@@ -17,6 +45,9 @@
   <tbody>
     <% @events.each do |event| %>
       <tr class="<%= (event.event_datetime.to_date == Time.now.to_date) ? 'tonight-event' : ''%>">
+        <td class="grid_2 event_datetime" data-sortvalue="">
+          <%= event.event_datetime.to_date == Time.now.to_date ? "TONIGHT" : event.event_datetime.strftime("%a, %-m/%d").upcase %>
+        </td>
         <td class="band-link drop_link grid_6 " data-bandid="<%= event.bandid %>" >
           <%= event.title.upcase %>
           <% if event.bands.first and event.bands.first.is_editors_choice %>
@@ -28,10 +59,7 @@
           <%= event.venue ? event.venue.name.upcase : "" %>
           <img class="drop_down_arrow" src="/assets/dropdownarrow.png" alt="down-arrow"/>
         </td>
-        <td class="grid_3" data-sortvalue="">
-          <%= event.event_datetime.to_date == Time.now.to_date ? "TONIGHT" : event.event_datetime.strftime("%a, %b %d").upcase %>
-        </td>
-        <td class="grid_2 centered drop_link ticket-link" data-eventid="<%=event.id %>">
+        <td class="grid_3 drop_link ticket-link centered" data-eventid="<%=event.id %>">
           <% if event.price_min and event.price_max %>
             <%= number_to_currency(event.price_min, :precision => 0) + " - " + number_to_currency(event.price_max, :precision => 0) %>
           <% elsif ((event.price_min and (event.price_min > 0)) or (event.price_max and (event.price_max > 0))) %>
@@ -39,7 +67,7 @@
           <% elsif event.venue.ticket_min_price and event.venue.ticket_max_price%>
             <%= number_to_currency(event.venue.ticket_min_price, :precision => 0) + " - " + number_to_currency(event.venue.ticket_max_price, :precision => 0) %>
           <% else %>
-            SOLD OUT
+            HERE
           <% end %>
           <img class="drop_down_arrow" src="/assets/dropdownarrow.png" alt="down-arrow"/>
         </td>
@@ -98,7 +126,7 @@
   <div id="details-content" class="centered">
     {{if address}}
       <p>
-        <a href="http://maps.google.com/?q=${address} ${city_address} ${state} ${zip}" target="_blank">
+        <a class="address_link" href="http://maps.google.com/?q=${address} ${city_address} ${state} ${zip}" target="_blank">
           <span>${address}</span><br/>
           <span>${city_address}, ${state} ${zip}</span>
         </a>
@@ -109,7 +137,7 @@
     {{/if}}
     {{if homepage_url}}
       <p>
-        <a href="${homepage_url}">HOMEPAGE</a>
+        <a href="${homepage_url}" target="_blank">HOMEPAGE</a>
       </p>
     {{/if}}
     {{if is_editors_choice}}

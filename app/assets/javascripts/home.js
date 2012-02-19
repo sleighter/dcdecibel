@@ -38,7 +38,19 @@ function templateDetails(template,detailsDiv,data){
     });
   }
 }
-
+function removeDuplicateDates(){
+  var currentDate;
+  $("TD.event_datetime").each(function(){
+    if($(this).html() == currentDate){
+      $(this).addClass("hidden");
+    }else{
+      currentDate = $(this).html();
+    }
+  });
+}
+function showAllDates(){
+  $("TD.event_datetime").removeClass("hidden");
+}
 function closeDetails(){
     $('#details-div').slideUp(100,function(){$(this).height(0);});
     $('#details-row').slideUp(100,function(){$(this).height(0);});
@@ -49,7 +61,7 @@ function closeDetails(){
     }
     $("#details-row").insertAfter("#holder-row");
 }
-
+var FirstTableDraw = true;
 $(document).ready(function(){
   $('#events-table').dataTable({
     bPaginate: false,
@@ -58,12 +70,17 @@ $(document).ready(function(){
     aaSorting: [],
     fnPreDrawCallback: function(oSettings){
       closeDetails();
+      if (!FirstTableDraw){
+        showAllDates();
+      }
+      FirstTableDraw = false;
     },
     "aoColumnDefs": [
-      { "iDataSort": 4, "aTargets": [ 2 ] },
+      { "iDataSort": 4, "aTargets": [ 0 ] },
       { "iDataSort": 5, "aTargets": [ 3 ] }
     ]
   });
+  removeDuplicateDates();
   $('.band-link').on('click',function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
