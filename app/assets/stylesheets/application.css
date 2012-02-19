@@ -115,7 +115,6 @@ A, A:visited {
 
 .main_menu H1:hover, .main_menu H1 A:hover {
   text-decoration: none;
-  font-weight:bold;
 }
 .main_menu_item{
   letter-spacing: 1px;
