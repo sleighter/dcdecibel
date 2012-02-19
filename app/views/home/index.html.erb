@@ -111,9 +111,9 @@
     </span>
     {{/if}}
     <span class="band-links">
+      {{if homepage_url}}<a href="${homepage_url}" target="_blank">HOMEPAGE</a> /{{/if}}
       {{if wikipedia_id}}<a href="http://en.wikipedia.org/wiki/${wikipedia_id}" target="_blank">WIKIPEDIA</a> /{{/if}}
-      {{if last_fm_id}}<a href="http://www.last.fm/music/${last_fm_id}" target="_blank">LAST.FM</a> /{{/if}}
-      {{if homepage_url}}<a href="${homepage_url}" target="_blank">HOMEPAGE</a>{{/if}}
+      {{if last_fm_id}}<a href="http://www.last.fm/music/${last_fm_id}" target="_blank">LAST.FM</a>{{/if}}
   </span>
   </div>
 </div>
@@ -154,13 +154,13 @@
     ONLY AVAILABLE AT THE DOOR
   {{else}}
   <span>
-    <a href="http://washingtondc.craigslist.org/search/eee?query=${encodeURI(name)}&catAbb=sss&srchType=A" alt="Craigslist" target="_blank">Craigslist</a>
-    <span> / </span>
-    <a href="http://www.stubhub.com/search/doSearch?searchStr=${encodeURI(name)}&location=525;Washington%20D.C.,%20Dist.%20of%20Columbia" alt="StubHub" target="_blank">StubHub</a>
     {{if tickets_url }}
-      <span> / </span>
       <a href="${tickets_url}" alt="Tickets" target="_blank">OFFICIAL</a>
+      <span> / </span>
     {{/if}}
+    <a href="http://www.stubhub.com/search/doSearch?searchStr=${encodeURI(name)}&location=525;Washington%20D.C.,%20Dist.%20of%20Columbia" alt="StubHub" target="_blank">StubHub</a>
+    <span> / </span>
+    <a href="http://washingtondc.craigslist.org/search/eee?query=${encodeURI(name)}&catAbb=sss&srchType=A" alt="Craigslist" target="_blank">Craigslist</a>
   </span>
   {{/if}}
 </div>

@@ -129,6 +129,19 @@ A{
 .selected, .selected H1{
   font-weight:bold;
 }
+
+/* Search Panel Components */
+#search_panel{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+#search_submit{
+  position:relative;
+  top: 2px;
+  font-weight:bold;
+  font-size: 21px;
+}
+
 /* Info Panel Components */
 #info_content{
   padding-top: 17px;
@@ -155,7 +168,6 @@ A{
   font-size: 12px;
   font-weight:bold;
 }
-
 
 /* Special Components */
 .ec-star {

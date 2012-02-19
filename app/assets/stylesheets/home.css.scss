@@ -123,14 +123,17 @@ A:hover {
 .lower-case{
   text-transform: lowercase;
 }
+.upper-case{
+  text-transform: uppercase;
+}
 .about-container {
+  margin-top: 15px;
   margin-bottom: 15px;
 }
 
 .about-container p {
-  font-size: 30px;
-  line-height: 30px;
-  font-weight:bold;
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .contact-container{
@@ -141,8 +144,6 @@ A:hover {
   font-size: 25px;
   line-height: 25px;
 }
-
-
 
 /* Sortable Headers */
 .sorting_img, .sorting_asc_img, .sorting_desc_img{display:none;}

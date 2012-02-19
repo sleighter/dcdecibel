@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <link rel="icon" type="image/png" href="/assets/ec-star.png" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
   <meta name="google-site-verification" content="ENxKPdNV-rHWj9y9OyX622KR6-y61YP7_zhA4jkxNi0" />
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -46,17 +46,17 @@
 </div>
 <div class="clear"></div>
 <div class="container_12" id="search_container" <%= @show_search ? "" : "style='display:none;'" %> >
-  <div class="grid_6 prefix_3 centered">
+  <div class="grid_6 prefix_3 centered" id="search_panel">
       <input type="text" id="search_box" name="q" value="<%= @query %>" />
       <a href="javascript:void(null)" id="search_submit">SEARCH</a>
   </div>
   <div class="clear"></div>
-  <div class="horizontal-divider grid_12" style="margin-top:25px; margin-bottom:25px;"></div>
+  <div class="horizontal-divider grid_12"></div>
 </div>
 <div class="container_12 centered" id="info_panel" style="display:none;">
   <div class="grid_12" id="info_content">
     <p class="info_title">dc decibel is a live concert aggregate for the district</p>
-    <p class="info_subtitle">it looks like it's your first time visiting us. here are some quick tips to help get you started:</p>
+    <p class="info_subtitle">it looks like it's your first time visiting us. here are some quick tips to help you get started:</p>
     <p class="info_line_item"><em>everything is interactive!</em> click an artist for a bio, a venue for directions, or a ticket for buying options.</p>
     <p class="info_line_item">check out our blog and follow us on facebook for weekly recommendations, ticket giveaways, and more.</p>
     <p class="info_close"><a href="javascript:null(void)" class="close_info_panel_action">CLICK TO CLOSE</a></p>
