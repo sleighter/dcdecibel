@@ -25,7 +25,7 @@ h2 {
   letter-spacing: 2px;
 }
 
-h2:hover {
+TH h2:hover {
   color: #bca474;
 }
 
@@ -139,6 +139,10 @@ A:hover {
 }
 
 #info_panel #info_content{
+  margin-top: -25px;
+  margin-bottom: -25px;
+  padding-top: 25px;
+  padding-bottom: 12px;
   background: url("/assets/info_panel_background.png");
 }
 
