@@ -9,33 +9,33 @@
     <th class="grid_2">
       <h2>
         <span>DATE</span>
-        <span class="sorting_img">⇅</span>
-        <span class="sorting_asc_img">↧</span>
-        <span class="sorting_desc_img">↥</span>
+        <img class="sorting_img" src="/assets/unsorted.png"/>
+        <img class="sorting_asc_img" src="/assets/ascending.png"/>
+        <img class="sorting_desc_img" src="/assets/descending.png"/>
       </h2>
     </th>
     <th class="grid_6">
       <h2>
         <span>ARTIST</span>
-        <span class="sorting_img">⇅</span>
-        <span class="sorting_asc_img">↧</span>
-        <span class="sorting_desc_img">↥</span>
+        <img class="sorting_img" src="/assets/unsorted.png"/>
+        <img class="sorting_asc_img" src="/assets/ascending.png"/>
+        <img class="sorting_desc_img" src="/assets/descending.png"/>
       </h2>
     </th>
     <th class="grid_5">
       <h2>
         <span>VENUE</span>
-        <span class="sorting_img">⇅</span>
-        <span class="sorting_asc_img">↧</span>
-        <span class="sorting_desc_img">↥</span>
+        <img class="sorting_img" src="/assets/unsorted.png"/>
+        <img class="sorting_asc_img" src="/assets/ascending.png"/>
+        <img class="sorting_desc_img" src="/assets/descending.png"/>
       </h2>
     </th>
     <th class="grid_3 centered">
       <h2>
         <span>TICKETS</span>
-        <span class="sorting_img">⇅</span>
-        <span class="sorting_asc_img">↧</span>
-        <span class="sorting_desc_img">↥</span>
+        <img class="sorting_img" src="/assets/unsorted.png"/>
+        <img class="sorting_asc_img" src="/assets/ascending.png"/>
+        <img class="sorting_desc_img" src="/assets/descending.png"/>
       </h2>
     </th>
     <th class="date-sort-column"><h2>DATE_SORT</h2></th>
@@ -53,11 +53,9 @@
           <% if event.bands.first and event.bands.first.is_editors_choice %>
             <img class="ec-star" src="/assets/ec-star.png" alt="ec-star"/>
           <% end %>
-          <img class="drop_down_arrow" src="/assets/dropdownarrow.png" alt="down-arrow"/>
         </td>
         <td class="venue-link drop_link grid_5" data-sortvalue="<%=event.venue.name%>" data-venueid="<%= event.venue.id %>">
           <%= event.venue ? event.venue.name.upcase : "" %>
-          <img class="drop_down_arrow" src="/assets/dropdownarrow.png" alt="down-arrow"/>
         </td>
         <td class="grid_3 drop_link ticket-link centered" data-eventid="<%=event.id %>">
           <% if event.price_min and event.price_max %>
@@ -69,7 +67,6 @@
           <% else %>
             HERE
           <% end %>
-          <img class="drop_down_arrow" src="/assets/dropdownarrow.png" alt="down-arrow"/>
         </td>
         <td class="date-sort-column">
           <%=event.event_datetime.to_i%>

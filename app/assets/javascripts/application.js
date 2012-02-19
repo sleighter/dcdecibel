@@ -9,6 +9,7 @@
 //= require jquery.tmpl.min
 //= require jquery.dataTables.min
 //= require jquery.lionbars.0.3.min
+//= require jquery.cookie
 //= require bands
 //= require cities
 //= require events
@@ -40,6 +41,9 @@ $(document).ready(function(){
 function show_search(){
   $("#search_container").slideDown();
   $("#search_box").focus();
+  if(close_info_panel){
+    close_info_panel();
+  }
 }
 
 function hide_search(){

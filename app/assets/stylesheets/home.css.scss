@@ -43,19 +43,6 @@ A:hover {
    text-decoration: underline;
 }
 
-.drop_down_arrow{
-  display: none;
-  margin-top: -4px;
-}
-
-.drop_link:hover .drop_down_arrow{
-  display: inline;
-}
-
-.drop_link.selected .drop_down_arrow{
-  display: none;
-}
-
 #events-table TH {
   cursor: pointer;
 }
@@ -136,9 +123,14 @@ A:hover {
   line-height: 25px;
 }
 
+#info_panel #info_content{
+  background: url("/assets/info_panel_background.png");
+}
+
 /* Sortable Headers */
 .sorting_img, .sorting_asc_img, .sorting_desc_img{display:none;}
 .sorting .sorting_img, .sorting_asc .sorting_asc_img, .sorting_desc .sorting_desc_img{
   display: inline;
+  margin-top:-5px;
 }
 

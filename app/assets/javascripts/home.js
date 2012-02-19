@@ -61,8 +61,17 @@ function closeDetails(){
     }
     $("#details-row").insertAfter("#holder-row");
 }
+function openInfoPanel(){
+  $('#info_panel').slideDown();
+}
+function closeInfoPanel(){
+  $.cookie('close_info_panel','true')
+  $('#info_panel').slideUp();
+}
+
 var FirstTableDraw = true;
 $(document).ready(function(){
+
   $('#events-table').dataTable({
     bPaginate: false,
     bFilter: false,
@@ -80,7 +89,9 @@ $(document).ready(function(){
       { "iDataSort": 5, "aTargets": [ 3 ] }
     ]
   });
+
   removeDuplicateDates();
+
   $('.band-link').on('click',function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
@@ -121,6 +132,7 @@ $(document).ready(function(){
       });
     });
   });
+
   $('.venue-link').on('click',function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
@@ -148,6 +160,7 @@ $(document).ready(function(){
       });
     });
   });
+
   $('.ticket-link').on('click', function(){
     var detailsRow = $('#details-row');
     var detailsDiv = $('#details-div');
@@ -174,5 +187,13 @@ $(document).ready(function(){
       });
     });
   });
+
+  $('.close_info_panel').on('click',function(){
+    close_info_panel();
+  });
+
+  if(!$.cookie('close_info_panel')){
+    openInfoPanel();
+  }
 });
 
