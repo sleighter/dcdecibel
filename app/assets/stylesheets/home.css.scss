@@ -127,19 +127,21 @@ A:hover {
   text-transform: uppercase;
 }
 .about-container {
-    font-family: georgia;
-    font-size: 13px;
-    line-height: 20px;
-    text-align: justify;
-    text-transform: lowercase;
+  margin-top:15px;
+  font-family: georgia;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: justify;
+  text-transform: lowercase;
 }
 
 .about-container p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 14px;
 }
 
 .contact-container{
+  margin-top:15px;
   margin-bottom: 15px;
 }
 
