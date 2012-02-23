@@ -8,6 +8,6 @@ class Event < ActiveRecord::Base
   scope :tonight, where("event_datetime > ? AND event_datetime < ?",Time.now.utc - 5.hours, Time.now.utc.end_of_day - 5.hours)
   scope :between_dates, lambda{ |begin_date,end_date| where("event_datetime >= ?",begin_date) and where("event_datetime <= ?", end_date)}
 
-  attr_accessor :bandid, :title
+  attr_accessor :bandid, :title, :is_in_presale
 end
 

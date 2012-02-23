@@ -53,9 +53,26 @@ H1{
 }
 
 /* Basic Components */
-A{
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+A {
+  text-decoration: none;
   color: black;
 }
+
+A:hover, TH h2:hover{
+   background-color: transparent;
+   color: #C3B091;
+}
+
+P {
+  margin-bottom: 15px;
+}
+
 .centered {
   text-align: center;
   margin-left: auto;
@@ -131,15 +148,20 @@ A{
 }
 
 /* Search Panel Components */
-#search_panel{
-  margin-top: 15px;
-  margin-bottom: 15px;
+#search_container, #search_container A{
+  font-size: 17px;
+  color: #C3B091;
 }
 #search_submit{
   position:relative;
-  top: 2px;
-  font-weight:bold;
-  font-size: 21px;
+  top: 1px;
+}
+#filter_container, #close_search_container{
+  position:relative;
+  top: 4px;
+}
+#close_search_container A{
+  color: #d8d8d8;
 }
 
 /* Info Panel Components */

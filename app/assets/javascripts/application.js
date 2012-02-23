@@ -21,7 +21,7 @@
 var last_fm_api_key = '7d032ba61568e866f8f9cd751a51e69d';
 
 $(document).ready(function(){
-  $('#menu_search_link').on('click',function(){
+  $('.search_link').on('click',function(){
     if ($('#search_container').is(':visible')){
       hide_search();
     }else{

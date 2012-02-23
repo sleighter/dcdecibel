@@ -6,7 +6,7 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="icon" type="image/png" href="/assets/ec-star.png" />
   <meta name="google-site-verification" content="ENxKPdNV-rHWj9y9OyX622KR6-y61YP7_zhA4jkxNi0" />
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -33,8 +33,8 @@
 </div>
 <![endif]-->
 <div class="container_16" id="title_container">
-  <div class="grid_16 title centered" >
-  </div>
+  <a href="/"class="grid_16 title centered" >
+  </a>
 </div>
 <div class="container_12 main_menu">
   <div class="grid_12">
@@ -45,7 +45,7 @@
     <h1><%= link_to "JUST ANNOUNCED", "/?filter=justannounced" %></h1>
   </div>
   <div class="centered main_menu_item <%= params[:q] ? 'selected':''%>" id="main_menu_search">
-    <h1><a href="javascript:void(null)" id="menu_search_link">SEARCH</a></h1>
+    <h1><a href="javascript:void(null)" class="search_link">SEARCH</a></h1>
   </div>
   <div class="centered main_menu_item <%= controller.action_name == 'about' ? 'selected' : '' %>" id="main_menu_about">
     <h1><a class="main_menu_light_link" href="/about">ABOUT</a></h1>
@@ -58,13 +58,26 @@
   <div class="horizontal-divider grid_12"></div>
 </div>
 <div class="clear"></div>
-<div class="container_12" id="search_container" <%= @show_search ? "" : "style='display:none;'" %> >
-  <div class="grid_6 prefix_3 centered" id="search_panel">
-      <input type="text" id="search_box" name="q" value="<%= @query %>" />
-      <a href="javascript:void(null)" id="search_submit">SEARCH</a>
+<div class="container_16" id="search_container" >
+  <div class="grid_5" id="search_panel">
+    <a href="javascript:void(null)" id="search_submit" class="bold">SEARCH:</a>
+    <input type="text" id="search_box" name="q" value="<%= @query %>" />
+  </div>
+  <div class="grid_7" id="filter_container">
+    <span class="bold"> SHOW: </span>
+    <a class="filter_item <%= params[:filter] == 'all' ? 'selected' : ''%>" href="/?filter=all">ALL</a>
+    <span> / </span>
+    <a class="filter_item <%= params[:filter] == 'jazz' ? 'selected' : ''%>" href="/?filter=jazz">JAZZ</a>
+    <span> / </span>
+    <a class="filter_item <%= params[:filter] == 'classical' ? 'selected' : ''%>" href="/?filter=classical">CLASSICAL</a>
+    <span> / </span>
+    <a class="filter_item <%= params[:filter] == 'local' ? 'selected' : ''%>" href="/?filter=local">LOCAL ACTS</a>
+  </div>
+  <div class="grid_3 prefix_1" id="close_search_container" style="text-align:right;">
+    <a href="javascript:void(null)" class="search_link">CLICK TO CLOSE</a>
   </div>
   <div class="clear"></div>
-  <div class="horizontal-divider grid_12"></div>
+  <div class="horizontal-divider grid_16"></div>
 </div>
 <div class="container_12 centered" id="info_panel" style="display:none;">
   <div class="grid_12" id="info_content">

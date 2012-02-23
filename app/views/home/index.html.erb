@@ -50,8 +50,11 @@
         </td>
         <td class="band-link drop_link grid_6 " data-bandid="<%= event.bandid %>" >
           <%= event.title.upcase %>
-          <% if event.bands.first and event.bands.first.is_editors_choice %>
+          <% if event.band and event.band.is_editors_choice %>
             <img class="ec-star" src="/assets/ec-star.png" alt="ec-star"/>
+          <% end %>
+          <% if event.is_in_presale %>
+            <span href="<%= event.presale_url %>" class="bold"> - PRESALE</span>
           <% end %>
         </td>
         <td class="venue-link drop_link grid_5" data-sortvalue="<%=event.venue.name%>" data-venueid="<%= event.venue.id %>">
@@ -154,6 +157,10 @@
     ONLY AVAILABLE AT THE DOOR
   {{else}}
   <span>
+    {{if presale_url}}
+      <a href="${presale_url}" alt="Presale" target="_blank" class="bold">PRESALE</a>
+      <span> / </span>
+    {{/if}}
     {{if tickets_url }}
       <a href="${tickets_url}" alt="Tickets" target="_blank">OFFICIAL</a>
       <span> / </span>

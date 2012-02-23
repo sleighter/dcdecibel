@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120210044644) do
+ActiveRecord::Schema.define(:version => 20120223014051) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer   "resource_id",   :null => false
@@ -85,11 +85,12 @@ ActiveRecord::Schema.define(:version => 20120210044644) do
     t.string    "tickets_url"
     t.float     "price_min"
     t.float     "price_max"
-    t.datetime  "presale_start_datetime"
-    t.datetime  "presale_end_datetime"
+    t.timestamp "presale_start_datetime"
+    t.timestamp "presale_end_datetime"
     t.string    "presale_url"
     t.integer   "headline_band_id"
     t.boolean   "tickets_sold_at_door"
+    t.datetime  "announced_datetime"
   end
 
   create_table "neighborhoods", :force => true do |t|
