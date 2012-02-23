@@ -53,7 +53,7 @@ H1{
 }
 
 /* Basic Components */
-h2 {
+TD h2 {
   font-size: 20px;
   margin-bottom: 10px;
   letter-spacing: 2px;
@@ -95,6 +95,11 @@ P {
   background-color: black;
   clear: both;
 }
+.thick_horizontal_divider {
+  height:2px;
+  background-color: black;
+  clear: both;
+}
 
 /* Title Components */
 #title_container{
@@ -110,7 +115,7 @@ P {
 /* Footer Components */
 .footer-menu {
   text-align: center;
-  width: 356px;
+  width: 367px;
 }
 .footer-menu UL {
   list-style: none;
