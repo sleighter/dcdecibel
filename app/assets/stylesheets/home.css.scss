@@ -7,6 +7,7 @@ THEAD TH{
   font-weight: bold;
   color: #BBB;
   text-align: left;
+  margin-bottom: 10px;
 }
 
 TR{
@@ -38,6 +39,7 @@ TD {
 }
 #events-table TH {
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 #details-row {
@@ -121,6 +123,7 @@ TD {
 .contact-container p{
   font-size: 25px;
   line-height: 25px;
+  margin-bottom: 15px;
 }
 
 /* Sortable Headers */
