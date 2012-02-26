@@ -23,7 +23,9 @@ class BandsController < ApplicationController
   # GET /bands/1.json
   def show
     @band = Band.find(params[:id])
-
+    if(!@band.last_fm_id)
+      @band.last_fm_id = GGI.escape(@band.name)
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @band }
@@ -90,3 +92,4 @@ class BandsController < ApplicationController
     end
   end
 end
+
