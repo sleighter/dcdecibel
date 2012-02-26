@@ -24,7 +24,7 @@ class BandsController < ApplicationController
   def show
     @band = Band.find(params[:id])
     if(@band.last_fm_id == nil or @band.last_fm_id == "")
-      @band.last_fm_id = GGI.escape(@band.name)
+      @band.last_fm_id = CGI.escape(@band.name)
     end
     respond_to do |format|
       format.html # show.html.erb
