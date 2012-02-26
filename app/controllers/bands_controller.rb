@@ -23,7 +23,7 @@ class BandsController < ApplicationController
   # GET /bands/1.json
   def show
     @band = Band.find(params[:id])
-    if(!@band.last_fm_id)
+    if(@band.last_fm_id == nil or @band.last_fm_id == "")
       @band.last_fm_id = GGI.escape(@band.name)
     end
     respond_to do |format|
