@@ -5,6 +5,7 @@ ActiveAdmin.register Event do
     column :name, :sortable => :name
     column :venue
     column :event_datetime
+    column :band
     column :bands do |event|
       event.bands.take(3).each do |band|
         span do
@@ -19,17 +20,20 @@ ActiveAdmin.register Event do
       f.inputs "Details" do
         f.input :name
         f.input :venue
-        f.input :event_datetime
-        f.input :announced_datetime
-        f.input :tickets_sold_at_door
-	      f.input :tickets_url
-	      f.input :price_min
-	      f.input :price_max
-	      f.input :presale_start_datetime
-	      f.input :presale_end_datetime
-	      f.input :presale_url
+        f.input :event_datetime, :label => "Event Date"
+        f.input :announced_datetime, :label => "Date Announced"
 	      f.input :band, :label => "Headline Band"
-        f.input :bands
+        f.input :bands, :label => "Opening Bands"
+        f.input :opening_bands, :label => "Other Opening Bands"
+        f.input :has_no_band, :label => "No Band"
+        f.input :description, :label => "Description for No-Band Events"
+	      f.input :price_min, :label => "Min Ticket Price"
+	      f.input :price_max, :label => "Max Ticket Price"
+        f.input :tickets_sold_at_door, :label => "Tickets Sold Only At Venue"
+	      f.input :tickets_url, :label => "Offical Ticket URL"
+	      f.input :presale_start_datetime, :label => "Presale Start Date"
+	      f.input :presale_end_datetime, :label => "Presale End Date"
+	      f.input :presale_url, :label => "Presale URL"
       end
       f.buttons
   end

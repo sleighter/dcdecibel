@@ -48,7 +48,7 @@
         <td class="grid_2 event_datetime" data-sortvalue="">
           <%= event.event_datetime.to_date == Time.now.to_date ? "TONIGHT" : event.event_datetime.strftime("%a, %-m/%d").upcase %>
         </td>
-        <td class="band-link drop_link grid_6 " data-bandid="<%= event.bandid %>" >
+        <td class="band-link drop_link grid_6 " data-bandid="<%= event.bandid %>" data-eventid="<%= event.id %>" >
           <%= event.title.upcase %>
           <% if event.band and event.band.is_editors_choice %>
             <img class="ec-star" src="/assets/ec-star.png" alt="ec-star"/>
@@ -100,6 +100,12 @@
 
 <script type="text/x-jquery-tmpl" id="band-details-row-template">
 <div id="details-content">
+  {{if openingBands}}
+  <div class="centered">
+    <p>OPENERS: ${openingBands}</p><br/>
+  </div>
+  {{/if}}
+  <div class="clear"></div>
   {{if image_url}}<img class="band-image" src="${image_url}" alt="${name}"/>{{/if}}
   <div class="band-bio">
     <p>

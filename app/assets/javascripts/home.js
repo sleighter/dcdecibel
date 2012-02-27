@@ -107,6 +107,7 @@ $(document).ready(function(){
     $(openItem).addClass('selected');
     var thisRow = $(this).parent('tr');
     var itemId = $(this).attr('data-bandid');
+    var eventId = $(this).attr('data-eventid');
     detailsDiv.slideUp('fast',function() {
       detailsRow.slideUp('fast');
       detailsDiv.hide();
@@ -115,20 +116,26 @@ $(document).ready(function(){
       detailsDiv.slideDown('fast');
       detailsRow.slideDown('fast');
       $.get("/bands/" + itemId.toString() + ".json", function(data){
-        if(data.last_fm_id){
-          $.get(lastFmUrl(data.last_fm_id),
-          function(data2){
-              if(!data2.artist){
-                data2 = JSON.parse(data2);
-              }
-              if (data2.artist){
-                data.image_url = data2.artist.image[3]['#text'];
-              }
-              templateDetails($("#band-details-row-template"),detailsDiv,data);
-          });
-        }else{
-          templateDetails($("#band-details-row-template"),detailsDiv,data);
+        if (data.error){
+          closeDetails();
         }
+        $.get("/events/" + eventId.toString() + ".json",function(eventData){
+          data.openingBands = eventData.opening_bands;
+          if(data.last_fm_id){
+            $.get(lastFmUrl(data.last_fm_id),
+            function(data2){
+                if(!data2.artist){
+                  data2 = JSON.parse(data2);
+                }
+                if (data2.artist){
+                  data.image_url = data2.artist.image[3]['#text'];
+                }
+                templateDetails($("#band-details-row-template"),detailsDiv,data);
+            });
+          }else{
+            templateDetails($("#band-details-row-template"),detailsDiv,data);
+          }
+        });
       });
     });
   });
