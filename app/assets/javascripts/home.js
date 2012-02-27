@@ -124,14 +124,14 @@ $(document).ready(function(){
           return;
         }
         $.get("/bands/" + itemId.toString() + ".json", function(data){
-          if (data.error){
-            closeDetails();
-            return;
-          }
           data.openingBands = eventData.opening_bands;
           if(data.last_fm_id){
             $.get(lastFmUrl(data.last_fm_id),
             function(data2){
+                if (data2.error){
+                  templateDetails($("#band-details-row-template"),detailsDiv,data);
+                  return;
+                }
                 if(!data2.artist){
                   data2 = JSON.parse(data2);
                 }
