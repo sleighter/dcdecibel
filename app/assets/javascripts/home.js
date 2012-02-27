@@ -115,11 +115,19 @@ $(document).ready(function(){
       detailsDiv.html(loadingHolder);
       detailsDiv.slideDown('fast');
       detailsRow.slideDown('fast');
-      $.get("/bands/" + itemId.toString() + ".json", function(data){
-        if (data.error){
-          closeDetails();
+      $.get("/events/" + eventId.toString() + ".json",function(eventData){
+        if (eventData.has_no_band)
+        {
+          var data = {bio:""};
+          data.bio = eventData.description;
+          templateDetails($("#band-details-row-template"),detailsDiv,data);
+          return;
         }
-        $.get("/events/" + eventId.toString() + ".json",function(eventData){
+        $.get("/bands/" + itemId.toString() + ".json", function(data){
+          if (data.error){
+            closeDetails();
+            return;
+          }
           data.openingBands = eventData.opening_bands;
           if(data.last_fm_id){
             $.get(lastFmUrl(data.last_fm_id),
