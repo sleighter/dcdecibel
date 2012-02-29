@@ -100,17 +100,18 @@
 
 <script type="text/x-jquery-tmpl" id="band-details-row-template">
 <div id="details-content">
-  {{if openingBands}}
-  <div class="centered">
-    <p>OPENERS: ${openingBands}</p><br/>
-  </div>
-  {{/if}}
   <div class="clear"></div>
   {{if image_url}}<img class="band-image" src="${image_url}" alt="${name}"/>{{/if}}
   <div class="band-bio">
     <p>
       ${bio}
     </p>
+    {{if openingBands}}
+    <br/>
+    <p>
+      OPENERS: ${openingBands}
+    </p>
+    {{/if}}
   </div>
   <div class="clear-both">
     {{if is_editors_choice}}
@@ -120,9 +121,23 @@
     </span>
     {{/if}}
     <span class="band-links">
-      {{if homepage_url}}<a href="${homepage_url}" target="_blank">HOMEPAGE</a> /{{/if}}
-      {{if wikipedia_id}}<a href="http://en.wikipedia.org/wiki/${wikipedia_id}" target="_blank">WIKIPEDIA</a> /{{/if}}
-      {{if last_fm_id}}<a href="http://www.last.fm/music/${last_fm_id}" target="_blank">LAST.FM</a>{{/if}}
+      {{if homepage_url}}
+        <a href="${homepage_url}" target="_blank">HOMEPAGE</a>
+        {{if wikipedia_id}}
+          <span> / </span>
+        {{else last_fm_id}}
+          <span> / </span>
+        {{/if}}
+      {{/if}}
+      {{if wikipedia_id}}
+        <a href="http://en.wikipedia.org/wiki/${wikipedia_id}" target="_blank">WIKIPEDIA</a>
+        {{if last_fm_id}}
+          <span> / </span>
+        {{/if}}
+      {{/if}}
+      {{if last_fm_id}}
+        <a href="http://www.last.fm/music/${last_fm_id}" target="_blank">LAST.FM</a>
+      {{/if}}
   </span>
   </div>
 </div>

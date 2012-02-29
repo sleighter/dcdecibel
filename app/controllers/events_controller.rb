@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     if ((@event.opening_bands == nil or @event.opening_bands == "") and @event.bands)
       @event.opening_bands = "";
       @event.bands.each do |b|
-        if (b.name != @event.band.name)
+        if (@event.band and b.name != @event.band.name)
           @event.opening_bands = @event.opening_bands + " " + b.name
         end
       end
