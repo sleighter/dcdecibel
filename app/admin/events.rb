@@ -26,6 +26,8 @@ ActiveAdmin.register Event do
         f.input :bands, :label => "Opening Bands"
         f.input :opening_bands, :label => "Other Opening Bands"
         f.input :has_no_band, :label => "No Band"
+        f.input :is_jazz, :label => "Jazz Event"
+        f.input :is_classical, :label => "Classical Event"
         f.input :description, :label => "Description for No-Band Events"
 	      f.input :price_min, :label => "Min Ticket Price"
 	      f.input :price_max, :label => "Max Ticket Price"
