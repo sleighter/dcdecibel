@@ -29,10 +29,14 @@ ActiveAdmin.register Event do
         f.input :is_jazz, :label => "Jazz Event"
         f.input :is_classical, :label => "Classical Event"
         f.input :description, :label => "Description for No-Band Events"
+      end
+      f.inputs "Tickets" do
 	      f.input :price_min, :label => "Min Ticket Price"
 	      f.input :price_max, :label => "Max Ticket Price"
         f.input :tickets_sold_at_door, :label => "Tickets Sold Only At Venue"
 	      f.input :tickets_url, :label => "Offical Ticket URL"
+      end
+      f.inputs "Presale" do
 	      f.input :presale_start_datetime, :label => "Presale Start Date"
 	      f.input :presale_end_datetime, :label => "Presale End Date"
 	      f.input :presale_url, :label => "Presale URL"
