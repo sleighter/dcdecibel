@@ -15,10 +15,10 @@ class HomeController < ApplicationController
         @events = Event.just_announced(:order => "created_at DESC")
         @events.sort! { |a,b| b.created_at <=> a.created_at }
       elsif(@filter == "jazz")
-        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.band and e.band.is_jazz}
+        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.is_jazz or (e.band and e.band.is_jazz)}
         @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       elsif(@filter == "classical")
-        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.band and e.band.is_classical}
+        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.is_classical or (e.band and e.band.is_classical)}
         @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       elsif(@filter == "local")
         @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.band and e.band.is_local}
