@@ -24,7 +24,7 @@ class HomeController < ApplicationController
         @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.band and e.band.is_local}
         @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       else
-        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| (!e.band or ( !e.band.is_classical and !e.band.is_jazz and !e.band.is_local))}
+        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| (!e.band or ( !e.band.is_classical and !e.band.is_jazz ))}
         @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       end
     end
