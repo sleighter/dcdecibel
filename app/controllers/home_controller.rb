@@ -2,33 +2,32 @@ class HomeController < ApplicationController
   def index
     if (params[:q])
       @query = params[:q]
-      @search = Event.upcoming(true).search(:name_contains => @query)
-      @events = @search.all
+      @search_by_band = Event.upcoming(true).search(:name_contains => @query)
+      @search_by_venue = Event.upcoming(true).search(:venue_name_contains => @query)
+      @events = @search_by_band.all + @search_by_venue.all
       @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       @show_search = true
     else
       @filter = params["filter"]
       if(@filter == "all")
         @events = Event.upcoming(:order => "event_datetime ASC")
-        @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       elsif(@filter == "justannounced")
         @events = Event.just_announced(:order => "created_at DESC")
-        @events.sort! { |a,b| b.created_at <=> a.created_at }
       elsif(@filter == "jazz")
         @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.is_jazz or (e.band and e.band.is_jazz)}
-        @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       elsif(@filter == "classical")
         @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.is_classical or (e.band and e.band.is_classical)}
-        @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       elsif(@filter == "local")
         @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.band and e.band.is_local}
-        @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
+      elsif(@filter == "recommended")
+        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.band and e.band.is_editors_choice}
+      elsif(@filter == "presale")
+        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| (e.presale_start_datetime and e.presale_end_datetime) and (e.presale_start_datetime < Time.now and e.presale_end_datetime > Time.now)}
       else
-        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| (!e.band or ( !e.band.is_classical and !e.band.is_jazz ))}
-        @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
+        @events = Event.upcoming(true).select{|e| !e.is_jazz and !e.is_classical and (!e.band or ( !e.band.is_classical and !e.band.is_jazz ))}
       end
     end
-
+    @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
     @events.each do |event|
       if (event.headline_band_id)
         event.bandid = event.band.id

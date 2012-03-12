@@ -129,7 +129,7 @@ P {
   color: black;
 }
 .main_menu H1{
-    font-size: 34px;
+    font-size: 40px;
     margin-bottom: 10px;
     letter-spacing: 0;
 }
@@ -141,8 +141,8 @@ P {
   letter-spacing: 1px;
   float: left;
 }
-#main_menu_upcoming{ margin-right: 20px; }
-#main_menu_announced{ margin-right: 20px; }
+#main_menu_upcoming{ margin-right: 30px; }
+#main_menu_announced{ margin-right: 30px; }
 #main_menu_search{ margin-right: 20px; }
 #main_menu_about{}
 #main_menu_blog{ float: right; }
@@ -159,11 +159,13 @@ P {
 }
 #search_submit{
   position:relative;
-  top: 1px;
+  top: -2px;
+  left: 3px;
 }
 #filter_container, #close_search_container{
   position:relative;
   top: 4px;
+  text-align: right;
 }
 #close_search_container A{
   color: #d8d8d8;

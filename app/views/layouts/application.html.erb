@@ -44,14 +44,11 @@
   <div class="centered main_menu_item <%= params[:filter] == 'justannounced' ? 'selected':'' %> " id="main_menu_announced" >
     <h1><%= link_to "JUST ANNOUNCED", "/?filter=justannounced" %></h1>
   </div>
-  <div class="centered main_menu_item <%= params[:q] ? 'selected':''%>" id="main_menu_search">
-    <h1><a href="javascript:void(null)" class="search_link">SEARCH</a></h1>
-  </div>
   <div class="centered main_menu_item <%= controller.action_name == 'about' ? 'selected' : '' %>" id="main_menu_about">
-    <h1><a class="main_menu_light_link" href="/about">ABOUT</a></h1>
+    <h1><a href="/about">ABOUT</a></h1>
   </div>
   <div class="centered main_menu_item" id="main_menu_blog">
-    <h1><a class="main_menu_light_link" href="http://blog.dcdecibel.com">BLOG</a></h1>
+    <h1><a href="http://blog.dcdecibel.com">NEWS</a></h1>
   </div>
 </div>
 </div>
@@ -60,21 +57,22 @@
   <div class="clear"></div>
   <div class="horizontal-divider grid_16"></div>
   <div class="grid_5" id="search_panel">
-    <a href="javascript:void(null)" id="search_submit" class="bold">SEARCH:</a>
+    <a href="javascript:void(null)" id="search_submit" class="bold"><img src="/assets/searchicon.png" alt="SEARCH"/></a>
     <input type="text" id="search_box" name="q" value="<%= @query %>" />
   </div>
-  <div class="grid_7" id="filter_container">
+  <div class="grid_11" id="filter_container">
     <span class="bold"> SHOW: </span>
-    <a class="filter_item <%= params[:filter] == 'all' ? 'selected' : ''%>" href="/?filter=all">ALL</a>
-    <span> / </span>
     <a class="filter_item <%= params[:filter] == 'jazz' ? 'selected' : ''%>" href="/?filter=jazz">JAZZ</a>
     <span> / </span>
     <a class="filter_item <%= params[:filter] == 'classical' ? 'selected' : ''%>" href="/?filter=classical">CLASSICAL</a>
     <span> / </span>
     <a class="filter_item <%= params[:filter] == 'local' ? 'selected' : ''%>" href="/?filter=local">LOCAL ACTS</a>
-  </div>
-  <div class="grid_3 prefix_1" id="close_search_container" style="text-align:right;">
-    <a href="javascript:void(null)" class="search_link">CLICK TO CLOSE</a>
+    <span> / </span>
+    <a class="filter_item <%= params[:filter] == 'presale' ? 'selected' : ''%>" href="/?filter=presale">PRE-SALE</a>
+    <span> / </span>
+    <a class="filter_item <%= params[:filter] == 'recommended' ? 'selected' : ''%>" href="/?filter=recommended">RECOMMENDED</a>
+    <span> / </span>
+    <a class="filter_item <%= params[:filter] == 'all' ? 'selected' : ''%>" href="/?filter=all">ALL</a>
   </div>
 </div>
 <div class="container_16">
