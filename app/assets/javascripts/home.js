@@ -65,7 +65,7 @@ function openInfoPanel(){
   $('#info_panel').slideDown();
 }
 function closeInfoPanel(){
-  $.cookie('close_info_panel','true')
+  $.cookie('close_info_panel','true',{ expires: 65535 })
   $('#info_panel').slideUp();
 }
 
