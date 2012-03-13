@@ -10,19 +10,19 @@ class HomeController < ApplicationController
     else
       @filter = params["filter"]
       if(@filter == "all")
-        @events = Event.upcoming(:order => "event_datetime ASC")
+        @events = Event.upcoming(true)
       elsif(@filter == "justannounced")
-        @events = Event.just_announced(:order => "created_at DESC")
+        @events = Event.just_announced(true)
       elsif(@filter == "jazz")
-        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.is_jazz or (e.band and e.band.is_jazz)}
+        @events = Event.upcoming(true).select{|e| e.is_jazz or (e.band and e.band.is_jazz)}
       elsif(@filter == "classical")
-        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.is_classical or (e.band and e.band.is_classical)}
+        @events = Event.upcoming(true).select{|e| e.is_classical or (e.band and e.band.is_classical)}
       elsif(@filter == "local")
-        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.band and e.band.is_local}
+        @events = Event.upcoming(true).select{|e| e.band and e.band.is_local}
       elsif(@filter == "recommended")
-        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| e.band and e.band.is_editors_choice}
+        @events = Event.upcoming(true).select{|e| e.band and e.band.is_editors_choice}
       elsif(@filter == "presale")
-        @events = Event.upcoming(:order => "event_datetime ASC").select{|e| (e.presale_start_datetime and e.presale_end_datetime) and (e.presale_start_datetime < Time.now and e.presale_end_datetime > Time.now)}
+        @events = Event.upcoming(true).select{|e| (e.presale_start_datetime and e.presale_end_datetime) and (e.presale_start_datetime < Time.now and e.presale_end_datetime > Time.now)}
       else
         @events = Event.upcoming(true).select{|e| !e.is_jazz and !e.is_classical and (!e.band or ( !e.band.is_classical and !e.band.is_jazz ))}
       end
