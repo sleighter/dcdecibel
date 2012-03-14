@@ -31,7 +31,7 @@ class HomeController < ApplicationController
     @events.each do |event|
       if (event.headline_band_id)
         event.bandid = event.band.id
-        event.title = event.band.name
+        event.title = event.name
       elsif (event.bands.select{|n| n.name == event.name}.first)
         event_band = event.bands.select{ |n| n.name == event.name }.first
         event.bandid = event_band.id
