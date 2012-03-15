@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120229035341) do
+ActiveRecord::Schema.define(:version => 20120315231046) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer   "resource_id",   :null => false
@@ -74,28 +74,33 @@ ActiveRecord::Schema.define(:version => 20120229035341) do
   end
 
   create_table "events", :force => true do |t|
-    t.string    "name"
-    t.timestamp "event_datetime"
-    t.string    "ticket_status"
-    t.integer   "venue_id"
-    t.boolean   "is_editors_choice"
-    t.text      "editors_choice_note"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "tickets_url"
-    t.float     "price_min"
-    t.float     "price_max"
-    t.timestamp "presale_start_datetime"
-    t.timestamp "presale_end_datetime"
-    t.string    "presale_url"
-    t.integer   "headline_band_id"
-    t.boolean   "tickets_sold_at_door"
-    t.timestamp "announced_datetime"
-    t.boolean   "has_no_band"
-    t.text      "description"
-    t.string    "opening_bands"
-    t.boolean   "is_jazz"
-    t.boolean   "is_classical"
+    t.string   "name"
+    t.datetime "event_datetime"
+    t.string   "ticket_status"
+    t.integer  "venue_id"
+    t.boolean  "is_editors_choice"
+    t.text     "editors_choice_note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "tickets_url"
+    t.float    "price_min"
+    t.float    "price_max"
+    t.datetime "presale_start_datetime"
+    t.datetime "presale_end_datetime"
+    t.string   "presale_url"
+    t.integer  "headline_band_id"
+    t.boolean  "tickets_sold_at_door"
+    t.datetime "announced_datetime"
+    t.boolean  "has_no_band"
+    t.text     "description"
+    t.string   "opening_bands"
+    t.boolean  "is_jazz"
+    t.boolean  "is_classical"
+    t.string   "event_photo_url"
+    t.boolean  "is_free"
+    t.boolean  "is_world"
+    t.boolean  "default_open"
+    t.text     "short_details"
   end
 
   create_table "neighborhoods", :force => true do |t|

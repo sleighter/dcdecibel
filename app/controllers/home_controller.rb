@@ -2,9 +2,11 @@ class HomeController < ApplicationController
   def index
     if (params[:q])
       @query = params[:q]
-      @search_by_band = Event.upcoming(true).search(:name_contains => @query)
-      @search_by_venue = Event.upcoming(true).search(:venue_name_contains => @query)
-      @events = @search_by_band.all + @search_by_venue.all
+      @events = Event.upcoming(true)
+      @search_by_band = @events.search(:name_contains => @query)
+      @search_by_openers = @events.search(:opening_bands_contains => @query)
+      @search_by_venue = @events.search(:venue_name_contains => @query)
+      @events = @search_by_band.all + @search_by_venue.all + @search_by_openers.all
       @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       @show_search = true
     else
