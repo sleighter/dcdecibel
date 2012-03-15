@@ -31,7 +31,7 @@ ActiveAdmin.register Event do
         f.input :is_world, :label => "World Music Event"
       end
       f.inputs "Display Details" do
-        f.input :open_by_default, :label => "Open Details By Default"
+        f.input :default_open, :label => "Open Details By Default"
         f.input :short_details, :label => "Event Details To Always Show"
         f.input :description, :label => "Description for No-Band Events"
         f.input :event_photo_url, :label => "Photo URL for No-Band Events"
