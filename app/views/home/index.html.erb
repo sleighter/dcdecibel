@@ -61,7 +61,9 @@
           <%= event.venue ? event.venue.name.upcase : "" %>
         </td>
         <td class="grid_3 drop_link ticket-link centered" data-eventid="<%=event.id %>">
-          <% if event.price_min and event.price_max %>
+          <% if event.is_free %>
+            FREE
+          <% elsif event.price_min and event.price_max %>
             <%= number_to_currency(event.price_min, :precision => 0) + " - " + number_to_currency(event.price_max, :precision => 0) %>
           <% elsif ((event.price_min and (event.price_min > 0)) or (event.price_max and (event.price_max > 0))) %>
             <%= number_to_currency event.price_min, :precision => 0 %><%= number_to_currency event.price_max, :precision => 0 %>
@@ -75,7 +77,9 @@
           <%=event.event_datetime.to_i%>
         </td>
         <td class="price-sort-column">
-          <% if event.price_min and event.price_min > 0%>
+          <% if event.is_free %>
+            0
+          <% elsif event.price_min and event.price_min > 0%>
             <%= event.price_min %>
           <% elsif event.price_max and event.price_max > 0 %>
             <%=event.price_max %>

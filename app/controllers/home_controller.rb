@@ -17,6 +17,8 @@ class HomeController < ApplicationController
         @events = Event.just_announced(true)
       elsif(@filter == "jazz")
         @events = Event.upcoming(true).select{|e| e.is_jazz or (e.band and e.band.is_jazz)}
+      elsif(@filter == "world")
+        @events = Event.upcoming(true).select{|e| e.is_world or (e.band and e.band.is_jazz)}
       elsif(@filter == "classical")
         @events = Event.upcoming(true).select{|e| e.is_classical or (e.band and e.band.is_classical)}
       elsif(@filter == "local")
@@ -26,7 +28,7 @@ class HomeController < ApplicationController
       elsif(@filter == "presale")
         @events = Event.upcoming(true).select{|e| (e.presale_start_datetime and e.presale_end_datetime) and (e.presale_start_datetime < Time.now and e.presale_end_datetime > Time.now)}
       else
-        @events = Event.upcoming(true).select{|e| !e.is_jazz and !e.is_classical and (!e.band or ( !e.band.is_classical and !e.band.is_jazz ))}
+        @events = Event.upcoming(true).select{|e| ! e.is_world and !e.is_jazz and !e.is_classical and (!e.band or ( !e.band.is_classical and !e.band.is_jazz ))}
       end
     end
     @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }

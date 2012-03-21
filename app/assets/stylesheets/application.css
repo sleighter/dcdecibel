@@ -153,6 +153,9 @@ P {
 }
 
 /* Search Panel Components */
+#search_panel{
+  text-align: right;
+}
 #search_container, #search_container A{
   font-size: 17px;
   color: #C3B091;

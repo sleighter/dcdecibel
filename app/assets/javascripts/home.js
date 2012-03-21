@@ -120,6 +120,7 @@ $(document).ready(function(){
         {
           var data = {bio:""};
           data.bio = eventData.description;
+          data.image_url = eventData.event_photo_url;
           templateDetails($("#band-details-row-template"),detailsDiv,data);
           return;
         }

@@ -56,13 +56,11 @@
 <div class="container_16" id="search_container" >
   <div class="clear"></div>
   <div class="horizontal-divider grid_16"></div>
-  <div class="grid_5" id="search_panel">
-    <a href="javascript:void(null)" id="search_submit" class="bold"><img src="/assets/searchicon.png" alt="SEARCH"/></a>
-    <input type="text" id="search_box" name="q" value="<%= @query %>" />
-  </div>
-  <div class="grid_11" id="filter_container">
+  <div class="grid_12" id="filter_container">
     <span class="bold"> SHOW: </span>
     <a class="filter_item <%= params[:filter] == 'jazz' ? 'selected' : ''%>" href="/?filter=jazz">JAZZ</a>
+    <span> / </span>
+    <a class="filter_item <%= params[:filter] == 'world' ? 'selected' : ''%>" href="/?filter=world">WORLD</a>
     <span> / </span>
     <a class="filter_item <%= params[:filter] == 'classical' ? 'selected' : ''%>" href="/?filter=classical">CLASSICAL</a>
     <span> / </span>
@@ -73,6 +71,10 @@
     <a class="filter_item <%= params[:filter] == 'recommended' ? 'selected' : ''%>" href="/?filter=recommended">RECOMMENDED</a>
     <span> / </span>
     <a class="filter_item <%= params[:filter] == 'all' ? 'selected' : ''%>" href="/?filter=all">ALL</a>
+  </div>
+  <div class="grid_4" id="search_panel">
+    <input type="text" id="search_box" name="q" value="<%= @query %>" />
+    <a href="javascript:void(null)" id="search_submit" class="bold"><img src="/assets/searchicon.png" alt="SEARCH"/></a>
   </div>
 </div>
 <div class="container_16">
