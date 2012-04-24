@@ -36,6 +36,23 @@ $(document).ready(function(){
   $('#search_submit').on('click',function(){
     perform_search($('#search_box').attr('value'));
   });
+  
+  $("#email-signup").on('keyup',function(event){
+    if(event.keyCode == 13){
+      var email = $("#email-signup").val();
+      $.ajax({
+        type: "POST",
+        data: $("#email-signup-form").serialize(),
+        url: "/users",
+        success: function(){
+          $("#email-signup-form").fadeOut('fast',function(){
+            $("#signed-up-notice").fadeIn('fast');
+          });
+        }});
+      return false;
+    }
+  });
+
 });
 
 function show_search(){

@@ -52,16 +52,8 @@ class BandsController < ApplicationController
   # POST /bands.json
   def create
     @band = Band.new(params[:band])
-
-    respond_to do |format|
-      if @band.save
-        format.html { redirect_to @band, notice: 'Band was successfully created.' }
-        format.json { render json: @band, status: :created, location: @band }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @band.errors, status: :unprocessable_entity }
-      end
-    end
+    @band.save
+    render json: @band, status: :created, location: @band
   end
 
   # PUT /bands/1

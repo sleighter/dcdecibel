@@ -7,11 +7,7 @@ ActiveAdmin.register Ticket do
       link_to "Link", ticket.seller_url
     end
     column "QTY", :quantity
-    column "Price", :sortable => :price do |ticket|
-      span :class => "currency", do 
-        number_to_currency(ticket.price)
-      end
-    end
+
     default_actions
   end
   

@@ -1,7 +1,7 @@
 ActiveAdmin.register Band do
   index do
     column :name
-    column "Homepage", :homepage_url, do |band| 
+    column "Homepage", :homepage_url do |band| 
       band.homepage_url ? link_to("Homepage", band.homepage_url) : ""
     end
     column "Editor\'s Choice?", :is_editors_choice do |band|
