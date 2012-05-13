@@ -7,7 +7,6 @@ class HomeController < ApplicationController
       @search_by_openers = @events.search(:opening_bands_contains => @query)
       @search_by_venue = @events.search(:venue_name_contains => @query)
       @events = @search_by_band.all + @search_by_venue.all + @search_by_openers.all
-      @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
       @show_search = true
     else
       @filter = params["filter"]
@@ -31,6 +30,7 @@ class HomeController < ApplicationController
         @events = Event.upcoming(true).select{|e| ! e.is_world and !e.is_jazz and !e.is_classical and (!e.band or ( !e.band.is_classical and !e.band.is_jazz ))}
       end
     end
+    @events = @events.find_all{|item| item.event_datetime > Time.now.beginning_of_day - 5.hours}
     @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
     @events.each do |event|
       if (event.headline_band_id)
