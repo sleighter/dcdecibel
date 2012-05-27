@@ -17,6 +17,8 @@ Dcdecibel::Application.routes.draw do
   resources :bands
   
   resources :users
+  
+  resources :scrapes
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

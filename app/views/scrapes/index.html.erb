@@ -1,0 +1,21 @@
+<h1>Listing scrapes</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @scrapes.each do |scrape| %>
+  <tr>
+    <td><%= link_to 'Show', scrape %></td>
+    <td><%= link_to 'Edit', edit_scrape_path(scrape) %></td>
+    <td><%= link_to 'Destroy', scrape, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Scrape', new_scrape_path %>
