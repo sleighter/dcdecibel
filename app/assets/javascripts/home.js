@@ -208,7 +208,7 @@ $(document).ready(function(){
     closeInfoPanel();
   });
 
-  if(!$.cookie('close_info_panel')){
+  if(!($.cookie('close_info_panel') == 'true')) {
     openInfoPanel();
   }
 });
