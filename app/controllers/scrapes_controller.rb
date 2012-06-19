@@ -28,7 +28,11 @@ class ScrapesController < ApplicationController
       details.search(".support").each do |support|
         event.opening_bands.push(support.text)
       end
-      event.tickets_url = details.search('a').last['href']
+      begin
+        event.tickets_url = details.search('a').last['href']
+      rescue
+        event.tickets_url = ""
+      end
       @events.push(event)
     end
     
