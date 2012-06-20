@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<% zone = ActiveSupport::TimeZone.new("Eastern Time (US & Canada)") %>
+
 <h3><%= @venue.name %></h3>
 
 <table>
@@ -10,6 +12,7 @@
       <th>Title</th>
       <th>Headline Band</th>
       <th>Supporting Bands</th>
+      <th>Price</th>
       <th>Ticket URL</th>
     </tr>
   </thead>
@@ -17,7 +20,7 @@
     <% @new_events.each do |event| %>
       <tr>
         <td>Checkbox</td>
-        <td><%= event.event_datetime.strftime("%m/%d/%y") %></td>
+        <td><%= event.event_datetime.in_time_zone(zone).strftime("%m/%d/%y %l:%M %p") %></td>
         <td><b><%= event.title %></b></td>
         <td><b><%= event.title %></b></td>
         <td>
@@ -27,6 +30,7 @@
             </span>
           <% end %>
         </td>
+        <td>$<%= event.price_min %></td>
         <td><%= link_to event.tickets_url, event.tickets_url %></td>
       </tr>
     <% end %>
