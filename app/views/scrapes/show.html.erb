@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<% zone = ActiveSupport::TimeZone.new("Eastern Time (US & Canada)") %>
+
+<h3><%= @venue.name %></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Include?</th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Headline Band</th>
+      <th>Supporting Bands</th>
+      <th>Price</th>
+      <th>Ticket URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @new_events.each do |event| %>
+      <tr>
+        <td>Checkbox</td>
+        <td><%= event.event_datetime.in_time_zone(zone).strftime("%m/%d/%y %l:%M %p") %></td>
+        <td><b><%= event.title %></b></td>
+        <td><b><%= event.title %></b></td>
+        <td>
+          <% event.opening_bands.each do |support| %>
+            <span>
+              <%= support %>
+            </span>
+          <% end %>
+        </td>
+        <td>$<%= event.price_min %></td>
+        <td><%= link_to event.tickets_url, event.tickets_url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_scrape_path(@scrape) %> |
+<%= link_to 'Back', scrapes_path %>

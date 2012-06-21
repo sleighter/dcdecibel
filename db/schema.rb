@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120616022539) do
+ActiveRecord::Schema.define(:version => 20120621001248) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer   "resource_id",   :null => false
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(:version => 20120616022539) do
     t.float     "ticket_min_price"
     t.float     "ticket_max_price"
     t.string    "scrape_url"
+    t.string    "scrape_class"
   end
 
 end

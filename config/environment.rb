@@ -5,3 +5,4 @@ require File.expand_path('../application', __FILE__)
 Dcdecibel::Application.initialize!
 
 Time::DATE_FORMATS[:long_date] = "%A, %B %d"
+
