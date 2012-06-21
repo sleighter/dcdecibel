@@ -7,6 +7,9 @@ class BlackCat
     page = agent.get(@venue.scrape_url)
     @events = Array.new
     @new_events = Array.new
+
+
+    Time.zone = ActiveSupport::TimeZone.new("America/New_York")
     page.search(".show-details").each do |details|
       price_and_time = details.search(".show-text").text
       event = Event.new
@@ -34,11 +37,6 @@ class BlackCat
       @events.push(event)
     end
     
-    @events.each do |event|
-      if (@venue.events.find_all{ |e| e.event_datetime.strftime("%m/%d/%y") == event.event_datetime.strftime("%m/%d/%y")}.count == 0)
-        @new_events << event
-      end
-    end
-    return @new_events
+    return @events
   end
 end
