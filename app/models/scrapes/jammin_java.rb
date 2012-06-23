@@ -26,10 +26,10 @@ class JamminJava
       end
     end
     
-    @events.select{|e| e.tickets_url != nil}.each do |event|
-      page = agent.get(event.tickets_url)
-      price = page.search("div.price").text.sub("$","")
-    end
+    #@events.select{|e| e.tickets_url != nil}.each do |event|
+    #  page = agent.get(event.tickets_url)
+    #  price = page.search("div.price").text.sub("$","")
+    #end
 
     return @events
 
