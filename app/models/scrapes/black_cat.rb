@@ -13,7 +13,7 @@ class BlackCat
     page.search(".show-details").each do |details|
       price_and_time = details.search(".show-text").text
       event = Event.new
-      event.title = details.search(".headline a").text
+      event.name = details.search(".headline a").text
       begin
         time = /[0-9]{1,2}[:][0-9]{2}/.match(price_and_time)[0]
         event.event_datetime = Time.parse(details.search(".date").text + " " + time + "PM")
@@ -30,7 +30,7 @@ class BlackCat
         supports << support
       end
       if supports != nil
-        event.opening_bands supports.join(', ')      
+        event.opening_bands = supports.join(', ')      
       end
       begin
         event.tickets_url = details.search('a').last['href']
