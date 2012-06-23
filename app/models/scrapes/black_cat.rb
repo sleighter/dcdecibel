@@ -19,16 +19,13 @@ class BlackCat
         event.event_datetime = Time.parse(details.search(".date").text + " " + time + "PM")
       rescue
       end
-      event.opening_bands = Array.new
       price = /[$][0-9]{1,3}/.match(price_and_time)
       begin  
         event.price_min = price[0].sub("$","")
         event.price_max = price[1].sub("$","")
       rescue
       end
-      details.search(".support").each do |support|
-        event.opening_bands.push(support.text)
-      end
+      event.opening_bands = details.search(".support").join(", ")      
       begin
         event.tickets_url = details.search('a').last['href']
       rescue

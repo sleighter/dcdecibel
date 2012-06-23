@@ -3,13 +3,13 @@
 <% zone = ActiveSupport::TimeZone.new("Eastern Time (US & Canada)") %>
 
 <h3><%= @venue.name %></h3>
-
+<form action="/scrapes/create" method="post">
 <table>
   <thead>
     <tr>
       <th>Include?</th>
       <th width='145'>Date</th>
-      <th>Title</th>
+      <th>Name</th>
       <th>Headline Band</th>
       <th>Supporting Bands</th>
       <th>Price</th>
@@ -17,25 +17,25 @@
     </tr>
   </thead>
   <tbody>
+    <% count = 0 %>
     <% @new_events.each do |event| %>
       <tr>
-        <td>Checkbox</td>
-        <td><%= event.event_datetime.in_time_zone(zone).strftime("%m/%d/%y %l:%M %p") %></td>
-        <td><b><%= event.title %></b></td>
-        <td><b><%= event.title %></b></td>
+        <td><input type="checkbox" name="event[][selected]" value="true" checked /></td>
+        <td><input type="text" name="event[][event_datetime]" value="<%= event.event_datetime.in_time_zone(zone).strftime("%m/%d/%y %l:%M %p") %>" /></td>
+        <td><input type="text" name="event[][name]" value="<%= event.name %>" /></td>
+        <td><b><%= event.band != nil ? event.band.name : "" %></b></td>
         <td>
-          <% event.opening_bands.each do |support| %>
-            <span>
-              <%= support %>
-            </span>
-          <% end %>
+          <input type="text" name="event[][opening_bands]" value="<% event.opening_bands %>" />
         </td>
-        <td>$<%= event.price_min %></td>
-        <td><%= link_to event.tickets_url, event.tickets_url %></td>
+        <td><input type="text" name="event[][price_min]" value="<%= event.price_min %>" /></td>
+        <td><input type="text" name="event[][tickets_url]" value="<%= event.tickets_url %>" /></td>
       </tr>
+      <% count += 1 %>
     <% end %>
   </tbody>
 </table>
+<input type="submit" value="Save Selected" disabled />
+</form>
 
 <%= link_to 'Edit', edit_scrape_path(@scrape) %> |
 <%= link_to 'Back', scrapes_path %>

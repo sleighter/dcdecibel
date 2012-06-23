@@ -28,6 +28,7 @@ Dcdecibel::Application.routes.draw do
   # Keep in mind you can assign values other than :controller and :action
   match 'about' => 'home#about'
   match 'contact' => 'home#contact'
+  match 'scrapes/create' => 'scrapes#create'
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)

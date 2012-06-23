@@ -11,8 +11,7 @@ class NineThirtyClub
     page.search(".concert_listing").each do |details|
       event = Event.new
       event.title = details.search(".event").text
-      event.opening_bands = Array.new
-      event.opening_bands << details.search(".supports").text.sub("w/","")
+      event.opening_bands = details.search(".supports").text.sub("w/","")
       buy_link = details.search(".buy > a").first
       if buy_link != nil
         event.tickets_url = buy_link['href']
