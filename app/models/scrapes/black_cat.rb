@@ -25,7 +25,13 @@ class BlackCat
         event.price_max = price[1].sub("$","")
       rescue
       end
-      event.opening_bands = details.search(".support").join(", ")      
+      supports = Array.new
+      details.search(".support").each do |support|
+        supports << support
+      end
+      if supports != nil
+        event.opening_bands supports.join(', ')      
+      end
       begin
         event.tickets_url = details.search('a').last['href']
       rescue
