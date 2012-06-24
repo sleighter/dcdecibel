@@ -9,8 +9,9 @@ class NineThirtyClub
 
     Time.zone = ActiveSupport::TimeZone.new("America/New_York")
     page.search(".concert_listing").each do |details|
+      omit = false
       event = Event.new
-      event.title = details.search(".event").text
+      event.name = details.search(".event").text
       event.opening_bands = details.search(".supports").text.sub("w/","")
       buy_link = details.search(".buy > a").first
       if buy_link != nil
@@ -23,7 +24,12 @@ class NineThirtyClub
       if price_min
         event.price_min = price_min.text.sub("$","")
       end
-      @events << event
+      if event.price_min == nil
+        omit = true
+      end
+      if !omit
+        @events << event
+      end
     end
     
     return @events
