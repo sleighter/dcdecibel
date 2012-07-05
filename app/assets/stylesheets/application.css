@@ -104,7 +104,7 @@ P {
 /* Title Components */
 #title_container{
   margin-bottom: 24px;
-  margin-top: 4px;
+  margin-top: 7px;
 }
 .title {
   background: url("/assets/dcdecibel-logo.png") -15px -10px;
@@ -114,14 +114,14 @@ P {
 }
 
 .social-icon {
-  width: 30px;
-  height: 30px;
-  margin-top: -7px;
+  width: 33px;
+  height: 33px;
+  cursor: pointer;
 }
 
 #email-signup-form {
   margin-bottom: -26px;
-  display: inline;
+  /*display: inline;*/
 }
 
 /* Footer Components */

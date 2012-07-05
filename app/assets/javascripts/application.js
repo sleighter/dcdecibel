@@ -36,23 +36,40 @@ $(document).ready(function(){
   $('#search_submit').on('click',function(){
     perform_search($('#search_box').attr('value'));
   });
+  $('#email-sign-up').on('click',function(){
+    var selector = $("#email-signup-form");
+    if(selector.is(":visible")){
+      submitEmail();
+      selector.hide();
+    }
+    else{
+      selector.css('display','inline');
+    }
+  });
   
   $("#email-signup").on('keyup',function(event){
     if(event.keyCode == 13){
-      var email = $("#email-signup").val();
-      $.ajax({
-        type: "POST",
-        data: $("#email-signup-form").serialize(),
-        url: "/users",
-        success: function(){
-          $("#email-signup-form").fadeOut('fast',function(){
-            $("#signed-up-notice").fadeIn('fast');
-          });
-        }});
-      return false;
+      submitEmail();
     }
   });
 
+  function submitEmail() {
+      var email = $("#email-signup").val();
+      if (email){
+        $.ajax({
+          type: "POST",
+          data: $("#email-signup-form").serialize(),
+          url: "/users",
+          success: function(){
+            $("#email-signup-form").fadeOut('fast',function(){
+              $("#signed-up-notice").fadeIn('fast').delay(3000).fadeOut('fast');
+            });
+            $("#email-signup").val("");
+          }
+        });
+      }
+      return false;
+  }
 });
 
 function show_search(){
