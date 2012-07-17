@@ -30,22 +30,22 @@ class ScrapesController < ApplicationController
   end
 
   def create
-    @events = params[:event]
-
-    @events.each do |event|
-      if (event.has_key? 'selected')
-        event['price_min'] = event['price_min']
-        begin
-          event['event_datetime'] = Time.parse(event['event_datetime'])
-        rescue
-        end
-        new_event = Event.new(event)
-        new_event.save
-      end
-    end
-    respond_to do |format|
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render json: @event, status: :created, location: @event }
-    end
+    #@events = params[:event]
+#
+#    #@events.each do |event|
+#    #  if (event.has_key? 'selected')
+#    #    event['price_min'] = event['price_min']
+#    #    begin
+#    #      event['event_datetime'] = Time.parse(event['event_datetime'])
+    #    rescue
+    #    end
+    #    new_event = Event.new(event)
+    #    new_event.save
+    #  end
+    #end
+    #respond_to do |format|
+    #    format.html { redirect_to @event, notice: 'Event was successfully created.' }
+    #    format.json { render json: @event, status: :created, location: @event }
+    #end
   end
 end
