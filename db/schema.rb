@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527040924) do
+ActiveRecord::Schema.define(:version => 20120621001248) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer   "resource_id",   :null => false
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20120527040924) do
     t.boolean   "is_world"
     t.boolean   "default_open"
     t.text      "short_details"
+    t.boolean   "incomplete_ticket_info"
   end
 
   create_table "neighborhoods", :force => true do |t|
@@ -147,6 +148,7 @@ ActiveRecord::Schema.define(:version => 20120527040924) do
     t.float     "ticket_min_price"
     t.float     "ticket_max_price"
     t.string    "scrape_url"
+    t.string    "scrape_class"
   end
 
 end

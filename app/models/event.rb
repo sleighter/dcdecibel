@@ -9,6 +9,7 @@ class Event < ActiveRecord::Base
   scope :between_dates, lambda{ |begin_date,end_date| where("event_datetime >= ?",begin_date) and where("event_datetime <= ?", end_date)}
   scope :jazz, where("is_jazz")
   scope :classical, where("is_classical")
-  attr_accessor :bandid, :title, :is_in_presale
+  scope :incomplete_ticket_info, where("incomplete_ticket_info")
+  attr_accessor :bandid, :title, :is_in_presale, :selected
 end
 

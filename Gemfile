@@ -9,7 +9,7 @@ gem 'sqlite3'
 
 gem 'activeadmin'
 gem 'sass-rails'
-gem 'meta_search',    '>= 1.1.0.pre'
+gem "meta_search",    '>= 1.1.0.pre'
 gem 'mechanize'
 
 # Gems used only for assets and not required

@@ -1,5 +1,6 @@
 ActiveAdmin.register Event do
   scope :upcoming, :default => true
+  scope :incomplete_ticket_info, label: "Incomplete Ticket Info"
 
   index do
     column :name, :sortable => :name
@@ -37,6 +38,7 @@ ActiveAdmin.register Event do
         f.input :event_photo_url, :label => "Photo URL for No-Band Events"
       end
       f.inputs "Tickets" do
+        f.input :incomplete_ticket_info, label: "Enter Ticket Info Later"
         f.input :is_free, :label => "Free Event"
 	      f.input :price_min, :label => "Min Ticket Price"
 	      f.input :price_max, :label => "Max Ticket Price"

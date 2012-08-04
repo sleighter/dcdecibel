@@ -31,10 +31,10 @@ function templateDetails(template,detailsDiv,data){
     detailsContent.hide();
     detailsDiv.prepend(detailsContent);
     $("#details-row").animate({'height': $(detailsContent).height()},'fast',function(){
-      detailsDiv.height($(detailsContent).height() + 20);
-      detailsDiv.find("IMG").fadeOut(200);
-      detailsContent.fadeIn(200);
-      $(".band-bio").lionbars();
+        detailsDiv.height($(detailsContent).height() + 15);
+        detailsDiv.find(".loading-image").hide();
+        detailsContent.fadeIn(200);
+        $(".band-bio").lionbars();
     });
   }
 }
@@ -127,20 +127,25 @@ $(document).ready(function(){
         $.get("/bands/" + itemId.toString() + ".json", function(data){
           data.openingBands = eventData.opening_bands;
           if(data.last_fm_id){
-            $.get(lastFmUrl(data.last_fm_id),
-            function(data2){
-                if (data2.error){
+            $.ajax(lastFmUrl(data.last_fm_id),{
+              success: function(data2){
+                  if (data2.error){
+                    templateDetails($("#band-details-row-template"),detailsDiv,data);
+                    return;
+                  }
+                  if(!data2.artist){
+                    data2 = JSON.parse(data2);
+                  }
+                  if (data2.artist){
+                    data.image_url = data2.artist.image[3]['#text'];
+                  }
                   templateDetails($("#band-details-row-template"),detailsDiv,data);
-                  return;
-                }
-                if(!data2.artist){
-                  data2 = JSON.parse(data2);
-                }
-                if (data2.artist){
-                  data.image_url = data2.artist.image[3]['#text'];
-                }
-                templateDetails($("#band-details-row-template"),detailsDiv,data);
-            });
+              },
+              timeout: 5000,
+              error: function(req, textStatus, errorThrown){
+                templateDetails($("#band-details-row-template"),detailsDiv, data);
+                console.log("Ajax Request Error: " + textStatus + " " + errorThrown);
+              }});
           }else{
             templateDetails($("#band-details-row-template"),detailsDiv,data);
           }
@@ -208,7 +213,7 @@ $(document).ready(function(){
     closeInfoPanel();
   });
 
-  if(!$.cookie('close_info_panel')){
+  if(!($.cookie('close_info_panel') == 'true')){
     openInfoPanel();
   }
 });
