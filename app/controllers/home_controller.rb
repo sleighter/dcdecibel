@@ -33,7 +33,7 @@ class HomeController < ApplicationController
     @events = @events.find_all{|item| item.event_datetime > Time.now.beginning_of_day - 5.hours}
     @events.sort! { |a,b| a.event_datetime <=>  b.event_datetime }
     @events.each do |event|
-      if (event.headline_band_id)
+      if (event.headline_band_id and event.band != nil)
         event.bandid = event.band.id
         event.title = event.name ? event.name : event.band.name
       elsif (event.bands.select{|n| n.name == event.name}.first)
