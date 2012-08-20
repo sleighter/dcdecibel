@@ -22,9 +22,11 @@ class EventsController < ApplicationController
         end
       end
     end
+    @event.timestr = @event.event_datetime.strftime("%l %p")
+    puts @event.timestr
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @event }
+      format.json { render json: @event.to_json(:methods => [:timestr]) }
     end
   end
 end

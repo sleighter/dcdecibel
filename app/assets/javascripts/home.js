@@ -126,6 +126,7 @@ $(document).ready(function(){
         }
         $.get("/bands/" + itemId.toString() + ".json", function(data){
           data.openingBands = eventData.opening_bands;
+          data.timestr = eventData.timestr;
           if(data.last_fm_id){
             $.ajax(lastFmUrl(data.last_fm_id),{
               success: function(data2){
