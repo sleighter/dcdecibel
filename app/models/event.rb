@@ -11,6 +11,5 @@ class Event < ActiveRecord::Base
   scope :classical, where("is_classical")
   scope :incomplete_ticket_info, where("incomplete_ticket_info")
   attr_accessor :bandid, :title, :is_in_presale, :selected, :timestr
-  attr_accessible :timestr
 end
 
