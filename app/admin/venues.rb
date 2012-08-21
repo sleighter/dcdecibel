@@ -11,6 +11,7 @@ ActiveAdmin.register Venue do
     column "Editor\'s Choice?", :is_editors_choice do |band|
       band.is_editors_choice ? raw('&#10003;') : ''
     end
+    column :default_time
     default_actions
   end
 end

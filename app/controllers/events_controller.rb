@@ -22,7 +22,15 @@ class EventsController < ApplicationController
         end
       end
     end
-    @event.timestr = @event.event_datetime.strftime("%l %p")
+    if (@event.event_datetime.hour == 00)
+      if (@event.venue.default_time != nil)
+        @event.timestr = @event.venue.default_time.strftime("%l %p")
+      else
+        @event.timestr = ""
+      end
+    else
+      @event.timestr = @event.event_datetime.strftime("%l %p")
+    end
     puts @event.timestr
     respond_to do |format|
       format.html # show.html.erb
