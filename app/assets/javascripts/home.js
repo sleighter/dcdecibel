@@ -121,6 +121,7 @@ $(document).ready(function(){
           var data = {bio:""};
           data.bio = eventData.description;
           data.image_url = eventData.event_photo_url;
+          data.detailsToAlwaysShow = eventData.short_details;
           templateDetails($("#band-details-row-template"),detailsDiv,data);
           return;
         }
@@ -217,6 +218,10 @@ $(document).ready(function(){
   if(!($.cookie('close_info_panel') == 'true')){
     openInfoPanel();
   }
+
+  $(".default_open").each(function(){
+    $(this).find('.band-link').get(0).click();
+  });
 });
 
 

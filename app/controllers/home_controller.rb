@@ -25,7 +25,7 @@ class HomeController < ApplicationController
       elsif(@filter == "recommended")
         @events = Event.upcoming(true).select{|e| e.band and e.band.is_editors_choice}
       elsif(@filter == "presale")
-        @events = Event.upcoming(true).select{|e| (e.presale_start_datetime and e.presale_end_datetime) and (e.presale_start_datetime < Time.now and e.presale_end_datetime > Time.now)}
+        @events = Event.upcoming(true).select{|e| e.presale_end_datetime and (e.presale_end_datetime > Time.now)}
       else
         @events = Event.upcoming(true).select{|e| ! e.is_world and !e.is_jazz and !e.is_classical and (!e.band or ( !e.band.is_classical and !e.band.is_jazz ))}
       end

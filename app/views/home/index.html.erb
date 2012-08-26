@@ -44,7 +44,7 @@
   </thead>
   <tbody>
     <% @events.each do |event| %>
-      <tr class="<%= (event.event_datetime.to_date == Time.now.to_date) ? 'tonight-event' : ''%>">
+      <tr class="<%= (event.event_datetime.to_date == Time.now.to_date) ? 'tonight-event' : ''%> <%= event.default_open ? 'default_open' : ''%>">
         <td class="grid_2 event_datetime" data-sortvalue="">
           <%= event.event_datetime.to_date == Time.now.to_date ? "TONIGHT" : event.event_datetime.strftime("%a, %-m/%d").upcase %>
         </td>
@@ -107,6 +107,9 @@
   <div class="clear"></div>
   {{if image_url}}<img class="band-image" src="${image_url}" alt="${name}"/>{{/if}}
   <div class="band-bio">
+    <p>
+      ${detailsToAlwaysShow}
+    </p>
     <p>
       ${bio}
     </p>
