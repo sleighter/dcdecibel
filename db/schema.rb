@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120826204100) do
+ActiveRecord::Schema.define(:version => 20120826212805) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer   "resource_id",   :null => false
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20120826204100) do
     t.text      "short_details"
     t.boolean   "incomplete_ticket_info"
     t.string    "band_name_override"
+    t.string    "soundcloud_track_url"
   end
 
   create_table "neighborhoods", :force => true do |t|

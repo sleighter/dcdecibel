@@ -43,6 +43,10 @@ ActiveAdmin.register Event do
 	      f.input :presale_end_datetime, :label => "Presale End Date"
 	      f.input :presale_url, :label => "Presale URL"
       end
+      f.inputs "Editors Choice and Soundcloud" do
+        f.input :is_editors_choice, :label => "Editor's Choice?"
+        f.input :soundcloud_track_url, :label => "Override Soundcloud Track"
+      end
       f.buttons
       f.inputs "Music Type" do
         f.input :is_jazz, :label => "Jazz Event"
