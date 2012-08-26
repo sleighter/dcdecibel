@@ -107,9 +107,12 @@
   <div class="clear"></div>
   {{if image_url}}<img class="band-image" src="${image_url}" alt="${name}"/>{{/if}}
   <div class="band-bio">
-    <p>
-      ${detailsToAlwaysShow}
-    </p>
+    {{if detailsToAlwaysShow}}
+      <p>
+        ${detailsToAlwaysShow}
+      </p>
+      <br/>
+    {{/if}}
     <p>
       ${bio}
     </p>

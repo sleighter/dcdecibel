@@ -128,6 +128,7 @@ $(document).ready(function(){
         $.get("/bands/" + itemId.toString() + ".json", function(data){
           data.openingBands = eventData.opening_bands;
           data.timestr = eventData.timestr;
+          data.detailsToAlwaysShow = eventData.short_details;
           if(data.last_fm_id){
             $.ajax(lastFmUrl(data.last_fm_id),{
               success: function(data2){
@@ -219,9 +220,7 @@ $(document).ready(function(){
     openInfoPanel();
   }
 
-  $(".default_open").each(function(){
-    $(this).find('.band-link').get(0).click();
-  });
+  $(".default_open").first().find('.band-link').click();
 });
 
 
