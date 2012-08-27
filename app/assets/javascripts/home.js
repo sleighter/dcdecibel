@@ -68,7 +68,7 @@ function closeInfoPanel(){
   $.cookie('close_info_panel','true',{ expires: 65535 })
   $('#info_panel').slideUp();
 }
-
+var ScWidget = null;
 var FirstTableDraw = true;
 $(document).ready(function(){
 
@@ -221,6 +221,23 @@ $(document).ready(function(){
   }
 
   $(".default_open").first().find('.band-link').click();
+
+  ScWidget = SC.Widget('sc-widget');
+  $(".sc-button").on('click',function(){
+    ScWidget.pause();
+    var thisWasPlaying = $(this).attr('x-soundcloud-status') == 'playing';
+    if(!thisWasPlaying){
+      $(this).find('img').toggle();
+    }
+    $('[x-soundcloud-status=playing]').find('img').toggle();
+    $('[x-soundcloud-status=playing]').attr('x-soundcloud-status','paused')
+
+    if(!thisWasPlaying){
+      $(this).attr('x-soundcloud-status','playing');
+      var resolvedUrl = $(this).attr('x-soundcloud-url');
+      ScWidget.load(resolvedUrl, {auto_play: true});
+    }
+  });
 });
 
 

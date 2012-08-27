@@ -51,6 +51,20 @@ class HomeController < ApplicationController
       if (event.presale_start_datetime and event.presale_end_datetime)
         event.is_in_presale = (event.presale_start_datetime < Time.now and event.presale_end_datetime > Time.now)
       end
+      if(!event.soundcloud_track_url or event.soundcloud_track_url == "")
+        client_id = '3d42140e294f456608c2fb5705a0d9ea' #ENV['SOUNDCLOUD_CLIENT_ID']
+        search_term = event.band_name_override ? event.band_name_override : (event.name ? event.name : event.band.name)
+        search_term = search_term.gsub(/\s+/, "")
+        begin
+          response = JSON.parse(Net::HTTP.get_response("api.soundcloud.com","/resolve.json?url=http://soundcloud.com/" + search_term + "&client_id=" + client_id).body)
+          response = JSON.parse(Net::HTTP.get_response(URI(response['location'])).body)
+          response = JSON.parse(Net::HTTP.get_response(URI("http://api.soundcloud.com/users/" + response['id'].to_s + "/tracks.json?filter=streamable&order=hotness&client_id=" + client_id)).body)[0]
+          event.soundcloud_track_url = response['uri']
+          event.save
+        rescue
+          event.soundcloud_track_url = 'error'
+        end
+      end
     end
   end
   def about

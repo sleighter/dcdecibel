@@ -6,7 +6,7 @@
 <table id="events-table" class="container_16" border="0" cellpadding="0" cellspacing="0">
   <thead>
   <tr>
-    <th class="grid_2">
+    <th class="grid_1">
       <h2>
         <span>DATE</span>
         <img class="sorting_img" src="/assets/unsorted.png"/>
@@ -14,6 +14,7 @@
         <img class="sorting_desc_img" src="/assets/descending.png"/>
       </h2>
     </th>
+    <th class="grid_1"></th>
     <th class="grid_6">
       <h2>
         <span>ARTIST</span>
@@ -45,12 +46,20 @@
   <tbody>
     <% @events.each do |event| %>
       <tr class="<%= (event.event_datetime.to_date == Time.now.to_date) ? 'tonight-event' : ''%> <%= event.default_open ? 'default_open' : ''%>">
-        <td class="grid_2 event_datetime" data-sortvalue="">
+        <td class="grid_1 event_datetime" data-sortvalue="">
           <%= event.event_datetime.to_date == Time.now.to_date ? "TONIGHT" : event.event_datetime.strftime("%a, %-m/%d").upcase %>
+        </td>
+        <td class="grid_1">
+          <% if event.soundcloud_track_url != 'error' %>
+          <span class="sc-button" x-soundcloud-url="<%= event.soundcloud_track_url %>" x-soundcloud-status="paused">
+            <img src="/assets/play.png" alt="play"/>
+            <img src="/assets/pause.png" alt="pause" style="display:none"/>
+          </span>
+          <% end %>
         </td>
         <td class="band-link drop_link grid_6 " data-bandid="<%= event.bandid %>" data-eventid="<%= event.id %>" >
           <%= event.title.upcase %>
-          <% if event.band and event.band.is_editors_choice %>
+          <% if (event.is_editors_choice) or (event.band and event.band.is_editors_choice) %>
             <img class="ec-star" src="/assets/ec-star.png" alt="ec-star"/>
           <% end %>
           <% if event.is_in_presale %>
