@@ -68,6 +68,12 @@ function closeInfoPanel(){
   $.cookie('close_info_panel','true',{ expires: 65535 })
   $('#info_panel').slideUp();
 }
+function stripHTML(html)
+{
+   var tmp = document.createElement("DIV");
+   tmp.innerHTML = html;
+   return tmp.textContent||tmp.innerText;
+}
 
 var FirstTableDraw = true;
 $(document).ready(function(){
@@ -141,6 +147,7 @@ $(document).ready(function(){
                   }
                   if (data2.artist){
                     data.image_url = data2.artist.image[3]['#text'];
+                    data.bio = stripHTML(data2.artist.bio.summary);
                   }
                   templateDetails($("#band-details-row-template"),detailsDiv,data);
               },
