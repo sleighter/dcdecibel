@@ -122,42 +122,41 @@ $(document).ready(function(){
       detailsDiv.slideDown('fast');
       detailsRow.slideDown('fast');
       $.get("/events/" + eventId.toString() + ".json",function(eventData){
+        var data = {bio:""};
         if (eventData.has_no_band)
         {
-          var data = {bio:""};
           data.bio = eventData.description;
           data.image_url = eventData.event_photo_url;
           data.detailsToAlwaysShow = eventData.short_details;
           templateDetails($("#band-details-row-template"),detailsDiv,data);
           return;
         }
-        $.get("/bands/" + itemId.toString() + ".json", function(data){
-          data.openingBands = eventData.opening_bands;
-          data.timestr = eventData.timestr;
-          data.detailsToAlwaysShow = eventData.short_details;
-          if(data.last_fm_id){
-            $.ajax(lastFmUrl(data.last_fm_id),{
-              success: function(data2){
-                  if (data2.error){
-                    templateDetails($("#band-details-row-template"),detailsDiv,data);
-                    return;
-                  }
-                  if(!data2.artist){
-                    data2 = JSON.parse(data2);
-                  }
-                  if (data2.artist){
-                    data.image_url = data2.artist.image[3]['#text'];
-                    data.bio = stripHTML(data2.artist.bio.summary);
-                  }
-                  templateDetails($("#band-details-row-template"),detailsDiv,data);
-              },
-              timeout: 5000,
-              error: function(req, textStatus, errorThrown){
-                templateDetails($("#band-details-row-template"),detailsDiv, data);
-                console.log("Ajax Request Error: " + textStatus + " " + errorThrown);
-              }});
-          }else{
-            templateDetails($("#band-details-row-template"),detailsDiv,data);
+        data.openingBands = eventData.opening_bands;
+        data.timestr = eventData.timestr;
+        data.detailsToAlwaysShow = eventData.short_details;
+        var last_fm_id = eventData.name;
+        if(eventData.band_name_override){
+            last_fm_id = eventData.band_name_override;
+          }
+        $.ajax(lastFmUrl(last_fm_id),{
+          success: function(data2){
+              if (data2.error){
+                templateDetails($("#band-details-row-template"),detailsDiv,data);
+                return;
+              }
+              if(!data2.artist){
+                data2 = JSON.parse(data2);
+              }
+              if (data2.artist){
+                data.image_url = data2.artist.image[3]['#text'];
+                data.bio = stripHTML(data2.artist.bio.summary);
+              }
+              templateDetails($("#band-details-row-template"),detailsDiv,data);
+          },
+          timeout: 5000,
+          error: function(req, textStatus, errorThrown){
+            templateDetails($("#band-details-row-template"),detailsDiv, data);
+            console.log("Ajax Request Error: " + textStatus + " " + errorThrown);
           }
         });
       });
