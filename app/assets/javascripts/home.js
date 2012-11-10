@@ -123,6 +123,7 @@ $(document).ready(function(){
       detailsRow.slideDown('fast');
       $.get("/events/" + eventId.toString() + ".json",function(eventData){
         var data = {bio:""};
+        data.is_editors_choice = eventData.is_editors_choice;
         if (eventData.has_no_band)
         {
           data.bio = eventData.description;
