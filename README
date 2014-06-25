@@ -1,21 +1,12 @@
 == DC Decibel
 
-DC Decibel was a project started in late 2011 to provide a concise and useful listing of concerts in the 
-Washington DC metro area. The site was hosted at http://dcdecibel.com via Heroku. The data entry requirements
-of this code became excessive and when our most dedicated data enterer left the DC area, the site became stale.
-During (and for some reason after) DCDecibel's 18 months of service, we garnered many fans and interest. Free sites
-are a labor of love and the community feedback kept us going during the most grinding times. The least we can do is
-release the source code to the community, in hopes that someone will carry the torch, or find something useful or novel
-in this heap of code.
+DC Decibel was a project started in late 2011 to provide a concise and useful listing of concerts in the Washington DC metro area. The site was hosted at http://dcdecibel.com via Heroku. The data entry requirements of this code became excessive and when our most dedicated data enterer left the DC area, the site became stale. During (and for some reason after) DCDecibel's 18 months of service, we garnered many fans and interest. Free sites are a labor of love and the community feedback kept us going during the most grinding times. The least we can do is release the source code to the community, in hopes that someone will carry the torch, or find something useful or novel in this heap of code.
 
 == External Connections
-The site uses the last.fm API for band descriptions and photos. These are accessed directly from the client-side code,
-significantly reducing server load. To make this work, the Band's last.fm id must be provided.
+The site uses the last.fm API for band descriptions and photos. These are accessed directly from the client-side code, significantly reducing server load. To make this work, the Band's last.fm id must be provided.
 
 == Questions
-This software comes without any promise of support. Use at your own risk. I may attempt to answer any questions you have.
-Pull requests will be considered, if offered. Have fun.
-
+This software comes without any promise of support. Use at your own risk. I may attempt to answer any questions you have. Pull requests will be considered, if offered. Have fun.
 
 
 <3 The DC Decibel Team
